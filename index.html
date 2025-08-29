@@ -160,6 +160,26 @@
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
     }
+    /* “Sobre” e “Como comprar” com papel de parede */
+#about, #how {
+  position: relative;
+  overflow: hidden;
+  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png") repeat;
+  background-size: 280px; /* ajuste o tamanho do tile conforme quiser */
+  color: #122821; /* garante contraste do texto */
+}
+
+#about .card, #how .card {
+  background: rgba(255,255,255,.88); /* leve transparência pra destacar o conteúdo */
+  color: #132720;
+  border-color: rgba(0,0,0,.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,.08); /* melhora contraste com fundo */
+}
+
+#about .ico, #how .ico { 
+  color: #c29b22;
+}
+
   </style>
 </head>
 <body>
