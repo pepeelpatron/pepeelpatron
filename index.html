@@ -145,49 +145,57 @@
 
     footer{padding:40px 0;color:#c9c4b0}
 
-  /* remove a borda entre as seções com papel de parede */
-#about, #how{
-  border-top: none;              /* tira a linha de 1px */
+#about,
+#how{
   position: relative;
   overflow: hidden;
+
+  /* tira a linha padrão entre sections e cola as áreas */
+  border-top: none;
+  margin-top: -1px;              /* evita “fresta” por subpixel */
+
+  /* wallpaper */
   background: var(--patron-wallpaper) repeat;
-  background-size: 460px;        /* pode ajustar 420–520px */
+  background-size: 520px;        /* maior = menos repetição (ajuste à gosto) */
   background-position: center top;
   color: #122821;
 }
 
-/* se ainda aparecer 1px por anti-aliasing, sobrepõe levemente */
-#how{ margin-top: -1px; }
-
-/* película BEM fina (quase nada) e sem blur pesado */
-#about::before, #how::before{
-  content:"";
-  position:absolute; inset:0;
-  pointer-events:none;
-  z-index:0;
-  background: rgba(255,255,255,.14);   /* antes ~.7; agora leve */
-  backdrop-filter: blur(0.5px);        /* quase imperceptível; pode remover */
+/* película bem fina (quase imperceptível) */
+#about::before,
+#how::before{
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(255,255,255,.10); /* estava forte; agora só um véu */
+  backdrop-filter: blur(.4px);       /* blur leve; pode zerar se quiser */
 }
 
-/* conteúdo por cima da película */
-#about > *, #how > *{ position: relative; z-index:1; }
+/* garante conteúdo acima da película */
+#about > *,
+#how  > *{ position: relative; z-index: 1; }
 
-/* cards nessas seções continuam legíveis */
-#about .card, #how .card{
+/* opcional: deixar o #how ainda mais “colado” ao #about */
+#how{ padding-top: 30px; } /* use 0–40px conforme preferir */
+
+/* Cards nessas seções: legíveis + hover bonito */
+#about .card,
+#how  .card{
   background: rgba(255,255,255,.90);
   color:#132720;
-  border:1px solid rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,.06);
   transition: all .25s ease-in-out;
 }
-#about .card:hover, #how .card:hover{
+#about .card:hover,
+#how  .card:hover{
   transform: translateY(-6px) scale(1.02);
   background: rgba(255,255,255,.96);
   border-color: rgba(0,0,0,.12);
   box-shadow: 0 12px 24px rgba(0,0,0,.18);
 }
-
-    #about .ico, #how .ico{ color:#c29b22 }
 
     /* Responsive */
     @media (max-width:980px){
