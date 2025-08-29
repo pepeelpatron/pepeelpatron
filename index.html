@@ -136,6 +136,38 @@
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
     }
+    /* Fundo da seção SOBRE O PROJETO */
+#about {
+  position: relative;
+  background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/main/bf8ca040-255b-466c-9b1e-073e44ae9331.png') 
+              center/cover no-repeat;
+  color: white;
+  z-index: 1;
+}
+#about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* película para contraste */
+  z-index: -1;
+}
+
+/* Fundo da seção COMO COMPRAR */
+#how {
+  position: relative;
+  background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/main/bf8ca040-255b-466c-9b1e-073e44ae9331.png') 
+              center/cover no-repeat;
+  color: white;
+  z-index: 1;
+}
+#how::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35); /* película mais leve que a do #about */
+  z-index: -1;
+}
+
   </style>
 </head>
 <body>
