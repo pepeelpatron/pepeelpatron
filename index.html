@@ -179,6 +179,25 @@
 #about .ico, #how .ico { 
   color: #c29b22;
 }
+    .card {
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 18px;
+  backdrop-filter: blur(2px) saturate(110%);
+  color: #132720;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: all .25s ease-in-out; /* suaviza a animação */
+}
+
+/* Efeito hover */
+.card:hover {
+  transform: translateY(-6px) scale(1.02); /* levanta e cresce */
+  box-shadow: 0 12px 24px rgba(0,0,0,.18); /* sombra mais forte */
+  border-color: rgba(0,0,0,.12);
+  background: rgba(255,255,255,.95); /* fica um pouco mais claro */
+}
+
 
   </style>
 </head>
