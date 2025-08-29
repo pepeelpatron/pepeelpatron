@@ -167,6 +167,23 @@
   background: rgba(0,0,0,0.35); /* película mais leve que a do #about */
   z-index: -1;
 }
+/* Fundo da seção "Sobre" e "Como Comprar" */
+#about, #how {
+  background: linear-gradient(180deg, #fdf5e6 0%, #e6f7ff 100%); /* bege → azul claro */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ícones decorativos */
+#about::before, #how::before {
+  content: "🍹 🌴 💵"; /* você pode trocar por SVG/emoji ou ícones reais */
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.08;   /* bem fraquinho, tipo marca d’água */
+  top: 20px;
+  right: 40px;
+  pointer-events: none;
+}
 
   </style>
 </head>
