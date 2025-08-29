@@ -28,6 +28,9 @@
       --green:#1bbf72;       /* acentos positivos */
       --danger:#ff5b5b;      /* acentos de alerta */
       --max:1100px;
+
+      /* papel de parede */
+      --patron-wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png");
     }
     *{box-sizing:border-box}
     html,body{
@@ -88,7 +91,7 @@
       color:#f2efe5;
     }
     .progress{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
-    .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b)}
+    .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b);transition:width .6s ease}
     .kv{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}
     .kv .item{min-width:110px}
     .kv .num{font-size:26px;font-weight:800;color:var(--gold)}
@@ -105,8 +108,15 @@
       border-radius:14px;padding:18px;
       backdrop-filter: blur(2px) saturate(110%);
       color:#f2efe5;
+      transition: all .25s ease-in-out; /* para hover global suave */
     }
-    .card h3{margin:10px 0 6px;font-weight:800}
+    /* Hover (realce ao passar o mouse) */
+    .card:hover{
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+    }
 
     /* Ícones inline (dourados) */
     .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
@@ -135,16 +145,29 @@
 
     footer{padding:40px 0;color:#c9c4b0}
 
-    /* “Sobre” e “Como comprar” com degradê limpo (sem pattern) */
+    /* === “Sobre” e “Como comprar” com papel de parede SUAVIZADO === */
     #about, #how{
       position:relative; overflow:hidden;
-      background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
-      color:#122821; /* melhora contraste do texto nessas seções claras */
+      background: var(--patron-wallpaper) repeat;
+      background-size: 460px;    /* maior = menos repetição */
+      color:#122821;             /* melhora contraste do texto nessas seções claras */
     }
+    /* overlay translúcido para acalmar o padrão */
+    #about::before, #how::before{
+      content:""; position:absolute; inset:0;
+      pointer-events:none; z-index:0;
+      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.68));
+      backdrop-filter: blur(1.5px);
+    }
+    /* garante conteúdo acima da película */
+    #about > *, #how > *{ position:relative; z-index:1; }
+
+    /* Cards nessas seções ficam mais claros para legibilidade */
     #about .card, #how .card{
-      background: rgba(255,255,255,.8);
+      background: rgba(255,255,255,.90);
       color:#132720;
       border-color: rgba(0,0,0,.06);
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
     }
     #about .ico, #how .ico{ color:#c29b22 }
 
@@ -159,46 +182,8 @@
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
+      #about, #how{ background-size:560px; } /* ainda menos repetição no mobile */
     }
-    /* “Sobre” e “Como comprar” com papel de parede */
-#about, #how {
-  position: relative;
-  overflow: hidden;
-  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png") repeat;
-  background-size: 280px; /* ajuste o tamanho do tile conforme quiser */
-  color: #122821; /* garante contraste do texto */
-}
-
-#about .card, #how .card {
-  background: rgba(255,255,255,.88); /* leve transparência pra destacar o conteúdo */
-  color: #132720;
-  border-color: rgba(0,0,0,.06);
-  box-shadow: 0 4px 14px rgba(0,0,0,.08); /* melhora contraste com fundo */
-}
-
-#about .ico, #how .ico { 
-  color: #c29b22;
-}
-    .card {
-  background: rgba(255,255,255,.88);
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 14px;
-  padding: 18px;
-  backdrop-filter: blur(2px) saturate(110%);
-  color: #132720;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  transition: all .25s ease-in-out; /* suaviza a animação */
-}
-
-/* Efeito hover */
-.card:hover {
-  transform: translateY(-6px) scale(1.02); /* levanta e cresce */
-  box-shadow: 0 12px 24px rgba(0,0,0,.18); /* sombra mais forte */
-  border-color: rgba(0,0,0,.12);
-  background: rgba(255,255,255,.95); /* fica um pouco mais claro */
-}
-
-
   </style>
 </head>
 <body>
@@ -358,10 +343,10 @@
       <h2>Meme Gallery</h2>
       <p class="lead">Seleção de artes e memes da comunidade. Suba o seu no Telegram e marque @PepeElPatron.</p>
       <div class="gallery">
-        <img src="assets/memes/m1.jpg" alt="Meme 1" />
-        <img src="assets/memes/m2.jpg" alt="Meme 2" />
-        <img src="assets/memes/m3.jpg" alt="Meme 3" />
-        <img src="assets/memes/m4.jpg" alt="Meme 4" />
+        <img src="assets/memes/m1.jpg" alt="Meme 1" loading="lazy" />
+        <img src="assets/memes/m2.jpg" alt="Meme 2" loading="lazy" />
+        <img src="assets/memes/m3.jpg" alt="Meme 3" loading="lazy" />
+        <img src="assets/memes/m4.jpg" alt="Meme 4" loading="lazy" />
       </div>
     </div>
   </section>
@@ -382,10 +367,10 @@
     <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
       <div>© <span id="year"></span> Pepe El Patrón • Todos os direitos reservados.</div>
       <div style="display:flex;gap:10px">
-        <a class="badge" href="https://t.me/">Telegram</a>
-        <a class="badge" href="https://x.com/">X/Twitter</a>
-        <a class="badge" href="#">Whitepaper</a>
-        <a class="badge" href="#">Termos</a>
+        <a class="badge" href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a class="badge" href="https://x.com/" target="_blank" rel="noopener noreferrer">X/Twitter</a>
+        <a class="badge" href="#" target="_blank" rel="noopener noreferrer">Whitepaper</a>
+        <a class="badge" href="#" target="_blank" rel="noopener noreferrer">Termos</a>
       </div>
     </div>
   </footer>
@@ -415,7 +400,7 @@
       audit: '#'
     };
 
-    // ====== Presale progress + contagem regressiva ======
+    // Presale progress + contagem regressiva
     const pb = document.getElementById('progressBar');
     const raisedEl = document.getElementById('raised');
     const targetEl = document.getElementById('target');
@@ -427,8 +412,9 @@
     function tick(){
       const now = new Date();
       const diff = Math.max(0, DEADLINE - now);
-      const h = Math.floor(diff/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
-      cdEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      const d = Math.floor(diff / 864e5);
+      const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+      cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
       const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
       pb.style.width = pct + '%';
     }
@@ -436,7 +422,7 @@
     targetEl.textContent = `$${fmt(TARGET_USD)}`;
     setInterval(tick, 1000); tick();
 
-    // ====== Tokenomics table + chart ======
+    // Tokenomics table + chart
     document.getElementById('supply').textContent = TOTAL_SUPPLY;
     const tbody = document.getElementById('tkTable');
     TOKENOMICS.forEach(t => {
@@ -458,7 +444,7 @@
       }
     });
 
-    // ====== Links úteis ======
+    // Links úteis
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
     document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
