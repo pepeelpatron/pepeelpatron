@@ -136,53 +136,41 @@
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
     }
-    /* Fundo da seção SOBRE O PROJETO */
-#about {
-  position: relative;
-  background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/main/bf8ca040-255b-466c-9b1e-073e44ae9331.png') 
-              center/cover no-repeat;
-  color: white;
-  z-index: 1;
-}
-#about::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45); /* película para contraste */
-  z-index: -1;
-}
-
-/* Fundo da seção COMO COMPRAR */
-#how {
-  position: relative;
-  background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/main/bf8ca040-255b-466c-9b1e-073e44ae9331.png') 
-              center/cover no-repeat;
-  color: white;
-  z-index: 1;
-}
-#how::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35); /* película mais leve que a do #about */
-  z-index: -1;
-}
-/* Fundo da seção "Sobre" e "Como Comprar" */
-#about, #how {
-  background: linear-gradient(180deg, #fdf5e6 0%, #e6f7ff 100%); /* bege → azul claro */
+   /* Fundo bege → azul claro */
+#about, #how{
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
 }
 
-/* Ícones decorativos */
-#about::before, #how::before {
-  content: "🍹 🌴 💵"; /* você pode trocar por SVG/emoji ou ícones reais */
-  position: absolute;
-  font-size: 4rem;
-  opacity: 0.08;   /* bem fraquinho, tipo marca d’água */
-  top: 20px;
-  right: 40px;
-  pointer-events: none;
+/* garante texto acima dos ícones */
+#about .container, #how .container{ position: relative; z-index: 2; }
+
+/* wrapper dos ícones */
+.bg-icons{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+}
+
+/* estilo base dos ícones (marca d’água) */
+.bg-icon{
+  position:absolute;
+  opacity:.09;                /* força da marca d’água */
+  color:#0f3b3b;              /* muda a cor dos traços aqui */
+  stroke-width:1.6;
+}
+
+/* posições/sizes sugeridos — ajuste à vontade */
+#about .bg-icon.drink{  width:140px; top:24px;  right:40px; transform:rotate(-8deg); }
+#about .bg-icon.palm{   width:180px; bottom:-10px; left:28px; transform:rotate(4deg);}
+#about .bg-icon.money{  width:130px; top:38%; right:18%; transform:rotate(12deg); }
+
+#how .bg-icon.drink{    width:120px; bottom:18px; right:24px; transform:rotate(6deg); }
+#how .bg-icon.palm{     width:160px; top:-12px; left:22px; transform:rotate(-6deg); }
+#how .bg-icon.money{    width:120px; top:30%; left:50%; transform:translateX(-50%) rotate(-10deg); }
+
+/* se quiser mais suave no mobile */
+@media (max-width:640px){
+  .bg-icon{ opacity:.07 }
 }
 
   </style>
