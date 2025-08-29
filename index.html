@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pepe El Patrón ($PATRON) – The Boss of Memes</title>
-  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré‑venda, tokenomics, roadmap e comunidade." />
+  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré-venda, tokenomics, roadmap e comunidade." />
 
   <!-- OG / Twitter -->
   <meta property="og:title" content="Pepe El Patrón ($PATRON)" />
-  <meta property="og:description" content="The Boss of Memes. Participe da pré‑venda do $PATRON" />
+  <meta property="og:description" content="The Boss of Memes. Participe da pré-venda do $PATRON" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -47,38 +47,25 @@
     nav .links{display:flex;gap:18px;align-items:center}
     nav .links a{opacity:.9}
     nav .links a:hover{opacity:1}
-    
-/* HERO */
-.hero{
-  position:relative;
-  min-height:88vh;
-  display:grid;
-  align-items:center;
-  background:
-    linear-gradient(180deg, rgba(11,26,21,.35), rgba(11,26,21,.85) 75%),
-    url('pepe.png?v=3') center/cover no-repeat; /* usa o arquivo que está na raiz do repo */
-}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
-.title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px}
-.subtitle{font-size:clamp(16px,2.2vw,22px);color:var(--muted);margin:10px 0 22px}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap}
-.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-    /* HERO (mais claro e com enquadramento do Pepe) */
-.hero{
-  position:relative;
-  min-height:88vh;
-  display:grid; align-items:center;
 
-  /* ⬇️ película mais clara + imagem enquadrada lá pro topo */
-  background:
-    linear-gradient(180deg, rgba(11,26,21,.18), rgba(11,26,21,.50) 72%),
-    url('pepe.png?v=4');
-  background-repeat:no-repeat;
-  background-size:cover;         /* mantém tela cheia */
-  background-position:center 12%;/* puxa o foco pra cabeça do Pepe */
-}
-
-
+    /* === HERO (película mais clara + foco topo) === */
+    .hero{
+      position:relative;
+      min-height:88vh;
+      display:grid;
+      align-items:center;
+      background:
+        linear-gradient(180deg, rgba(11,26,21,.18), rgba(11,26,21,.50) 72%),
+        url('pepe.png?v=4');
+      background-repeat:no-repeat;
+      background-size:cover;
+      background-position:center 12%;
+    }
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
+    .title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px}
+    .subtitle{font-size:clamp(16px,2.2vw,22px);color:var(--muted);margin:10px 0 22px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
     /* Presale card */
     .presale{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px}
@@ -88,7 +75,7 @@
     .kv .item{min-width:110px}
     .kv .num{font-size:26px;font-weight:800;color:var(--gold)}
 
-    /* Sections */
+    /* Sections base */
     section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
     h2{font-family:Cinzel,serif;margin:0 0 18px;font-size:clamp(24px,3.5vw,36px)}
     p.lead{color:var(--muted);max-width:740px}
@@ -124,6 +111,31 @@
 
     footer{padding:40px 0;color:var(--muted)}
 
+    /* === Fundo bege → azul claro + ícones em marca d’água === */
+    #about, #how{
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
+    }
+    #about .container, #how .container{ position: relative; z-index: 2; }
+
+    .bg-icons{ position:absolute; inset:0; pointer-events:none; z-index:1; }
+    .bg-icon{
+      position:absolute;
+      opacity:.09;
+      color:#0f3b3b;      /* mude para #caa32b se quiser “dourado” */
+      stroke-width:1.6;
+    }
+
+    /* posições/sizes */
+    #about .bg-icon.drink{  width:140px; top:24px;  right:40px; transform:rotate(-8deg); }
+    #about .bg-icon.palm{   width:180px; bottom:-10px; left:28px; transform:rotate(4deg);}
+    #about .bg-icon.money{  width:130px; top:38%; right:18%; transform:rotate(12deg); }
+
+    #how   .bg-icon.drink{  width:120px; bottom:18px; right:24px; transform:rotate(6deg); }
+    #how   .bg-icon.palm{   width:160px; top:-12px;  left:22px;  transform:rotate(-6deg); }
+    #how   .bg-icon.money{  width:120px; top:30%;    left:50%;   transform:translateX(-50%) rotate(-10deg); }
+
     /* Responsive */
     @media (max-width:980px){
       .hero .wrap{grid-template-columns:1fr}
@@ -131,48 +143,12 @@
       .grid-2{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr 1fr}
     }
+    @media (max-width:640px){ .bg-icon{ opacity:.07 } }
     @media (max-width:540px){
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
     }
-   /* Fundo bege → azul claro */
-#about, #how{
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
-}
-
-/* garante texto acima dos ícones */
-#about .container, #how .container{ position: relative; z-index: 2; }
-
-/* wrapper dos ícones */
-.bg-icons{
-  position:absolute; inset:0; pointer-events:none; z-index:1;
-}
-
-/* estilo base dos ícones (marca d’água) */
-.bg-icon{
-  position:absolute;
-  opacity:.09;                /* força da marca d’água */
-  color:#0f3b3b;              /* muda a cor dos traços aqui */
-  stroke-width:1.6;
-}
-
-/* posições/sizes sugeridos — ajuste à vontade */
-#about .bg-icon.drink{  width:140px; top:24px;  right:40px; transform:rotate(-8deg); }
-#about .bg-icon.palm{   width:180px; bottom:-10px; left:28px; transform:rotate(4deg);}
-#about .bg-icon.money{  width:130px; top:38%; right:18%; transform:rotate(12deg); }
-
-#how .bg-icon.drink{    width:120px; bottom:18px; right:24px; transform:rotate(6deg); }
-#how .bg-icon.palm{     width:160px; top:-12px; left:22px; transform:rotate(-6deg); }
-#how .bg-icon.money{    width:120px; top:30%; left:50%; transform:translateX(-50%) rotate(-10deg); }
-
-/* se quiser mais suave no mobile */
-@media (max-width:640px){
-  .bg-icon{ opacity:.07 }
-}
-
   </style>
 </head>
 <body>
@@ -216,7 +192,7 @@
         </div>
       </div>
       <div class="presale">
-        <h3 style="margin:0 0 6px">Pré‑venda</h3>
+        <h3 style="margin:0 0 6px">Pré-venda</h3>
         <div class="progress" aria-label="progresso da pré-venda"><i id="progressBar"></i></div>
         <div class="kv">
           <div class="item"><div class="label">Arrecadado</div><div class="num" id="raised">$0</div></div>
@@ -233,13 +209,43 @@
 
   <!-- About / Highlights -->
   <section id="about">
+    <!-- Ícones de fundo -->
+    <div class="bg-icons" aria-hidden="true">
+      <!-- Drink -->
+      <svg class="bg-icon drink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16L12 12 4 4Z"/>
+        <path d="M12 12v6M9 21h6"/>
+        <path d="M15 5l4-2-2 4"/>
+        <path d="M10 4l2-2"/>
+      </svg>
+      <!-- Palmeira -->
+      <svg class="bg-icon palm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 6c3-3 6-2 8 0"/>
+        <path d="M12 6c-3-3-6-2-8 0"/>
+        <path d="M12 6c4-1 6 1 7 3"/>
+        <path d="M12 6c-4-1-6 1-7 3"/>
+        <path d="M12 21v-9"/>
+        <path d="M12 12c-1 1-2 2-3 3"/>
+        <path d="M12 15c1 1 2 2 3 3"/>
+      </svg>
+      <!-- Dinheiro -->
+      <svg class="bg-icon money" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="7" width="18" height="10" rx="2"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M6 9v6M18 9v6"/>
+      </svg>
+    </div>
+
     <div class="container">
       <h2>Sobre o Projeto</h2>
-      <p class="lead">Pepe El Patrón é uma homenagem ao meme mais amado da internet — com a personalidade de um verdadeiro chefão. O objetivo é construir uma comunidade divertida, forte e orgânica, com mecânicas simples, segurança clara e espaço para criadores (memes, artes, mini‑jogos e eventos).</p>
+      <p class="lead">Pepe El Patrón é uma homenagem ao meme mais amado da internet — com a personalidade de um verdadeiro chefão. O objetivo é construir uma comunidade divertida, forte e orgânica, com mecânicas simples, segurança clara e espaço para criadores (memes, artes, mini-jogos e eventos).</p>
 
       <div class="cards" style="margin-top:18px">
         <div class="card">
-          <div class="flex"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3>Comunidade‑first</h3></div>
+          <div class="flex"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3>Comunidade-first</h3></div>
           <p>Eventos de memes, recompensas e governança social. O Patrón decide com o povo.</p>
         </div>
         <div class="card">
@@ -256,6 +262,36 @@
 
   <!-- How to Buy -->
   <section id="how">
+    <!-- Ícones de fundo -->
+    <div class="bg-icons" aria-hidden="true">
+      <!-- Drink -->
+      <svg class="bg-icon drink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16L12 12 4 4Z"/>
+        <path d="M12 12v6M9 21h6"/>
+        <path d="M15 5l4-2-2 4"/>
+        <path d="M10 4l2-2"/>
+      </svg>
+      <!-- Palmeira -->
+      <svg class="bg-icon palm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 6c3-3 6-2 8 0"/>
+        <path d="M12 6c-3-3-6-2-8 0"/>
+        <path d="M12 6c4-1 6 1 7 3"/>
+        <path d="M12 6c-4-1-6 1-7 3"/>
+        <path d="M12 21v-9"/>
+        <path d="M12 12c-1 1-2 2-3 3"/>
+        <path d="M12 15c1 1 2 2 3 3"/>
+      </svg>
+      <!-- Dinheiro -->
+      <svg class="bg-icon money" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="7" width="18" height="10" rx="2"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M6 9v6M18 9v6"/>
+      </svg>
+    </div>
+
     <div class="container">
       <h2>Como Comprar</h2>
       <div class="cards">
@@ -308,10 +344,10 @@
     <div class="container">
       <h2>Roadmap</h2>
       <div class="timeline">
-        <div class="milestone"><h3>Fase 1 – Lançamento</h3><p>Site, branding, pré‑venda, comunidade, parcerias iniciais.</p></div>
+        <div class="milestone"><h3>Fase 1 – Lançamento</h3><p>Site, branding, pré-venda, comunidade, parcerias iniciais.</p></div>
         <div class="milestone"><h3>Fase 2 – Tração</h3><p>Listagem DEX, campanhas de memes, 5k holders, marketing contínuo.</p></div>
         <div class="milestone"><h3>Fase 3 – Expansão</h3><p>Parcerias estratégicas, listagens CEX intermediárias, 20k holders.</p></div>
-        <div class="milestone"><h3>Fase 4 – Ecosistema</h3><p>Mini‑game/NFTs, merch, eventos e iniciativas da comunidade global.</p></div>
+        <div class="milestone"><h3>Fase 4 – Ecosistema</h3><p>Mini-game/NFTs, merch, eventos e iniciativas da comunidade global.</p></div>
       </div>
     </div>
   </section>
@@ -336,7 +372,7 @@
       <h2>FAQ</h2>
       <details><summary>Qual a rede e o contrato oficial?</summary><p>Defina aqui a chain (BSC/ETH/etc.) e coloque o endereço oficial do contrato com link para o explorer.</p></details>
       <details><summary>Haverá taxas?</summary><p>Edite esta resposta com as taxas de compra/venda, se existirem (ex.: 0/0 ou 1/1%).</p></details>
-      <details><summary>Quando será a listagem?</summary><p>Após o fim da pré‑venda e travamento de liquidez, informe a data exata e os pares.</p></details>
+      <details><summary>Quando será a listagem?</summary><p>Após o fim da pré-venda e travamento de liquidez, informe a data exata e os pares.</p></details>
       <details><summary>É seguro?</summary><p>Contrato verificado, LP bloqueada e auditorias públicas aumentam a confiança. Ainda assim, faça sua própria pesquisa (DYOR).</p></details>
     </div>
   </section>
@@ -358,10 +394,10 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <script>
-    // ====== CONFIGURÁVEIS (edite conforme o projeto) ======
+    // ====== CONFIGURÁVEIS ======
     const DEADLINE = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
-    const TARGET_USD = 1_000_000;     // Meta da pré-venda
-    const RAISED_USD = 317_762.32;    // Arrecadado (dinâmico se quiser puxar de API)
+    const TARGET_USD = 1_000_000;
+    const RAISED_USD = 317_762.32;
 
     const TOKENOMICS = [
       { label: 'Liquidity', value: 30, color: '#f3d37a' },
@@ -371,23 +407,15 @@
     ];
     const TOTAL_SUPPLY = '1,000,000,000';
 
-    const LINKS = {
-      buy: '#',
-      chart: '#',
-      scan: '#',
-      lock: '#',
-      audit: '#'
-    };
+    const LINKS = { buy: '#', chart: '#', scan: '#', lock: '#', audit: '#' };
 
-    // ====== Presale progress + contagem regressiva ======
+    // ====== Presale progress + contador ======
     const pb = document.getElementById('progressBar');
     const raisedEl = document.getElementById('raised');
     const targetEl = document.getElementById('target');
     const cdEl = document.getElementById('countdown');
 
-    function fmt(n){
-      return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
-    }
+    function fmt(n){ return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}); }
     function tick(){
       const now = new Date();
       const diff = Math.max(0, DEADLINE - now);
@@ -400,12 +428,13 @@
     targetEl.textContent = `$${fmt(TARGET_USD)}`;
     setInterval(tick, 1000); tick();
 
-    // ====== Tokenomics table + chart ======
+    // ====== Tokenomics ======
     document.getElementById('supply').textContent = TOTAL_SUPPLY;
     const tbody = document.getElementById('tkTable');
     TOKENOMICS.forEach(t => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`; tbody.appendChild(tr);
+      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
+      tbody.appendChild(tr);
     });
 
     const ctx = document.getElementById('tokenChart');
@@ -413,12 +442,13 @@
       type: 'doughnut',
       data: {
         labels: TOKENOMICS.map(t => t.label),
-        datasets: [{ data: TOKENOMICS.map(t => t.value), backgroundColor: TOKENOMICS.map(t => t.color), borderColor: '#0b1a15', borderWidth: 2 }]
+        datasets: [{
+          data: TOKENOMICS.map(t => t.value),
+          backgroundColor: TOKENOMICS.map(t => t.color),
+          borderColor: '#0b1a15', borderWidth: 2
+        }]
       },
-      options: {
-        plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9' } } },
-        cutout: '60%'
-      }
+      options: { plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9' } } }, cutout: '60%' }
     });
 
     // ====== Links úteis ======
