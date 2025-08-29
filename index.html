@@ -14,9 +14,9 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -210,6 +210,115 @@
       .kv .item{min-width:90px}
       #about, #how{ background-size:560px; } /* ainda menos repetição no mobile */
     }
+    /* ===== Tipografia “descolada” para títulos / branding ===== */
+:root{
+  --display: "Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --ink:#1a2a1a;          /* preto-esverdeado elegante */
+  --ink-2:#2b3a31;        /* subtítulo */
+  --card-ink:#222;        /* texto nos cards */
+  --mint:#1bbf72;
+  --gold:#d4af37;
+  --sky:#4cc9ff;
+}
+
+/* aplica Baloo 2 nos títulos e na marca */
+.title, h1, h2, h3, nav .brand { 
+  font-family: var(--display);
+  letter-spacing:.3px;
+}
+
+/* ===== Seções claras (Sobre / Como comprar) ===== */
+#about, #how{
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
+  color: var(--card-ink);
+  scroll-margin-top: 80px;
+}
+
+/* título centralizado + cores que combinam com o tema */
+#about h2, #how h2{
+  text-align:center;
+  color: var(--ink);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* subtítulo/lead centralizado e mais discreto */
+#about p.lead, #how p.lead{
+  text-align:center;
+  color: var(--ink-2);
+  max-width: 820px;
+  margin: 0 auto 18px;
+}
+
+/* grid dos cards (mantém seu layout atual) */
+#about .cards, #how .cards{
+  margin-top: 18px;
+}
+
+/* ===== Cards coloridos com vibe “premium” ===== */
+#about .card, #how .card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88));
+  border:1px solid rgba(0,0,0,.08);
+  color: var(--card-ink);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+/* brilho de canto com a cor de destaque do card */
+#about .card::before, #how .card::before{
+  content:"";
+  position:absolute; inset: -1px;
+  border-radius:inherit;
+  background:
+    radial-gradient(160px 160px at 0% 0%, var(--accent, rgba(212,175,55,.22)) 0%, transparent 60%),
+    radial-gradient(160px 160px at 100% 100%, rgba(27,191,114,.18) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* cores de destaque por card (pode ajustar à vontade) */
+#about .card:nth-child(1), #how .card:nth-child(1){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
+#about .card:nth-child(2), #how .card:nth-child(2){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
+#about .card:nth-child(3), #how .card:nth-child(3){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
+#about .card:nth-child(4), #how .card:nth-child(4){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
+#about .card:nth-child(5), #how .card:nth-child(5){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
+#about .card:nth-child(6), #how .card:nth-child(6){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
+
+#about .card h3, #how .card h3{
+  color: var(--ink);
+  font-weight:800;
+}
+
+#about .card .ico, #how .card .ico{
+  color: var(--accent, var(--gold));
+}
+
+/* hover gostoso */
+#about .card:hover, #how .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgba(0,0,0,.12);
+}
+
+/* ===== Título “Sobre o Projeto” bem central na dobra ===== */
+#about .container > h2{
+  margin-top: 18px;
+}
+
+/* opcional: deixa os badges dos cards mais neutros nas seções claras */
+#about .badge, #how .badge{
+  border-color: rgba(0,0,0,.1);
+  color:#4a4a4a;
+}
+
+/* mobile: dá um respiro */
+@media (max-width: 540px){
+  #about p.lead, #how p.lead{ padding: 0 8px; }
+}
+
   </style>
 </head>
 <body>
