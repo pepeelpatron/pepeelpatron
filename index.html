@@ -63,6 +63,20 @@
 .subtitle{font-size:clamp(16px,2.2vw,22px);color:var(--muted);margin:10px 0 22px}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap}
 .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    /* HERO (mais claro e com enquadramento do Pepe) */
+.hero{
+  position:relative;
+  min-height:88vh;
+  display:grid; align-items:center;
+
+  /* ⬇️ película mais clara + imagem enquadrada lá pro topo */
+  background:
+    linear-gradient(180deg, rgba(11,26,21,.18), rgba(11,26,21,.50) 72%),
+    url('pepe.png?v=4');
+  background-repeat:no-repeat;
+  background-size:cover;         /* mantém tela cheia */
+  background-position:center 12%;/* puxa o foco pra cabeça do Pepe */
+}
 
 
 
