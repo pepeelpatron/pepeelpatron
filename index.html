@@ -149,6 +149,25 @@
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
     }
+    #about, #how{
+  position:relative;
+  overflow:hidden;
+  background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
+}
+
+#about::before, #how::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none; z-index:0;
+  background:
+    radial-gradient(transparent 60%, rgba(255,255,255,.25) 100%),
+    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png') repeat;
+  background-size: auto, 520px 520px;
+  opacity:.18;
+  filter:saturate(110%);
+}
+#about .container, #how .container{ position:relative; z-index:1; }
+
   </style>
 </head>
 <body>
