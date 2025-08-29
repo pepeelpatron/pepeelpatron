@@ -145,30 +145,48 @@
 
     footer{padding:40px 0;color:#c9c4b0}
 
-    /* === “Sobre” e “Como comprar” com papel de parede SUAVIZADO === */
-    #about, #how{
-      position:relative; overflow:hidden;
-      background: var(--patron-wallpaper) repeat;
-      background-size: 460px;    /* maior = menos repetição */
-      color:#122821;             /* melhora contraste do texto nessas seções claras */
-    }
-    /* overlay translúcido para acalmar o padrão */
-    #about::before, #how::before{
-      content:""; position:absolute; inset:0;
-      pointer-events:none; z-index:0;
-      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.68));
-      backdrop-filter: blur(1.5px);
-    }
-    /* garante conteúdo acima da película */
-    #about > *, #how > *{ position:relative; z-index:1; }
+  /* remove a borda entre as seções com papel de parede */
+#about, #how{
+  border-top: none;              /* tira a linha de 1px */
+  position: relative;
+  overflow: hidden;
+  background: var(--patron-wallpaper) repeat;
+  background-size: 460px;        /* pode ajustar 420–520px */
+  background-position: center top;
+  color: #122821;
+}
 
-    /* Cards nessas seções ficam mais claros para legibilidade */
-    #about .card, #how .card{
-      background: rgba(255,255,255,.90);
-      color:#132720;
-      border-color: rgba(0,0,0,.06);
-      box-shadow: 0 2px 8px rgba(0,0,0,.06);
-    }
+/* se ainda aparecer 1px por anti-aliasing, sobrepõe levemente */
+#how{ margin-top: -1px; }
+
+/* película BEM fina (quase nada) e sem blur pesado */
+#about::before, #how::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  z-index:0;
+  background: rgba(255,255,255,.14);   /* antes ~.7; agora leve */
+  backdrop-filter: blur(0.5px);        /* quase imperceptível; pode remover */
+}
+
+/* conteúdo por cima da película */
+#about > *, #how > *{ position: relative; z-index:1; }
+
+/* cards nessas seções continuam legíveis */
+#about .card, #how .card{
+  background: rgba(255,255,255,.90);
+  color:#132720;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  transition: all .25s ease-in-out;
+}
+#about .card:hover, #how .card:hover{
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,.96);
+  border-color: rgba(0,0,0,.12);
+  box-shadow: 0 12px 24px rgba(0,0,0,.18);
+}
+
     #about .ico, #how .ico{ color:#c29b22 }
 
     /* Responsive */
