@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pepe El Patrón ($PATRON) – The Boss of Memes</title>
+  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré‑venda, tokenomics, roadmap e comunidade." />
+
+  <!-- OG / Twitter -->
+  <meta property="og:title" content="Pepe El Patrón ($PATRON)" />
+  <meta property="og:description" content="The Boss of Memes. Participe da pré‑venda do $PATRON" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b1a15;          /* fundo principal (verde petróleo) */
+      --bg-2:#0f241e;        /* cartões */
+      --txt:#eae6d9;         /* texto claro */
+      --muted:#b9b39f;       /* texto secundário */
+      --gold:#d4af37;        /* destaque dourado */
+      --green:#1bbf72;       /* acentos positivos */
+      --danger:#ff5b5b;      /* acentos de alerta */
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;border:1px solid rgba(255,255,255,.12);padding:.9rem 1.2rem;border-radius:12px;background:linear-gradient(180deg,#1a2a24,#0f201a);box-shadow:0 6px 20px rgba(0,0,0,.35);transition:.2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.45)}
+    .btn.gold{background:linear-gradient(180deg,#f3d37a,#caa32b);border-color:#caa32b;color:#1a1407}
+    .btn.ghost{background:transparent}
+    .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:.85rem;color:var(--muted)}
+    header{
+      position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:saturate(120%) blur(8px);background:rgba(11,26,21,.6)
+    }
+    nav .brand{display:flex;align-items:center;gap:.6rem;font-family:Cinzel,serif;font-weight:800;color:var(--gold);letter-spacing:.5px}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    nav .links{display:flex;gap:18px;align-items:center}
+    nav .links a{opacity:.9}
+    nav .links a:hover{opacity:1}
+
+    /* HERO */
+    .hero{position:relative;min-height:88vh;display:grid;align-items:center}
+    .hero::before{
+      content:"";position:absolute;inset:0;background:
+        linear-gradient(180deg,rgba(11,26,21,.35),rgba(11,26,21,.85) 75%),
+        url('assets/hero-desktop.jpg') center/cover no-repeat; /* coloque seu fundo aqui */
+      z-index:-1
+    }
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
+    .title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px}
+    .subtitle{font-size:clamp(16px,2.2vw,22px);color:var(--muted);margin:10px 0 22px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+    /* Presale card */
+    .presale{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px}
+    .progress{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+    .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b)}
+    .kv{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}
+    .kv .item{min-width:110px}
+    .kv .num{font-size:26px;font-weight:800;color:var(--gold)}
+
+    /* Sections */
+    section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
+    h2{font-family:Cinzel,serif;margin:0 0 18px;font-size:clamp(24px,3.5vw,36px)}
+    p.lead{color:var(--muted);max-width:740px}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--bg-2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+    .card h3{margin:10px 0 6px}
+
+    /* Icons (inline SVG wrappers) */
+    .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
+    .flex{display:flex;align-items:center;gap:10px}
+
+    /* Tokenomics */
+    .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+    table{width:100%;border-collapse:collapse;font-size:.95rem}
+    td,th{padding:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+    th{text-align:left;color:var(--muted);font-weight:600}
+
+    /* Roadmap */
+    .timeline{position:relative;padding-left:24px}
+    .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.2)}
+    .milestone{position:relative;margin:18px 0;padding-left:14px}
+    .milestone::before{content:"";position:absolute;left:-17px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--gold)}
+
+    /* Meme gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
+
+    /* FAQ */
+    details{background:var(--bg-2);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700}
+
+    footer{padding:40px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero .wrap{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .grid-2{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:540px){
+      .cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .kv .item{min-width:90px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#top" class="brand" aria-label="Pepe El Patrón home">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="ico" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 14c2 2 6 2 8-2" stroke="currentColor" stroke-width="2"/></svg>
+          <span>PEPE EL PATRÓN</span>
+        </a>
+        <div class="links">
+          <a href="#about">Sobre</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#how">Comprar</a>
+          <a href="#community">Comunidade</a>
+          <a class="btn gold" href="#buy">BUY</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="container wrap">
+      <div>
+        <div class="badge">$PATRON • The Boss of Memes</div>
+        <h1 class="title">Pepe El Patrón</h1>
+        <p class="subtitle">Luxo, humor e comunidade. Um memecoin com estética de chefia e entrega de verdade: liquidez travada, transparência e um plano claro para escalar.</p>
+        <div class="cta-row">
+          <a class="btn gold" href="#buy">Comprar $PATRON</a>
+          <a class="btn ghost" href="#how">How to Buy</a>
+          <a class="btn ghost" href="#chart">Chart</a>
+        </div>
+        <div class="trust">
+          <a class="badge" href="#contract">Contrato</a>
+          <a class="badge" href="#lock">Liquidity Lock</a>
+          <a class="badge" href="#audit">Audit/KYC</a>
+        </div>
+      </div>
+      <div class="presale">
+        <h3 style="margin:0 0 6px">Pré‑venda</h3>
+        <div class="progress" aria-label="progresso da pré-venda"><i id="progressBar"></i></div>
+        <div class="kv">
+          <div class="item"><div class="label">Arrecadado</div><div class="num" id="raised">$0</div></div>
+          <div class="item"><div class="label">Meta</div><div class="num" id="target">$1,000,000</div></div>
+          <div class="item"><div class="label">Termina em</div><div class="num" id="countdown">--:--:--</div></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn gold" href="#buy">Buy</a>
+          <a class="btn" href="#chart">Chart</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Highlights -->
+  <section id="about">
+    <div class="container">
+      <h2>Sobre o Projeto</h2>
+      <p class="lead">Pepe El Patrón é uma homenagem ao meme mais amado da internet — com a personalidade de um verdadeiro chefão. O objetivo é construir uma comunidade divertida, forte e orgânica, com mecânicas simples, segurança clara e espaço para criadores (memes, artes, mini‑jogos e eventos).</p>
+
+      <div class="cards" style="margin-top:18px">
+        <div class="card">
+          <div class="flex"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3>Comunidade‑first</h3></div>
+          <p>Eventos de memes, recompensas e governança social. O Patrón decide com o povo.</p>
+        </div>
+        <div class="card">
+          <div class="flex"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="6"/></svg><h3>Liquidez travada</h3></div>
+          <p>LP bloqueada e contrato verificado. Links públicos para auditoria e locker.</p>
+        </div>
+        <div class="card">
+          <div class="flex"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l5 5L21 5"/></svg><h3>Transparência</h3></div>
+          <p>Sem taxas escondidas, sem mint secreto, sem truques. DYOR facilitado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Buy -->
+  <section id="how">
+    <div class="container">
+      <h2>Como Comprar</h2>
+      <div class="cards">
+        <div class="card"><h3>1. Carteira</h3><p>Instale MetaMask ou Trust Wallet e crie sua chave.</p></div>
+        <div class="card"><h3>2. Fundos</h3><p>Adicione BNB/ETH/USDT na sua carteira.</p></div>
+        <div class="card"><h3>3. Conecte</h3><p>Acesse a DEX (Pancake/Uniswap), conecte a carteira.</p></div>
+        <div class="card"><h3>4. Compre $PATRON</h3><p>Cole o contrato do token, ajuste o slippage se necessário e confirme.</p></div>
+        <div class="card"><h3>5. Segurança</h3><p>Confirme o contrato oficial e evite links suspeitos.</p></div>
+        <div class="card"><h3>6. Participe</h3><p>Entre no Telegram e no X/Twitter e compartilhe memes!</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokenomics -->
+  <section id="tokenomics">
+    <div class="container grid-2">
+      <div>
+        <h2>Tokenomics</h2>
+        <p class="lead">Distribuição simples para jogar junto com a comunidade. Edite os percentuais e o supply conforme suas definições finais.</p>
+        <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
+      </div>
+      <div>
+        <table aria-label="Tabela de tokenomics">
+          <thead>
+            <tr><th>Alocação</th><th>%</th></tr>
+          </thead>
+          <tbody id="tkTable"></tbody>
+          <tfoot>
+            <tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security">
+    <div class="container">
+      <h2>Segurança & Transparência</h2>
+      <div class="cards">
+        <div class="card"><h3>Contrato</h3><p>Endereço: <span id="contract">0xYourContractHere</span></p><a class="btn" id="scanLink" href="#">Ver no Scan</a></div>
+        <div class="card"><h3>Liquidity Lock</h3><p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p><a class="btn" id="lockLink" href="#">Comprovante</a></div>
+        <div class="card"><h3>Audit/KYC</h3><p>Relatórios de auditoria e verificação de equipe.</p><a class="btn" id="auditLink" href="#">Ver Relatório</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <div class="container">
+      <h2>Roadmap</h2>
+      <div class="timeline">
+        <div class="milestone"><h3>Fase 1 – Lançamento</h3><p>Site, branding, pré‑venda, comunidade, parcerias iniciais.</p></div>
+        <div class="milestone"><h3>Fase 2 – Tração</h3><p>Listagem DEX, campanhas de memes, 5k holders, marketing contínuo.</p></div>
+        <div class="milestone"><h3>Fase 3 – Expansão</h3><p>Parcerias estratégicas, listagens CEX intermediárias, 20k holders.</p></div>
+        <div class="milestone"><h3>Fase 4 – Ecosistema</h3><p>Mini‑game/NFTs, merch, eventos e iniciativas da comunidade global.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meme Gallery -->
+  <section id="community">
+    <div class="container">
+      <h2>Meme Gallery</h2>
+      <p class="lead">Seleção de artes e memes da comunidade. Suba o seu no Telegram e marque @PepeElPatron.</p>
+      <div class="gallery">
+        <img src="assets/memes/m1.jpg" alt="Meme 1" />
+        <img src="assets/memes/m2.jpg" alt="Meme 2" />
+        <img src="assets/memes/m3.jpg" alt="Meme 3" />
+        <img src="assets/memes/m4.jpg" alt="Meme 4" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <details><summary>Qual a rede e o contrato oficial?</summary><p>Defina aqui a chain (BSC/ETH/etc.) e coloque o endereço oficial do contrato com link para o explorer.</p></details>
+      <details><summary>Haverá taxas?</summary><p>Edite esta resposta com as taxas de compra/venda, se existirem (ex.: 0/0 ou 1/1%).</p></details>
+      <details><summary>Quando será a listagem?</summary><p>Após o fim da pré‑venda e travamento de liquidez, informe a data exata e os pares.</p></details>
+      <details><summary>É seguro?</summary><p>Contrato verificado, LP bloqueada e auditorias públicas aumentam a confiança. Ainda assim, faça sua própria pesquisa (DYOR).</p></details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Pepe El Patrón • Todos os direitos reservados.</div>
+      <div style="display:flex;gap:10px">
+        <a class="badge" href="https://t.me/">Telegram</a>
+        <a class="badge" href="https://x.com/">X/Twitter</a>
+        <a class="badge" href="#">Whitepaper</a>
+        <a class="badge" href="#">Termos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <script>
+    // ====== CONFIGURÁVEIS (edite conforme o projeto) ======
+    const DEADLINE = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
+    const TARGET_USD = 1_000_000;     // Meta da pré-venda
+    const RAISED_USD = 317_762.32;    // Arrecadado (dinâmico se quiser puxar de API)
+
+    const TOKENOMICS = [
+      { label: 'Liquidity', value: 30, color: '#f3d37a' },
+      { label: 'Marketing', value: 20, color: '#e2b74a' },
+      { label: 'Community Rewards', value: 16, color: '#caa32b' },
+      { label: 'Burn', value: 34, color: '#a88214' }
+    ];
+    const TOTAL_SUPPLY = '1,000,000,000';
+
+    const LINKS = {
+      buy: '#',
+      chart: '#',
+      scan: '#',
+      lock: '#',
+      audit: '#'
+    };
+
+    // ====== Presale progress + contagem regressiva ======
+    const pb = document.getElementById('progressBar');
+    const raisedEl = document.getElementById('raised');
+    const targetEl = document.getElementById('target');
+    const cdEl = document.getElementById('countdown');
+
+    function fmt(n){
+      return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+    }
+    function tick(){
+      const now = new Date();
+      const diff = Math.max(0, DEADLINE - now);
+      const h = Math.floor(diff/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+      cdEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
+      pb.style.width = pct + '%';
+    }
+    raisedEl.textContent = `$${fmt(RAISED_USD)}`;
+    targetEl.textContent = `$${fmt(TARGET_USD)}`;
+    setInterval(tick, 1000); tick();
+
+    // ====== Tokenomics table + chart ======
+    document.getElementById('supply').textContent = TOTAL_SUPPLY;
+    const tbody = document.getElementById('tkTable');
+    TOKENOMICS.forEach(t => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`; tbody.appendChild(tr);
+    });
+
+    const ctx = document.getElementById('tokenChart');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: TOKENOMICS.map(t => t.label),
+        datasets: [{ data: TOKENOMICS.map(t => t.value), backgroundColor: TOKENOMICS.map(t => t.color), borderColor: '#0b1a15', borderWidth: 2 }]
+      },
+      options: {
+        plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9' } } },
+        cutout: '60%'
+      }
+    });
+
+    // ====== Links úteis ======
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
+    document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
+    document.getElementById('scanLink').href = LINKS.scan;
+    document.getElementById('lockLink').href = LINKS.lock;
+    document.getElementById('auditLink').href = LINKS.audit;
+  </script>
+</body>
+</html>
