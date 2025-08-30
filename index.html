@@ -194,6 +194,61 @@
     @media (max-width:1100px){#tokenomics .tk-pepe{right:-8%;width:min(54%,560px);opacity:.32}}
     @media (max-width:820px){#tokenomics .tk-pepe{right:-12%;width:min(60%,560px);opacity:.30}}
     @media (max-width:640px){#tokenomics .tk-pepe{display:none}}
+    
+    /* === TOKENOMICS – corrigir duplicidade e contraste === */
+
+/* 1) Remove o Pepe do BACKGROUND da seção (fica só a cor bege) */
+#tokenomics{
+  background: #f3ead2 !important;   /* sem imagem de fundo */
+}
+#tokenomics::before{
+  background: rgba(248,241,223,.35) !important; /* véu mais leve (ou remova se preferir) */
+}
+
+/* 2) Título verde, com bom contraste */
+#tokenomics .tk-title{
+  color: #183326;                    /* verde escuro da paleta */
+  text-shadow: none;                 /* sem “névoa” */
+  letter-spacing: .5px;
+}
+
+/* 3) O card passa a CONTER a imagem (nada “vazando” pra fora) */
+#tokenomics .tk-card{
+  overflow: hidden !important;       /* segura o Pepe dentro do card */
+  position: relative;
+}
+
+/* 4) Pepe visível, mas contido e bem posicionado dentro do card */
+#tokenomics .tk-pepe{
+  right: 8px;                        /* encosta um pouco na borda interna */
+  bottom: -6px;                      /* apoia na base do card */
+  width: min(42%, 520px);            /* menor pra não “sair” do card */
+  opacity: .28;                      /* visível (ajuste entre .22–.34 a gosto) */
+  z-index: 0;
+  /* borda suave opcional, sem “corte” duro */
+  -webkit-mask-image: radial-gradient(95% 95% at 65% 60%, #000 74%, rgba(0,0,0,0) 100%);
+          mask-image: radial-gradient(95% 95% at 65% 60%, #000 74%, rgba(0,0,0,0) 100%);
+}
+
+/* 5) Conteúdo sempre acima do Pepe */
+#tokenomics .tk-grid,
+#tokenomics .chart-card,
+#tokenomics .table-card{
+  position: relative;
+  z-index: 1;
+}
+
+/* 6) Responsivo – garante que continue “dentro” */
+@media (max-width: 1100px){
+  #tokenomics .tk-pepe{ width:min(50%,520px); right: 0; bottom:-8px; opacity:.26; }
+}
+@media (max-width: 820px){
+  #tokenomics .tk-pepe{ width:min(58%,520px); right:-8px; }
+}
+@media (max-width: 640px){
+  #tokenomics .tk-pepe{ display:none; }  /* mobile: prioriza leitura */
+}
+
   </style>
 </head>
 <body>
