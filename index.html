@@ -446,72 +446,57 @@
   margin: 40px auto;
   max-width: 90%; /* deixa mais elegante */
 }
-/* TOKENOMICS — fundo bege + Pepe grande fixo à direita */
+/* Fundo personalizado para TOKENOMICS (Pepe à direita, paleta bege) */
 #tokenomics{
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0;                  /* espaço vertical confortável */
+  position:relative;
   background:
-    linear-gradient(180deg,#f5ecd6 0%, #f3e7cc 100%);  /* bege da paleta */
+    url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png")
+    no-repeat right center;
+  background-size: 520px auto;         /* tamanho do Pepe no desktop */
+  background-color:#f8f1df;            /* bege da paleta */
+  border-top:2px solid rgba(0,0,0,.06);
+  border-bottom:2px solid rgba(0,0,0,.06);
+  padding:80px 0;
+  z-index:0;
 }
 
-/* Pepe como “marca d’água” grandona atrás (não interativo) */
+/* Película begezinha bem leve para dar legibilidade */
 #tokenomics::before{
   content:"";
   position:absolute; inset:0;
-  background:
-    /* véu bem leve p/ contrastar a cópia */
-    radial-gradient(1000px 600px at 70% 50%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
-    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png') no-repeat right center;
-  /* O tamanho NUNCA fica pequeno: min 420px, cresce com viewport, máx 860px */
-  background-size: auto, clamp(420px, 38vw, 860px);
-  opacity:.96;                      /* quase sólido, mas ainda “watermark” */
+  background:rgba(248,241,223,.55);
   pointer-events:none;
   z-index:0;
 }
 
-/* garante que o conteúdo passe por cima do fundo */
-#tokenomics .container,
-#tokenomics .grid-2{ position: relative; z-index: 1; }
+/* Conteúdo acima do fundo */
+#tokenomics .container{ position:relative; z-index:1; }
 
-/* cartão do gráfico p/ destacar bem sobre o fundo */
-#tokenomics .chart-card{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  padding:20px;
-}
-
-/* canvas com cantos arredondados */
-#tokenomics canvas{
-  display:block;
-  background:#fff;
+/* Cartão do gráfico e da tabela */
+#tokenomics canvas,
+#tokenomics table{
+  background:rgba(255,255,255,.92);
   border-radius:12px;
+  padding:12px;
+  box-shadow:0 4px 14px rgba(0,0,0,.14);
+  border:1px solid rgba(0,0,0,.10);
 }
 
-/* rótulos da tabela à direita seguem a paleta */
-#tokenomics table th,
-#tokenomics table td{ color:#2b2b29; }
-#tokenomics h2{ color:#5f4b20; } /* título “Tokenomics” em tom amadeirado */
+/* Ajuste de tipografia da tabela sobre o fundo claro */
+#tokenomics th, #tokenomics td{ color:#173226 }
 
-/* Responsivo: ajusta o tamanho do Pepe em telas menores */
-@media (max-width: 980px){
+/* Responsivo: diminuir/ocultar o Pepe em telas menores */
+@media (max-width:1100px){
+  #tokenomics{ background-size: 420px auto; }
+}
+@media (max-width:900px){
   #tokenomics{
-    padding: 60px 0;
-  }
-  #tokenomics::before{
-    background-position: right 10% center;
-    background-size: auto, clamp(360px, 55vw, 680px);
-    opacity:.92;
+    background-position: right -60px center; /* empurra um pouco para fora */
+    background-size: 340px auto;
   }
 }
-@media (max-width: 600px){
-  #tokenomics::before{
-    background-position: right -20% center;   /* desloca um pouco p/ não “atropelar” o texto */
-    background-size: auto, clamp(320px, 70vw, 560px);
-    opacity:.9;
-  }
+@media (max-width:700px){
+  #tokenomics{ background: #f8f1df; } /* some o Pepe para focar no conteúdo */
 }
 
   </style>
