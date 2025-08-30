@@ -337,7 +337,19 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
-
+#security{
+  background:#f8f1df;
+  position:relative;
+  overflow:hidden;
+}
+#security .bg-pepe{
+  position:absolute;
+  right:0;
+  bottom:0;
+  width:420px;   /* controla o tamanho */
+  opacity:.35;   /* deixa em marca d’água */
+  pointer-events:none;
+}
   </style>
 </head>
 <body>
@@ -495,8 +507,9 @@
 
 <!-- Security -->
 <section id="security">
+  <img class="bg-pepe" src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png" alt="Pepe El Patrón Cofre">
   <div class="container">
-    <h2>Segurança & Transparência</h2>
+    <h2>SEGURANÇA & TRANSPARÊNCIA</h2>
     <div class="cards">
       
       <!-- Contrato -->
