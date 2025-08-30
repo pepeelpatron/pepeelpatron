@@ -267,6 +267,104 @@
 #tokenomics .table-card{
   background: rgba(255,255,255,.88) !important;
 }
+    /* ===== SECURITY – visual premium ===== */
+#security{
+  background: linear-gradient(180deg, #0b1a15 0%, #122821 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* título central com linha dourada */
+#security h2{
+  text-align: center;
+  font-size: clamp(28px,4.2vw,44px);
+  color: #f6d989;                 /* dourado claro */
+  letter-spacing: .6px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+  margin: 0 0 30px;
+  font-family:"Alfa Slab One", serif;
+}
+#security h2::after{
+  content:"";
+  display:block;
+  width:84px; height:3px;
+  margin:14px auto 0;
+  border-radius:4px;
+  background: linear-gradient(90deg,#d4af37,#caa32b);
+}
+
+/* grid responsivo dos cards */
+#security .cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* card */
+#security .card{
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  position: relative;
+  overflow: hidden;
+}
+#security .card::before{
+  /* brilho sutil no topo */
+  content:"";
+  position:absolute; inset:0 0 auto 0; height:40px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+  pointer-events:none;
+}
+#security .card:hover{
+  transform: translateY(-6px);
+  border-color: #d4af37;
+  box-shadow: 0 16px 36px rgba(0,0,0,.40);
+}
+
+/* header do card com ícone redondo */
+.sec-head{
+  display:flex; align-items:center; gap:12px; margin-bottom:8px;
+}
+.sec-ico{
+  width:38px; height:38px; border-radius:999px;
+  display:grid; place-items:center;
+  background: radial-gradient(ellipse at 30% 30%, #f6d989 0%, #caa32b 65%, #8d6b17 100%);
+  box-shadow: 0 6px 14px rgba(0,0,0,.35), inset 0 1px 2px rgba(255,255,255,.45);
+}
+.sec-ico svg{ width:20px; height:20px; color:#1a1407; }
+
+/* textos */
+#security .card h3{ margin:0; color:#f6f3e2; font-size:1.05rem; }
+#security .card p{ color:#d9d6c8; margin:.45rem 0 0; }
+#security .card .hl{ color:#f6d989; font-weight:700; }
+
+/* botão dourado premium no security */
+#security .card .btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  margin-top:12px;
+  background: linear-gradient(180deg,#f6d989,#caa32b);
+  color: #1a1407;
+  border: none;
+  padding: .8rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.30);
+}
+#security .card .btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.40);
+}
+
+/* linha separadora discreta entre security e roadmap */
+#security + #roadmap{
+  border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 10px;
+}
   </style>
 </head>
 <body>
@@ -422,17 +520,64 @@
     </div>
   </section>
 
-  <!-- Security -->
-  <section id="security">
-    <div class="container">
-      <h2>Segurança & Transparência</h2>
-      <div class="cards">
-        <div class="card"><h3>Contrato</h3><p>Endereço: <span id="contract">0xYourContractHere</span></p><a class="btn" id="scanLink" href="#">Ver no Scan</a></div>
-        <div class="card"><h3>Liquidity Lock</h3><p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p><a class="btn" id="lockLink" href="#">Comprovante</a></div>
-        <div class="card"><h3>Audit/KYC</h3><p>Relatórios de auditoria e verificação de equipe.</p><a class="btn" id="auditLink" href="#">Ver Relatório</a></div>
+<!-- Security -->
+<section id="security">
+  <div class="container">
+    <h2>Segurança & Transparência</h2>
+    <div class="cards">
+      
+      <!-- Contrato -->
+      <div class="card">
+        <div class="sec-head">
+          <div class="sec-ico" aria-hidden="true">
+            <!-- contrato / doc -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 3h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+              <path d="M14 3v6h6"/>
+              <path d="M9 14h6M9 18h6M9 10h2"/>
+            </svg>
+          </div>
+          <h3>Contrato</h3>
+        </div>
+        <p>Endereço: <span class="hl" id="contract">0xYourContractHere</span></p>
+        <a class="btn" id="scanLink" href="#" target="_blank" rel="noopener">Ver no Scan</a>
+      </div>
+
+      <!-- Liquidity Lock -->
+      <div class="card">
+        <div class="sec-head">
+          <div class="sec-ico" aria-hidden="true">
+            <!-- cadeado -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="10" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>Liquidity Lock</h3>
+        </div>
+        <p>LP bloqueada por <span class="hl">12 meses</span>. Prova pública.</p>
+        <a class="btn" id="lockLink" href="#" target="_blank" rel="noopener">Comprovante</a>
+      </div>
+
+      <!-- Audit/KYC -->
+      <div class="card">
+        <div class="sec-head">
+          <div class="sec-ico" aria-hidden="true">
+            <!-- escudo / check -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z"/>
+              <path d="M9.5 12.5l2 2 3.5-3.5"/>
+            </svg>
+          </div>
+          <h3>Audit/KYC</h3>
+        </div>
+        <p>Relatórios de auditoria e verificação de equipe.</p>
+        <a class="btn" id="auditLink" href="#" target="_blank" rel="noopener">Ver Relatório</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Roadmap -->
   <section id="roadmap">
