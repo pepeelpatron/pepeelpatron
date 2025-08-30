@@ -195,171 +195,90 @@
     @media (max-width:820px){#tokenomics .tk-pepe{right:-12%;width:min(60%,560px);opacity:.30}}
     @media (max-width:640px){#tokenomics .tk-pepe{display:none}}
     
-    /* === TOKENOMICS – corrigir duplicidade e contraste === */
+   /* ===== SECURITY no mesmo padrão do TOKENOMICS ===== */
 
-/* 1) Remove o Pepe do BACKGROUND da seção (fica só a cor bege) */
-#tokenomics{
-  background: #f3ead2 !important;   /* sem imagem de fundo */
-}
-#tokenomics::before{
-  background: rgba(248,241,223,.35) !important; /* véu mais leve (ou remova se preferir) */
-}
-
-/* 2) Título verde, com bom contraste */
-#tokenomics .tk-title{
-  color: #183326;                    /* verde escuro da paleta */
-  text-shadow: none;                 /* sem “névoa” */
-  letter-spacing: .5px;
-}
-
-/* 3) O card passa a CONTER a imagem (nada “vazando” pra fora) */
-#tokenomics .tk-card{
-  overflow: hidden !important;       /* segura o Pepe dentro do card */
-  position: relative;
-}
-
-/* 4) Pepe visível, mas contido e bem posicionado dentro do card */
-#tokenomics .tk-pepe{
-  right: 8px;                        /* encosta um pouco na borda interna */
-  bottom: -6px;                      /* apoia na base do card */
-  width: min(42%, 520px);            /* menor pra não “sair” do card */
-  opacity: .28;                      /* visível (ajuste entre .22–.34 a gosto) */
-  z-index: 0;
-  /* borda suave opcional, sem “corte” duro */
-  -webkit-mask-image: radial-gradient(95% 95% at 65% 60%, #000 74%, rgba(0,0,0,0) 100%);
-          mask-image: radial-gradient(95% 95% at 65% 60%, #000 74%, rgba(0,0,0,0) 100%);
-}
-
-/* 5) Conteúdo sempre acima do Pepe */
-#tokenomics .tk-grid,
-#tokenomics .chart-card,
-#tokenomics .table-card{
-  position: relative;
-  z-index: 1;
-}
-
-/* 6) Responsivo – garante que continue “dentro” */
-@media (max-width: 1100px){
-  #tokenomics .tk-pepe{ width:min(50%,520px); right: 0; bottom:-8px; opacity:.26; }
-}
-@media (max-width: 820px){
-  #tokenomics .tk-pepe{ width:min(58%,520px); right:-8px; }
-}
-@media (max-width: 640px){
-  #tokenomics .tk-pepe{ display:none; }  /* mobile: prioriza leitura */
-}
-    /* Pepe Tokenomics – mais visível */
-#tokenomics .tk-pepe{
-  opacity: .42 !important;                /* antes ~.28 */
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.20)) !important;
-
-  /* remove a máscara que estava apagando ele */
-  -webkit-mask-image: none !important;
-          mask-image: none !important;
-}
-    #tokenomics .tk-pepe{
-  filter: drop-shadow(0 8px 14px rgba(0,0,0,.25)) saturate(1.2);
-}
-
-
-/* cards semi-translúcidos: deixam o Pepe aparecer um pouco por trás */
-#tokenomics .chart-card,
-#tokenomics .table-card{
-  background: rgba(255,255,255,.88) !important;
-}
-  
-/* ===== SECURITY — igual ao cartão de Tokenomics ===== */
-#security{
-  background:#f8f1df;                 /* bege liso como fora do cartão */
-  padding:60px 0;                      /* mesmo respiro do tokenomics */
-  border-top:2px solid rgba(0,0,0,.06);
-  border-bottom:2px solid rgba(0,0,0,.06);
-  position:relative;
-}
-
-/* “cartão” que contém tudo (mesma carinha do tk-card) */
+/* cartão-mestre: idêntico ao tk-card */
+#tokenomics .tk-card,
 #security .sec-card{
-  position:relative;
   background:#f8efd9;
   border:2px solid #c9b37a;
   border-radius:20px;
   box-shadow:0 18px 40px rgba(0,0,0,.12);
   padding:28px 28px 36px;
-  overflow:hidden;                     /* segura a imagem dentro */
+  overflow:hidden;          /* mantém a ilustração contida */
 }
 
-/* vinheta suave no topo/rodapé do cartão (tira a sensação de faixa) */
-#security .sec-card::before{
-  content:"";
-  position:absolute; inset:-40px;
-  background:
-    radial-gradient(1000px 280px at 10% -70px, rgba(0,0,0,.06), transparent 60%),
-    radial-gradient(1000px 280px at 90% 110%, rgba(0,0,0,.06), transparent 60%);
-  pointer-events:none; z-index:0;
+/* seção com mesmas margens/linhas do tokenomics */
+#security{
+  background:#f8f1df;
+  padding:60px 0;
+  border-top:2px solid rgba(0,0,0,.06);
+  border-bottom:2px solid rgba(0,0,0,.06);
+  position:relative;
 }
+#security .container{ max-width: var(--max); padding-inline:20px; }
 
-/* TÍTULO: marrom com sombra bege (relevo) */
+/* TÍTULO: marrom com sombra clara (pedido) */
 #security .sec-title{
   text-align:center;
-  font-family:"Alfa Slab One", serif;
-  font-size:clamp(28px,4.2vw,46px);
+  font-family:"Alfa Slab One",serif;
+  text-transform:uppercase;
+  font-size:clamp(28px,4vw,46px);
   letter-spacing:.6px;
-  margin:2px 0 18px;
-  color:#6f4f26;                        /* marrom */
+  margin:0 0 18px;
+  color:#6b4226;                     /* marrom */
   text-shadow:
-    0 3px 0 #eddab4,                    /* sombra bege clara */
-    0 12px 26px rgba(0,0,0,.12);        /* profundidade */
-  position:relative; z-index:1;
+    0 3px 0 #e7d5b5,                 /* sombra bege clara */
+    0 14px 26px rgba(0,0,0,.18);     /* profundidade */
 }
 
-/* Pepe “marca d’água” DENTRO do cartão e na proporção certa */
+/* Pepe como marca d’água DENTRO do card (mesmo comportamento do tokenomics) */
 #security .sec-pepe{
   position:absolute;
-  right:-10px;                           /* encosta na lateral direita */
-  bottom:-12px;                          /* apoia na base do cartão */
-  width:min(40%, 500px);                 /* proporção controlada */
-  height:auto;
-  opacity:.32;                           /* visível, sem brigar com os cards */
-  pointer-events:none; user-select:none; z-index:0;
-  filter:contrast(1.03) saturate(1.06);
-  /* fade suave para a esquerda (nada “cortado”) */
-  -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.45) 18%, #000 44%);
-          mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.45) 18%, #000 44%);
+  right:-8px;
+  bottom:-10px;
+  width:min(42%,520px);
+  opacity:.30;
+  pointer-events:none;
+  user-select:none;
+  z-index:0;                          /* atrás do conteúdo */
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.18));
 }
 
-/* conteúdo sempre acima da imagem */
+/* conteúdo sempre acima da ilustração */
 #security .cards{ position:relative; z-index:1; }
 
-/* grid e cartões internos */
+/* grid e cards internos com borda/sombra marrom */
 #security .cards{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));   /* igual ao tokenomics desktop */
-  gap:22px; align-items:stretch;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:20px;
 }
 #security .card{
   background:#fff;
-  border:2px solid #6f4f26;                          /* marrom */
+  border:2px solid #6f4f26;           /* marrom */
   border-radius:16px;
-  box-shadow:0 10px 24px rgba(111,79,38,.18), 0 18px 42px rgba(0,0,0,.10);
-  padding:22px 18px;
+  box-shadow:
+    0 10px 24px rgba(111,79,38,.18),
+    0 18px 42px rgba(0,0,0,.08);
+  padding:22px;
   text-align:center;
-  min-height:220px;                                   /* altura padronizada */
 }
-#security .card h3{ color:#183326; font-size:1.18rem; margin:2px 0 8px; }
+#security .card h3{ color:#183326; margin:4px 0 8px; font-size:1.2rem; }
 #security .card p { color:#2d2a22; font-size:.96rem; }
 
-/* Botão dourado igual ao do site */
+/* botões (mesmo estilo do site) */
 #security .btn.gold{
   background:linear-gradient(180deg,#f6d989,#caa32b);
-  color:#1a1407; border:none; border-radius:10px;
+  color:#1a1407;border:none;border-radius:10px;
   padding:.8rem 1.2rem;
   box-shadow:0 6px 18px rgba(0,0,0,.30);
 }
 #security .btn.gold:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.40); }
 
-/* responsivo — mantém a proporção da ilustração */
-@media (max-width:1100px){ #security .sec-pepe{ width:min(48%,500px); right:-14px; opacity:.30; } }
-@media (max-width:820px) { #security .sec-pepe{ width:min(56%,480px); right:-18px; } }
+/* responsivo como no tokenomics */
+@media (max-width:980px){ #security .cards{ grid-template-columns:1fr 1fr; } }
+@media (max-width:540px){ #security .cards{ grid-template-columns:1fr; } #security .sec-pepe{ display:none; } }
 @media (max-width:640px) { #security .sec-pepe{ display:none; } }  /* foco no conteúdo no mobile */
 }
   </style>
@@ -519,14 +438,14 @@
 
 <section id="security">
   <div class="container">
-    <div class="sec-card">
+    <div class="sec-card">  <!-- <- cartão no mesmo padrão do tk-card -->
       <h2 class="sec-title">Segurança & Transparência</h2>
 
-      <!-- ilustração dentro do cartão -->
+      <!-- Pepe dentro do card (marca d'água) -->
       <img class="sec-pepe"
            src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png"
            alt="Pepe El Patrón no cofre" loading="lazy">
-
+      
       <div class="cards">
         <div class="card">
           <h3>Contrato</h3>
