@@ -498,6 +498,100 @@
 @media (max-width:700px){
   #tokenomics{ background: #f8f1df; } /* some o Pepe para focar no conteúdo */
 }
+    /* ===== TOKENOMICS – Card integrado com Pepe no fundo ===== */
+#tokenomics{
+  background: #f3ead2;            /* bege da paleta */
+  padding: 60px 0;
+}
+
+.tk-card{
+  position: relative;
+  background: #f8efd9;
+  border: 2px solid #c9b37a;      /* borda bege/dourada */
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  padding: 28px 28px 36px;
+  overflow: hidden;               /* corta o Pepe dentro do card */
+}
+
+/* Título com vibe pôster */
+.tk-title{
+  font-family: "Alfa Slab One", serif;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: clamp(24px, 3.4vw, 40px);
+  color: #6f5524;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  margin: 4px 0 16px;
+}
+
+/* Pepe “marca d’água” no canto */
+.tk-pepe{
+  position: absolute;
+  right: -6%;
+  bottom: -6px;
+  width: min(42%, 520px);         /* limita no desktop */
+  opacity: .22;                   /* baixa opacidade pra não brigar com o conteúdo */
+  filter: saturate(1.05) drop-shadow(0 8px 18px rgba(0,0,0,.18));
+  pointer-events: none;           /* não captura clique/scroll */
+  user-select: none;
+}
+
+/* Layout do conteúdo */
+.tk-grid{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+  align-items: start;
+}
+
+/* Cartões do gráfico e da tabela */
+.chart-card, .table-card{
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  padding: 14px;
+}
+
+#tokenomics canvas{
+  display:block;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+}
+
+#tokenomics table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .97rem;
+}
+
+#tokenomics th, #tokenomics td{
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  color: #2b2b29;
+}
+
+#tokenomics thead th{
+  color:#6b521e;
+  font-weight: 800;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .tk-grid{ grid-template-columns: 1fr; }
+  .tk-pepe{
+    right: -14%;
+    width: min(58%, 520px);
+    opacity: .20;
+  }
+}
+@media (max-width: 640px){
+  .tk-pepe{ display:none; }   /* em telas pequenas prioriza conteúdo */
+  .tk-card{ padding: 22px 18px 26px; }
+}
+
 
   </style>
 </head>
@@ -642,27 +736,37 @@
 
   </div><!-- /wallpaper -->
 
-  <!-- Tokenomics -->
-  <section id="tokenomics">
-    <div class="container grid-2">
-      <div>
-        <h2>Tokenomics</h2>
-        <p class="lead">Distribuição simples para jogar junto com a comunidade. Edite os percentuais e o supply conforme suas definições finais.</p>
-        <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
-      </div>
-      <div>
-        <table aria-label="Tabela de tokenomics">
-          <thead>
-            <tr><th>Alocação</th><th>%</th></tr>
-          </thead>
-          <tbody id="tkTable"></tbody>
-          <tfoot>
-            <tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr>
-          </tfoot>
-        </table>
+ <section id="tokenomics">
+  <div class="container">
+    <div class="tk-card">
+      <h2 class="tk-title">TOKENOMICS</h2>
+
+      <!-- Pepe (somente o personagem) como “marca d’água” dentro do card -->
+      <img class="tk-pepe" 
+           src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png" 
+           alt="Pepe El Patrón" loading="lazy"/>
+
+      <div class="tk-grid">
+        <div class="chart-card">
+          <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
+        </div>
+
+        <div class="table-card">
+          <table aria-label="Tabela de tokenomics">
+            <thead>
+              <tr><th>Alocação</th><th>%</th></tr>
+            </thead>
+            <tbody id="tkTable"></tbody>
+            <tfoot>
+              <tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Security -->
   <section id="security">
