@@ -119,15 +119,27 @@
     p.lead{color:#cbc6b2;max-width:740px}
 
     /* Cards base */
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;padding:18px;
-      backdrop-filter: blur(2px) saturate(110%);
-      color:#f2efe5;
-      transition: all .25s ease-in-out;
-    }
+  .card{
+  background: #fff; /* fundo sólido branco */
+  border: 2px solid #a9792d; /* borda estilo dourado/marrom */
+  border-radius: 16px;
+  padding: 20px;
+  color: #2a2a2a; /* texto escuro legível */
+  font-weight: 600;
+
+  /* sombra deslocada estilo cartoon */
+  box-shadow: 4px 4px 0px #5c3b14;
+
+  transition: all .25s ease-in-out;
+  text-align: center; /* centraliza conteúdo como no exemplo */
+}
+
+/* efeito hover */
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px #5c3b14;
+  background: #fef6e8; /* leve bege no hover */
+}
     .card h3{font-family:"Signika",system-ui,sans-serif;font-weight:700;margin:10px 0 6px;color:#f2efe5}
     .card:hover{
       transform: translateY(-6px) scale(1.02);
@@ -217,6 +229,21 @@
       .kv .item{min-width:90px}
       .wallpaper{ background-size:600px; } /* menos repetição no mobile */
     }
+    
+    /* Parágrafo de abertura mais legível no #about */
+#about .lead{
+  color:#1e352c;                 /* texto escuro */
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display:inline-block;          /* para não ocupar a largura toda */
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  backdrop-filter: blur(1px);    /* leve difusão do papel atrás */
+  margin-bottom: 18px;
+  font-weight: 600;              /* dá mais corpo */
+}
+
   </style>
 </head>
 <body>
