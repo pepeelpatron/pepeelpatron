@@ -267,18 +267,18 @@
 #tokenomics .table-card{
   background: rgba(255,255,255,.88) !important;
   
-/* Fundo bege limpo */
-#security{
+/* ===== SECURITY – estilo final ===== */
+#security {
   position: relative;
-  background: #f8f1df;
+  background: #f8f1df;              /* bege da paleta */
   padding: 80px 0;
   overflow: hidden;
   border-top: 2px solid rgba(0,0,0,.06);
   border-bottom: 2px solid rgba(0,0,0,.06);
 }
 
-/* Pepe SEMPRE atrás + fade na borda esquerda */
-#security .bg-pepe{
+/* Pepe marca d’água */
+#security .bg-pepe {
   position: absolute;
   right: -8px;
   bottom: -10px;
@@ -292,15 +292,11 @@
           mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.6) 18%, #000 38%);
 }
 
-/* garante que tudo fique acima da imagem */
-#security .container{ position: relative; z-index: 2; }
-
-/* cards mais opacos para não “vazar” o fundo */
-#security .card{ background: rgba(255,255,255,.96); }
-
+/* garante que conteúdo fique acima do Pepe */
+#security .container { position: relative; z-index: 2; }
 
 /* título da seção */
-#security h2{
+#security h2 {
   text-align: center;
   font-size: clamp(28px,4vw,44px);
   color: #183326; /* verde escuro */
@@ -311,39 +307,38 @@
 }
 
 /* grid de cards */
-#security .cards{
+#security .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 }
 
 /* cards */
-#security .card{
-  background: rgba(255,255,255,.9);
-  border: 2px solid #c9b37a;        /* bege/dourado */
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(0,0,0,.12);
-  padding: 24px 20px;
-  transition: all .25s ease;
+#security .card {
+  background: rgba(255,255,255,.96);
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  padding: 20px;
   text-align: center;
+  transition: all .25s ease;
 }
-#security .card:hover{
+#security .card:hover {
   transform: translateY(-4px);
-  border-color: #d4af37;            /* dourado mais vivo */
   box-shadow: 0 14px 28px rgba(0,0,0,.22);
 }
-#security .card h3{ 
+#security .card h3 { 
   color:#183326; 
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
-#security .card p{ 
+#security .card p { 
   color:#2d2a22; 
   font-size:.95rem;
 }
 
 /* botões */
-#security .btn{
+#security .btn {
   background: linear-gradient(180deg,#f6d989,#caa32b);
   color:#1a1407;
   font-weight:700;
@@ -353,22 +348,9 @@
   margin-top:12px;
   box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
-#security .btn:hover{
+#security .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0,0,0,.35);
-}
-#security{
-  background:#f8f1df;
-  position:relative;
-  overflow:hidden;
-}
-#security .bg-pepe{
-  position:absolute;
-  right:0;
-  bottom:0;
-  width:420px;   /* controla o tamanho */
-  opacity:.35;   /* deixa em marca d’água */
-  pointer-events:none;
 }
   </style>
 </head>
@@ -526,10 +508,9 @@
   </section>
 
 <section id="security">
-  
   <!-- Pepe marca d'água lateral -->
-  <img class="bg-pepe" 
-       src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png" 
+  <img class="bg-pepe"
+       src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png"
        alt="Pepe El Patrón Cofre" loading="lazy">
 
   <div class="container">
@@ -540,16 +521,22 @@
         <p>Endereço: <span id="contract">0xYourContractHere</span></p>
         <a class="btn" id="scanLink" href="#">Ver no Scan</a>
       </div>
+
       <div class="card">
         <h3>Liquidity Lock</h3>
         <p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p>
         <a class="btn" id="lockLink" href="#">Comprovante</a>
       </div>
+
       <div class="card">
         <h3>Audit/KYC</h3>
         <p>Relatórios de auditoria e verificação de equipe.</p>
         <a class="btn" id="auditLink" href="#">Ver Relatório</a>
       </div>
+    </div>
+  </div>
+</section>
+
     </div>
   </div>
 </section>
