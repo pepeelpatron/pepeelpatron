@@ -14,32 +14,41 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b1a15;          /* fundo principal (verde petróleo) */
-      --bg-2:#0f241e;        /* cartões (não usamos escuro agora nos cards) */
-      --txt:#eae6d9;         /* texto claro */
-      --muted:#b9b39f;       /* texto secundário */
-      --gold:#d4af37;        /* destaque dourado */
-      --green:#1bbf72;       /* acentos positivos */
-      --danger:#ff5b5b;      /* acentos de alerta */
+      /* base escura do site */
+      --bg:#0b1a15;
+      --txt:#eae6d9;
+      --muted:#b9b39f;
+      --gold:#d4af37;
+      --green:#1bbf72;
+      --danger:#ff5b5b;
       --max:1100px;
 
-      /* papel de parede */
-      --patron-wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png");
+      /* tipografia e cores utilitárias */
+      --display: "Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      --ink:#1a2a1a;      /* preto-esverdeado p/ títulos */
+      --ink-2:#2b3a31;    /* subtítulo */
+      --card-ink:#222;    /* texto nos cards claros */
+      --sky:#4cc9ff;
     }
+
     *{box-sizing:border-box}
     html,body{
-      margin:0;padding:0;background:var(--bg);color:var(--txt);
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--txt);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
+    /* BOTÕES */
     .btn{
       display:inline-flex;align-items:center;gap:.6rem;font-weight:700;
       border:1px solid rgba(255,255,255,.14);
@@ -50,39 +59,39 @@
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.45)}
     .btn.gold{background:linear-gradient(180deg,#f6d989,#caa32b);border-color:#caa32b;color:#1a1407}
     .btn.ghost{background:transparent;border-color:rgba(255,255,255,.2)}
-
     .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:.85rem;color:var(--muted)}
 
+    /* HEADER */
     header{
       position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
       backdrop-filter:saturate(120%) blur(8px);background:rgba(11,26,21,.6)
     }
     nav .brand{
       display:flex;align-items:center;gap:.6rem;
-      font-family:Cinzel,serif;font-weight:800;color:var(--gold);letter-spacing:.5px
+      font-family: var(--display);font-weight:800;color:var(--gold);letter-spacing:.3px
     }
     nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     nav .links{display:flex;gap:18px;align-items:center}
     nav .links a{opacity:.9}
     nav .links a:hover{opacity:1}
 
-    /* HERO — película mais clara e foco no topo */
+    /* HERO – película mais clara e foco no topo */
     .hero{
       position:relative; min-height:88vh; display:grid; align-items:center;
       background:
-        linear-gradient(180deg, rgba(11,26,21,.10), rgba(11,26,21,.35) 70%),
+        linear-gradient(180deg, rgba(11,26,21,.12), rgba(11,26,21,.38) 70%),
         url('pepe.png?v=5');
       background-repeat:no-repeat;
       background-size:cover;
       background-position:center 12%;
     }
     .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
-    .title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px}
-    .subtitle{font-size:clamp(16px,2.2vw,22px);color:#d9d6c8;margin:10px 0 22px}
+    .title{font-family: var(--display);font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px;color:#fff}
+    .subtitle{font-size:clamp(16px,2.2vw,22px);color:#e7e3d6;margin:10px 0 22px}
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
-    /* Presale card */
+    /* CARD DA PRÉ-VENDA NO HERO */
     .presale{
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
@@ -96,108 +105,108 @@
     .kv .item{min-width:110px}
     .kv .num{font-size:26px;font-weight:800;color:var(--gold)}
 
-    /* Sections */
+    /* SEÇÕES (bordas neutras) */
     section{padding:70px 0;border-top:1px solid rgba(255,255,255,.06)}
-    h2{font-family:Manrope,sans-serif;font-weight:800;margin:0 0 18px;font-size:clamp(24px,3.5vw,36px)}
-    p.lead{color:#cbc6b2;max-width:740px}
 
+    /* ==== SOBRE / COMO COMPRAR – layout claro ==== */
+    #about, #how{
+      position:relative;
+      overflow:hidden;
+      background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%); /* sem wallpaper */
+      color: var(--card-ink);
+      scroll-margin-top: 80px;
+      border-top:none;            /* remove a linha escura entre as seções */
+    }
+    #how{ padding-top:30px; }     /* leve respiro entre as duas */
+
+    /* título centralizado + tipografia Baloo */
+    #about h2, #how h2{
+      text-align:center;
+      color: var(--ink);
+      font-family: var(--display);
+      font-weight: 800;
+      margin: 0 0 10px;
+    }
+    #about p.lead, #how p.lead{
+      text-align:center;
+      color: var(--ink-2);
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+
+    /* GRID dos cards */
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;padding:18px;
-      backdrop-filter: blur(2px) saturate(110%);
-      color:#f2efe5;
-      transition: all .25s ease-in-out; /* para hover global suave */
+
+    /* Cards claros premium */
+    #about .card, #how .card{
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88));
+      border:1px solid rgba(0,0,0,.08);
+      color: var(--card-ink);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
-    /* Hover (realce ao passar o mouse) */
-    .card:hover{
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 24px rgba(0,0,0,.18);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
+    /* brilho suave nos cantos */
+    #about .card::before, #how .card::before{
+      content:"";
+      position:absolute; inset: -1px;
+      border-radius:inherit;
+      background:
+        radial-gradient(160px 160px at 0% 0%, var(--accent, rgba(212,175,55,.22)) 0%, transparent 60%),
+        radial-gradient(160px 160px at 100% 100%, rgba(27,191,114,.18) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    /* variações de acento */
+    #about .card:nth-child(1), #how .card:nth-child(1){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
+    #about .card:nth-child(2), #how .card:nth-child(2){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
+    #about .card:nth-child(3), #how .card:nth-child(3){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
+    #about .card:nth-child(4), #how .card:nth-child(4){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
+    #about .card:nth-child(5), #how .card:nth-child(5){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
+    #about .card:nth-child(6), #how .card:nth-child(6){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
+
+    #about .card h3, #how .card h3{
+      color: var(--ink);
+      font-family: var(--display);
+      font-weight:800;
+      margin: 8px 0 6px;
+    }
+    #about .card .ico, #how .card .ico{ color: var(--accent, var(--gold)); }
+
+    /* hover */
+    #about .card:hover, #how .card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 28px rgba(0,0,0,.12);
     }
 
-    /* Ícones inline (dourados) */
+    /* Ícones inline */
     .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
     .flex{display:flex;align-items:center;gap:10px}
 
-    /* Tokenomics */
+    /* TOKENOMICS */
     .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
     table{width:100%;border-collapse:collapse;font-size:.95rem}
     td,th{padding:10px;border-bottom:1px solid rgba(255,255,255,.08)}
     th{text-align:left;color:#c9c4b0;font-weight:600}
 
-    /* Roadmap */
+    /* ROADMAP */
     .timeline{position:relative;padding-left:24px}
     .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.2)}
     .milestone{position:relative;margin:18px 0;padding-left:14px}
     .milestone::before{content:"";position:absolute;left:-17px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--gold)}
 
-    /* Meme gallery */
+    /* GALERIA */
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
     .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
 
-    /* FAQ */
+    /* FAQ / FOOTER */
     details{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px}
     details+details{margin-top:10px}
     summary{cursor:pointer;font-weight:700}
-
     footer{padding:40px 0;color:#c9c4b0}
 
-#about,
-#how{
-  position: relative;
-  overflow: hidden;
-
-  /* tira a linha padrão entre sections e cola as áreas */
-  border-top: none;
-  margin-top: -1px;              /* evita “fresta” por subpixel */
-
-  /* wallpaper */
-  background: var(--patron-wallpaper) repeat;
-  background-size: 520px;        /* maior = menos repetição (ajuste à gosto) */
-  background-position: center top;
-  color: #122821;
-}
-
-/* película bem fina (quase imperceptível) */
-#about::before,
-#how::before{
-  content: "";
-  position: absolute; inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: rgba(255,255,255,.10); /* estava forte; agora só um véu */
-  backdrop-filter: blur(.4px);       /* blur leve; pode zerar se quiser */
-}
-
-/* garante conteúdo acima da película */
-#about > *,
-#how  > *{ position: relative; z-index: 1; }
-
-/* opcional: deixar o #how ainda mais “colado” ao #about */
-#how{ padding-top: 30px; } /* use 0–40px conforme preferir */
-
-/* Cards nessas seções: legíveis + hover bonito */
-#about .card,
-#how  .card{
-  background: rgba(255,255,255,.90);
-  color:#132720;
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  transition: all .25s ease-in-out;
-}
-#about .card:hover,
-#how  .card:hover{
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(255,255,255,.96);
-  border-color: rgba(0,0,0,.12);
-  box-shadow: 0 12px 24px rgba(0,0,0,.18);
-}
-
-    /* Responsive */
+    /* RESPONSIVO */
     @media (max-width:980px){
       .hero .wrap{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr 1fr}
@@ -207,118 +216,8 @@
     @media (max-width:540px){
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
-      .kv .item{min-width:90px}
-      #about, #how{ background-size:560px; } /* ainda menos repetição no mobile */
+      #about p.lead, #how p.lead{ padding: 0 8px; }
     }
-    /* ===== Tipografia “descolada” para títulos / branding ===== */
-:root{
-  --display: "Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --ink:#1a2a1a;          /* preto-esverdeado elegante */
-  --ink-2:#2b3a31;        /* subtítulo */
-  --card-ink:#222;        /* texto nos cards */
-  --mint:#1bbf72;
-  --gold:#d4af37;
-  --sky:#4cc9ff;
-}
-
-/* aplica Baloo 2 nos títulos e na marca */
-.title, h1, h2, h3, nav .brand { 
-  font-family: var(--display);
-  letter-spacing:.3px;
-}
-
-/* ===== Seções claras (Sobre / Como comprar) ===== */
-#about, #how{
-  position:relative;
-  overflow:hidden;
-  background: linear-gradient(180deg, #f8f1df 0%, #eaf7ff 100%);
-  color: var(--card-ink);
-  scroll-margin-top: 80px;
-}
-
-/* título centralizado + cores que combinam com o tema */
-#about h2, #how h2{
-  text-align:center;
-  color: var(--ink);
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-
-/* subtítulo/lead centralizado e mais discreto */
-#about p.lead, #how p.lead{
-  text-align:center;
-  color: var(--ink-2);
-  max-width: 820px;
-  margin: 0 auto 18px;
-}
-
-/* grid dos cards (mantém seu layout atual) */
-#about .cards, #how .cards{
-  margin-top: 18px;
-}
-
-/* ===== Cards coloridos com vibe “premium” ===== */
-#about .card, #how .card{
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88));
-  border:1px solid rgba(0,0,0,.08);
-  color: var(--card-ink);
-  box-shadow: 0 10px 22px rgba(0,0,0,.08);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-/* brilho de canto com a cor de destaque do card */
-#about .card::before, #how .card::before{
-  content:"";
-  position:absolute; inset: -1px;
-  border-radius:inherit;
-  background:
-    radial-gradient(160px 160px at 0% 0%, var(--accent, rgba(212,175,55,.22)) 0%, transparent 60%),
-    radial-gradient(160px 160px at 100% 100%, rgba(27,191,114,.18) 0%, transparent 60%);
-  pointer-events:none;
-}
-
-/* cores de destaque por card (pode ajustar à vontade) */
-#about .card:nth-child(1), #how .card:nth-child(1){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
-#about .card:nth-child(2), #how .card:nth-child(2){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
-#about .card:nth-child(3), #how .card:nth-child(3){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
-#about .card:nth-child(4), #how .card:nth-child(4){ --accent: rgba(212,175,55,.28);  border-color: rgba(212,175,55,.30); }
-#about .card:nth-child(5), #how .card:nth-child(5){ --accent: rgba(27,191,114,.25);  border-color: rgba(27,191,114,.28); }
-#about .card:nth-child(6), #how .card:nth-child(6){ --accent: rgba(76,201,255,.24);  border-color: rgba(76,201,255,.28); }
-
-#about .card h3, #how .card h3{
-  color: var(--ink);
-  font-weight:800;
-}
-
-#about .card .ico, #how .card .ico{
-  color: var(--accent, var(--gold));
-}
-
-/* hover gostoso */
-#about .card:hover, #how .card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 16px 28px rgba(0,0,0,.12);
-}
-
-/* ===== Título “Sobre o Projeto” bem central na dobra ===== */
-#about .container > h2{
-  margin-top: 18px;
-}
-
-/* opcional: deixa os badges dos cards mais neutros nas seções claras */
-#about .badge, #how .badge{
-  border-color: rgba(0,0,0,.1);
-  color:#4a4a4a;
-}
-
-/* mobile: dá um respiro */
-@media (max-width: 540px){
-  #about p.lead, #how p.lead{ padding: 0 8px; }
-}
-
   </style>
 </head>
 <body>
@@ -328,7 +227,10 @@
     <div class="container">
       <nav>
         <a href="#top" class="brand" aria-label="Pepe El Patrón home">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="ico" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 14c2 2 6 2 8-2" stroke="currentColor" stroke-width="2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="ico" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 14c2 2 6 2 8-2" stroke="currentColor" stroke-width="2"/>
+          </svg>
           <span>PEPE EL PATRÓN</span>
         </a>
         <div class="links">
@@ -382,7 +284,10 @@
   <section id="about">
     <div class="container">
       <h2>Sobre o Projeto</h2>
-      <p class="lead">Pepe El Patrón é uma homenagem ao meme mais amado da internet — com a personalidade de um verdadeiro chefão. O objetivo é construir uma comunidade divertida, forte e orgânica, com mecânicas simples, segurança clara e espaço para criadores (memes, artes, mini-jogos e eventos).</p>
+      <p class="lead">
+        Pepe El Patrón é uma homenagem ao meme mais amado da internet — com a personalidade de um verdadeiro chefão.
+        O objetivo é construir uma comunidade divertida, forte e orgânica, com mecânicas simples, segurança clara e espaço para criadores (memes, artes, mini-jogos e eventos).
+      </p>
 
       <div class="cards" style="margin-top:18px">
         <div class="card">
@@ -392,6 +297,7 @@
           </div>
           <p>Eventos de memes, recompensas e governança social. O Patrón decide com o povo.</p>
         </div>
+
         <div class="card">
           <div class="flex">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="6"/></svg>
@@ -399,6 +305,7 @@
           </div>
           <p>LP bloqueada e contrato verificado. Links públicos para auditoria e locker.</p>
         </div>
+
         <div class="card">
           <div class="flex">
             <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l5 5L21 5"/></svg>
@@ -414,6 +321,7 @@
   <section id="how">
     <div class="container">
       <h2>Como Comprar</h2>
+      <p class="lead">Guia rápido para entrar no bonde do Patrón.</p>
       <div class="cards">
         <div class="card"><h3>1. Carteira</h3><p>Instale MetaMask ou Trust Wallet e crie sua chave.</p></div>
         <div class="card"><h3>2. Fundos</h3><p>Adicione BNB/ETH/USDT na sua carteira.</p></div>
@@ -429,8 +337,8 @@
   <section id="tokenomics">
     <div class="container grid-2">
       <div>
-        <h2>Tokenomics</h2>
-        <p class="lead">Distribuição simples para jogar junto com a comunidade. Edite os percentuais e o supply conforme suas definições finais.</p>
+        <h2 style="font-family:var(--display);color:var(--ink)">Tokenomics</h2>
+        <p class="lead" style="text-align:left">Distribuição simples para jogar junto com a comunidade. Edite os percentuais e o supply conforme suas definições finais.</p>
         <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
       </div>
       <div>
@@ -450,7 +358,7 @@
   <!-- Security -->
   <section id="security">
     <div class="container">
-      <h2>Segurança & Transparência</h2>
+      <h2 style="font-family:var(--display);color:var(--ink)">Segurança & Transparência</h2>
       <div class="cards">
         <div class="card"><h3>Contrato</h3><p>Endereço: <span id="contract">0xYourContractHere</span></p><a class="btn" id="scanLink" href="#">Ver no Scan</a></div>
         <div class="card"><h3>Liquidity Lock</h3><p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p><a class="btn" id="lockLink" href="#">Comprovante</a></div>
@@ -462,7 +370,7 @@
   <!-- Roadmap -->
   <section id="roadmap">
     <div class="container">
-      <h2>Roadmap</h2>
+      <h2 style="font-family:var(--display);color:var(--ink)">Roadmap</h2>
       <div class="timeline">
         <div class="milestone"><h3>Fase 1 – Lançamento</h3><p>Site, branding, pré-venda, comunidade, parcerias iniciais.</p></div>
         <div class="milestone"><h3>Fase 2 – Tração</h3><p>Listagem DEX, campanhas de memes, 5k holders, marketing contínuo.</p></div>
@@ -475,7 +383,7 @@
   <!-- Meme Gallery -->
   <section id="community">
     <div class="container">
-      <h2>Meme Gallery</h2>
+      <h2 style="font-family:var(--display);color:var(--ink)">Meme Gallery</h2>
       <p class="lead">Seleção de artes e memes da comunidade. Suba o seu no Telegram e marque @PepeElPatron.</p>
       <div class="gallery">
         <img src="assets/memes/m1.jpg" alt="Meme 1" loading="lazy" />
@@ -489,7 +397,7 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="container">
-      <h2>FAQ</h2>
+      <h2 style="font-family:var(--display);color:var(--ink)">FAQ</h2>
       <details><summary>Qual a rede e o contrato oficial?</summary><p>Defina aqui a chain (BSC/ETH/etc.) e coloque o endereço oficial do contrato com link para o explorer.</p></details>
       <details><summary>Haverá taxas?</summary><p>Edite esta resposta com as taxas de compra/venda, se existirem (ex.: 0/0 ou 1/1%).</p></details>
       <details><summary>Quando será a listagem?</summary><p>Após o fim da pré-venda e travamento de liquidez, informe a data exata e os pares.</p></details>
@@ -514,50 +422,41 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <script>
-    // ====== CONFIGURÁVEIS (edite conforme o projeto) ======
-    const DEADLINE = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
-    const TARGET_USD = 1_000_000;     // Meta da pré-venda
-    const RAISED_USD = 317_762.32;    // Arrecadado (dinâmico se quiser puxar de API)
+    // ====== CONFIGURÁVEIS ======
+    const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
+    const TARGET_USD = 1_000_000;
+    const RAISED_USD = 317_762.32;
 
     const TOKENOMICS = [
-      { label: 'Liquidity', value: 30, color: '#f3d37a' },
-      { label: 'Marketing', value: 20, color: '#e2b74a' },
-      { label: 'Community Rewards', value: 16, color: '#caa32b' },
-      { label: 'Burn', value: 34, color: '#a88214' }
+      { label: 'Liquidity',          value: 30, color: '#f3d37a' },
+      { label: 'Marketing',          value: 20, color: '#e2b74a' },
+      { label: 'Community Rewards',  value: 16, color: '#caa32b' },
+      { label: 'Burn',               value: 34, color: '#a88214' }
     ];
     const TOTAL_SUPPLY = '1,000,000,000';
 
-    const LINKS = {
-      buy: '#',
-      chart: '#',
-      scan: '#',
-      lock: '#',
-      audit: '#'
-    };
+    const LINKS = { buy:'#', chart:'#', scan:'#', lock:'#', audit:'#' };
 
-    // Presale progress + contagem regressiva
+    // ====== Presale progress + contagem regressiva ======
     const pb = document.getElementById('progressBar');
     const raisedEl = document.getElementById('raised');
     const targetEl = document.getElementById('target');
     const cdEl = document.getElementById('countdown');
 
-    function fmt(n){
-      return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
-    }
+    function fmt(n){ return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}); }
     function tick(){
       const now = new Date();
       const diff = Math.max(0, DEADLINE - now);
       const d = Math.floor(diff / 864e5);
       const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
       cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-      const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
-      pb.style.width = pct + '%';
+      pb.style.width = Math.min(100, RAISED_USD/TARGET_USD*100) + '%';
     }
     raisedEl.textContent = `$${fmt(RAISED_USD)}`;
     targetEl.textContent = `$${fmt(TARGET_USD)}`;
     setInterval(tick, 1000); tick();
 
-    // Tokenomics table + chart
+    // ====== Tokenomics table + chart ======
     document.getElementById('supply').textContent = TOTAL_SUPPLY;
     const tbody = document.getElementById('tkTable');
     TOKENOMICS.forEach(t => {
@@ -573,13 +472,10 @@
         labels: TOKENOMICS.map(t => t.label),
         datasets: [{ data: TOKENOMICS.map(t => t.value), backgroundColor: TOKENOMICS.map(t => t.color), borderColor: '#0b1a15', borderWidth: 2 }]
       },
-      options: {
-        plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9' } } },
-        cutout: '60%'
-      }
+      options: { plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9' } } }, cutout: '60%' }
     });
 
-    // Links úteis
+    // ====== Links úteis ======
     document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
     document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
