@@ -399,18 +399,22 @@
   box-shadow: 0 10px 22px rgba(73,52,28,.35);
 }
 
-/* imagem do Pepe: sem mask (era ela que criava o “clarão”),
-   mistura normal, leve sombra e posição ajustada */
+/* Imagem de fundo cobrindo toda a seção (sem faixa) */
 #security .bg-pepe{
-  right: -12px;
-  bottom: -8px;
-  width: min(38vw, 520px);
-  opacity: .33;
+  position: absolute;
+  inset: 0;                  /* top/right/bottom/left = 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* cobre toda a área */
+  object-position: center 40%;/* ajuste vertical se precisar (30–50%) */
+  opacity: .28;              /* marca d’água */
+  filter: contrast(1.02) saturate(1.05);
+  mix-blend-mode: normal;
   -webkit-mask-image: none !important;
           mask-image: none !important;
-  mix-blend-mode: normal;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
-  pointer-events: none; user-select: none; z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 
 /* garante que conteúdo fique sempre acima da imagem */
