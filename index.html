@@ -248,7 +248,21 @@
 @media (max-width: 640px){
   #tokenomics .tk-pepe{ display:none; }  /* mobile: prioriza leitura */
 }
+    /* Pepe Tokenomics – mais visível */
+#tokenomics .tk-pepe{
+  opacity: .42 !important;                /* antes ~.28 */
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.20)) !important;
 
+  /* remove a máscara que estava apagando ele */
+  -webkit-mask-image: none !important;
+          mask-image: none !important;
+}
+
+/* cards semi-translúcidos: deixam o Pepe aparecer um pouco por trás */
+#tokenomics .chart-card,
+#tokenomics .table-card{
+  background: rgba(255,255,255,.88) !important;
+}
   </style>
 </head>
 <body>
