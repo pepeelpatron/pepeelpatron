@@ -433,6 +433,20 @@
   box-shadow: 0 -4px 10px rgba(212,175,55,0.15) inset; /* glow sutil */
   margin: 40px 0; /* espaço para destacar */
 }
+    /* Divider dourada com gradiente */
+.divider {
+  height: 6px; /* espessura da linha */
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0) 0%,      /* dourado transparente no início */
+    rgba(212, 175, 55, 0.8) 50%,   /* dourado forte no meio */
+    rgba(212, 175, 55, 0) 100%     /* dourado transparente no fim */
+  );
+  border-radius: 50px;
+  margin: 40px auto;
+  max-width: 90%; /* deixa mais elegante */
+}
+
   </style>
 </head>
 <body>
