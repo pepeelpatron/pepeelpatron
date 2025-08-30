@@ -353,6 +353,69 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
+    /* === SECURITY — ajustes visuais finais === */
+
+/* fundo liso + vinheta leve nas bordas pra transição ficar suave */
+#security{
+  background:#f8f1df;
+  box-shadow:
+    inset 0 28px 60px rgba(0,0,0,.06),
+    inset 0 -28px 60px rgba(0,0,0,.06);
+}
+
+/* título bege com sombra marrom clara */
+#security h2{
+  color:#f3e7c8; /* bege da paleta */
+  text-shadow:
+    0 3px 0 rgba(88,63,28,.35),   /* marrom clarinho “embaixo” */
+    0 12px 26px rgba(0,0,0,.15);  /* profundidade */
+  letter-spacing: .8px;
+}
+
+/* grid permanece igual; foco nos cards */
+#security .card{
+  background: rgba(255,255,255,.98);
+  border: 2px solid #7b5a2d; /* marrom */
+  border-radius: 16px;
+  box-shadow: 0 12px 26px rgba(73,52,28,.18);
+  padding: 22px 20px;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+#security .card:hover{
+  transform: translateY(-4px);
+  border-color:#8a6635;
+  box-shadow: 0 18px 34px rgba(73,52,28,.28);
+}
+
+/* texto dentro dos cards um pouco mais escuro p/ contraste */
+#security .card h3{ color:#1f2f24; }
+#security .card p { color:#2d2a22; }
+
+/* botões ficam iguais; só um toque na sombra */
+#security .btn{
+  box-shadow: 0 6px 16px rgba(73,52,28,.25);
+}
+#security .btn:hover{
+  box-shadow: 0 10px 22px rgba(73,52,28,.35);
+}
+
+/* imagem do Pepe: sem mask (era ela que criava o “clarão”),
+   mistura normal, leve sombra e posição ajustada */
+#security .bg-pepe{
+  right: -12px;
+  bottom: -8px;
+  width: min(38vw, 520px);
+  opacity: .33;
+  -webkit-mask-image: none !important;
+          mask-image: none !important;
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
+  pointer-events: none; user-select: none; z-index: 0;
+}
+
+/* garante que conteúdo fique sempre acima da imagem */
+#security .container{ position: relative; z-index: 2; }
+
   </style>
 </head>
 <body>
