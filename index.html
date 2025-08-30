@@ -548,6 +548,25 @@
 @media (max-width: 640px){
   .tk-pepe{ display:none; }
 }
+  /* card do gráfico */
+.chart-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  padding:14px;
+}
+
+/* canvas ocupa toda a largura e fica com altura mínima */
+#tokenChart{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-height:260px; /* garante altura visível */
+  border-radius:12px;
+  background:#fff;
+}
+
 
   </style>
 </head>
@@ -789,59 +808,79 @@
 
   <!-- Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-
 <script>
   // ====== CONFIGURÁVEIS ======
-  const DEADLINE = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
-  const TARGET_USD = 1_000_000;
-  const RAISED_USD = 317_762.32;
-
   const TOKENOMICS = [
-    { label: 'Liquidity', value: 30, color: '#f3d37a' },
-    { label: 'Marketing', value: 20, color: '#e2b74a' },
-    { label: 'Community Rewards', value: 16, color: '#caa32b' },
-    { label: 'Burn', value: 34, color: '#a88214' }
+    { label: 'Liquidity',          value: 30, color: '#f3d37a' },
+    { label: 'Marketing',          value: 20, color: '#e2b74a' },
+    { label: 'Community Rewards',  value: 16, color: '#caa32b' },
+    { label: 'Burn',               value: 34, color: '#a88214' }
   ];
   const TOTAL_SUPPLY = '1,000,000,000';
 
-  const LINKS = { buy:'#', chart:'#', scan:'#', lock:'#', audit:'#' };
+  // Preenche a tabela (se você usa outra lógica, pode ignorar este trecho)
+  const tbody = document.getElementById('tkTable');
+  if (tbody) {
+    tbody.innerHTML = '';
+    TOKENOMICS.forEach(t => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
+      tbody.appendChild(tr);
+    });
+    const supplyEl = document.getElementById('supply');
+    if (supplyEl) supplyEl.textContent = TOTAL_SUPPLY;
+  }
 
-  // === pega o canvas do gráfico ===
-  const ctx = document.getElementById('tokenChart');
+  // Cria o gráfico — rode apenas UMA vez
+  window.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('tokenChart');
+    if (!el) return; // canvas não existe
 
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: TOKENOMICS.map(t => t.label),
-      datasets: [{
-        data: TOKENOMICS.map(t => t.value),
-        backgroundColor: TOKENOMICS.map(t => t.color),
-        borderColor: '#54421e',     // contorno visível
-        borderWidth: 1.2
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          position: 'bottom',
-          labels: {
-            color: '#2b2b29',       // texto escuro visível no fundo bege
-            font: { family: 'Signika', weight: 700 },
-            boxWidth: 16,
-            padding: 14
+    const ctx = el.getContext('2d');
+
+    // Se já existir um chart nesse canvas (por reload hot etc.), destrói primeiro
+    if (el._chartInstance) {
+      el._chartInstance.destroy();
+    }
+
+    const chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: TOKENOMICS.map(t => t.label),
+        datasets: [{
+          data: TOKENOMICS.map(t => t.value),
+          backgroundColor: TOKENOMICS.map(t => t.color),
+          borderColor: '#54421e',
+          borderWidth: 1.2
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#2b2b29', // texto escuro: visível no bege
+              font: { family: 'Signika', weight: 700 },
+              boxWidth: 16,
+              padding: 14
+            }
+          },
+          tooltip: {
+            titleColor: '#2b2b29',
+            bodyColor:  '#2b2b29',
+            backgroundColor: 'rgba(255,255,255,.95)',
+            borderColor: 'rgba(0,0,0,.12)',
+            borderWidth: 1
           }
         },
-        tooltip: {
-          titleColor: '#2b2b29',
-          bodyColor:  '#2b2b29',
-          backgroundColor: 'rgba(255,255,255,.95)',
-          borderColor: 'rgba(0,0,0,.12)',
-          borderWidth: 1
-        }
-      },
-      cutout: '62%',
-      animation: { duration: 600 }
-    }
+        cutout: '62%',
+        animation: { duration: 600 },
+        maintainAspectRatio: false // deixa a altura respeitar o min-height
+      }
+    });
+
+    // guarda a instância pra destruir em redenderizações futuras se precisar
+    el._chartInstance = chart;
   });
 
     // Presale progress + contagem regressiva
