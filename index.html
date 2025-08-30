@@ -446,6 +446,50 @@
   margin: 40px auto;
   max-width: 90%; /* deixa mais elegante */
 }
+/* Fundo customizado para a seção Tokenomics */
+#tokenomics {
+  position: relative;
+  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png") no-repeat center top;
+  background-size: cover;   /* cobre toda a área */
+  background-attachment: fixed; /* fundo fixo ao rolar */
+  padding: 100px 0;
+}
+
+/* Película bege suave para acompanhar a paleta */
+#tokenomics::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 235, 210, 0.82); /* bege translúcido */
+  z-index: 0;
+}
+
+#tokenomics > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Gráfico com borda + sombra */
+#tokenomics canvas {
+  background: #fff;
+  border: 2px solid #d4af37;       /* borda dourada */
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Tabela também destacada */
+#tokenomics table {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  padding: 10px;
+}
+#tokenomics th,
+#tokenomics td {
+  color: #132720; /* texto escuro, legível */
+}
 
   </style>
 </head>
