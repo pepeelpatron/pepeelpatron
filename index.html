@@ -629,6 +629,58 @@
 @media (max-width: 640px){
   #tokenomics .tk-pepe{ display:none; } /* prioriza conteúdo no mobile */
 }
+/* === TOKENOMICS – Pepe dentro do card, visível e sem cortar === */
+
+/* o card não corta o Pepe e serve de "plano de fundo" */
+.tk-card{
+  position: relative;
+  overflow: visible;                 /* importante: não cortar a imagem */
+}
+
+/* Pepe atrás do conteúdo, mas visível */
+.tk-pepe{
+  position: absolute;
+  right: -4%;                        /* ajuste fino horizontal */
+  bottom: -14px;                     /* ajuste fino vertical */
+  width: min(46%, 560px);            /* tamanho no desktop */
+  opacity: .34;                      /* mais visível */
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;                        /* atrás do conteúdo do card */
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
+
+  /* retirei qualquer mask para não “sumir” */
+}
+
+/* todo o conteúdo do card fica acima do Pepe */
+.tk-title,
+.tk-grid,
+.chart-card,
+.table-card{
+  position: relative;
+  z-index: 1;
+}
+
+/* cartões com fundo levemente translúcido para o Pepe aparecer um pouco */
+.chart-card,
+.table-card{
+  background: rgba(255,255,255,.90);
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 14px;
+}
+
+/* Responsivo: aumenta o Pepe e desloca mais para a direita em telas médias */
+@media (max-width: 1100px){
+  .tk-pepe{ right:-8%; width: min(54%, 560px); opacity:.32; }
+}
+@media (max-width: 820px){
+  .tk-pepe{ right:-12%; width: min(60%, 560px); opacity:.30; }
+}
+/* Em telas muito pequenas, esconda o Pepe para priorizar leitura */
+@media (max-width: 640px){
+  .tk-pepe{ display:none; }
+}
 
   </style>
 </head>
