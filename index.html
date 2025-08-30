@@ -446,76 +446,72 @@
   margin: 40px auto;
   max-width: 90%; /* deixa mais elegante */
 }
-/* Fundo customizado para a seção Tokenomics */
-#tokenomics {
+/* TOKENOMICS — fundo bege + Pepe grande fixo à direita */
+#tokenomics{
   position: relative;
-  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png") no-repeat center top;
-  background-size: cover;   /* cobre toda a área */
-  background-attachment: fixed; /* fundo fixo ao rolar */
-  padding: 100px 0;
+  overflow: hidden;
+  padding: 80px 0;                  /* espaço vertical confortável */
+  background:
+    linear-gradient(180deg,#f5ecd6 0%, #f3e7cc 100%);  /* bege da paleta */
 }
 
-/* Película bege suave para acompanhar a paleta */
-#tokenomics::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(245, 235, 210, 0.82); /* bege translúcido */
-  z-index: 0;
+/* Pepe como “marca d’água” grandona atrás (não interativo) */
+#tokenomics::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    /* véu bem leve p/ contrastar a cópia */
+    radial-gradient(1000px 600px at 70% 50%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png') no-repeat right center;
+  /* O tamanho NUNCA fica pequeno: min 420px, cresce com viewport, máx 860px */
+  background-size: auto, clamp(420px, 38vw, 860px);
+  opacity:.96;                      /* quase sólido, mas ainda “watermark” */
+  pointer-events:none;
+  z-index:0;
 }
 
-#tokenomics > * {
-  position: relative;
-  z-index: 1;
+/* garante que o conteúdo passe por cima do fundo */
+#tokenomics .container,
+#tokenomics .grid-2{ position: relative; z-index: 1; }
+
+/* cartão do gráfico p/ destacar bem sobre o fundo */
+#tokenomics .chart-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  padding:20px;
 }
 
-/* Gráfico com borda + sombra */
-#tokenomics canvas {
-  background: #fff;
-  border: 2px solid #d4af37;       /* borda dourada */
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+/* canvas com cantos arredondados */
+#tokenomics canvas{
+  display:block;
+  background:#fff;
+  border-radius:12px;
 }
 
-/* Tabela também destacada */
-#tokenomics table {
-  background: #fff;
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-  padding: 10px;
-}
-#tokenomics th,
-#tokenomics td {
-  color: #132720; /* texto escuro, legível */
-}
-    /* Fundo personalizado só para a seção Tokenomics */
-#tokenomics {
-  position: relative;
-  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png") 
-              no-repeat center right;
-  background-size: 480px auto;   /* controla o tamanho do Pepe */
-  background-attachment: fixed; /* fixa a imagem para não rolar junto */
-  background-color: #f8f1df;     /* bege da paleta */
-  border-top: 2px solid rgba(0,0,0,.08); /* acabamento entre seções */
-  border-bottom: 2px solid rgba(0,0,0,.08);
-  z-index: 0;
-}
+/* rótulos da tabela à direita seguem a paleta */
+#tokenomics table th,
+#tokenomics table td{ color:#2b2b29; }
+#tokenomics h2{ color:#5f4b20; } /* título “Tokenomics” em tom amadeirado */
 
-/* Conteúdo fica acima do fundo */
-#tokenomics .container {
-  position: relative;
-  z-index: 1;
+/* Responsivo: ajusta o tamanho do Pepe em telas menores */
+@media (max-width: 980px){
+  #tokenomics{
+    padding: 60px 0;
+  }
+  #tokenomics::before{
+    background-position: right 10% center;
+    background-size: auto, clamp(360px, 55vw, 680px);
+    opacity:.92;
+  }
 }
-
-/* Caixa do gráfico/table ganha um leve destaque */
-#tokenomics canvas,
-#tokenomics table {
-  background: rgba(255,255,255,.88);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+@media (max-width: 600px){
+  #tokenomics::before{
+    background-position: right -20% center;   /* desloca um pouco p/ não “atropelar” o texto */
+    background-size: auto, clamp(320px, 70vw, 560px);
+    opacity:.9;
+  }
 }
 
   </style>
