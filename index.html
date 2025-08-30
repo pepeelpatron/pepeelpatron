@@ -277,10 +277,17 @@
 #security .btn.gold:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.40); }
 
 /* responsivo como no tokenomics */
-@media (max-width:980px){ #security .cards{ grid-template-columns:1fr 1fr; } }
-@media (max-width:540px){ #security .cards{ grid-template-columns:1fr; } #security .sec-pepe{ display:none; } }
-@media (max-width:640px) { #security .sec-pepe{ display:none; } }  /* foco no conteúdo no mobile */
+@media (max-width:980px){
+  #security .cards{ grid-template-columns:1fr 1fr; }
 }
+@media (max-width:540px){
+  #security .cards{ grid-template-columns:1fr; }
+  #security .sec-pepe{ display:none; }
+}
+@media (max-width:640px){
+  #security .sec-pepe{ display:none; }  /* foco no conteúdo no mobile */
+}
+
   </style>
 </head>
 <body>
@@ -438,14 +445,17 @@
 
 <section id="security">
   <div class="container">
-    <div class="sec-card">  <!-- <- cartão no mesmo padrão do tk-card -->
+    <div class="sec-card">
       <h2 class="sec-title">Segurança & Transparência</h2>
 
-      <!-- Pepe dentro do card (marca d'água) -->
-      <img class="sec-pepe"
-           src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png"
-           alt="Pepe El Patrón no cofre" loading="lazy">
-      
+      <!-- Pepe dentro do card (marca d’água) -->
+      <img
+        class="sec-pepe"
+        src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png"
+        alt="Pepe El Patrón no cofre"
+        loading="lazy"
+      >
+
       <div class="cards">
         <div class="card">
           <h3>Contrato</h3>
@@ -464,9 +474,12 @@
           <p>Relatórios de auditoria e verificação de equipe.</p>
           <a class="btn gold" id="auditLink" href="#" target="_blank" rel="noopener">Ver Relatório</a>
         </div>
-    </div>
-  </div>
+      </div> <!-- /.cards -->
+
+    </div> <!-- /.sec-card -->
+  </div>   <!-- /.container -->
 </section>
+
 
     </div>
   </div>
