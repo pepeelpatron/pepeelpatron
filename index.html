@@ -266,105 +266,78 @@
 #tokenomics .chart-card,
 #tokenomics .table-card{
   background: rgba(255,255,255,.88) !important;
-}
-    /* ===== SECURITY – visual premium ===== */
+  
+}/* ===== SECURITY – estilo Patrón (bege + dourado) ===== */
 #security{
-  background: linear-gradient(180deg, #0b1a15 0%, #122821 100%);
-  padding: 80px 0;
   position: relative;
-  overflow: hidden;
+  padding: 80px 0;
+  background: 
+    linear-gradient(rgba(248,241,223,0.92), rgba(248,241,223,0.92)), /* véu bege */
+    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png') 
+    center/cover no-repeat;
+  border-top: 2px solid rgba(0,0,0,.06);
+  border-bottom: 2px solid rgba(0,0,0,.06);
 }
 
-/* título central com linha dourada */
+/* título da seção */
 #security h2{
   text-align: center;
-  font-size: clamp(28px,4.2vw,44px);
-  color: #f6d989;                 /* dourado claro */
-  letter-spacing: .6px;
-  text-shadow: 0 2px 12px rgba(0,0,0,.45);
-  margin: 0 0 30px;
+  font-size: clamp(28px,4vw,44px);
+  color: #183326; /* verde escuro */
+  letter-spacing: 1px;
+  margin-bottom: 34px;
   font-family:"Alfa Slab One", serif;
-}
-#security h2::after{
-  content:"";
-  display:block;
-  width:84px; height:3px;
-  margin:14px auto 0;
-  border-radius:4px;
-  background: linear-gradient(90deg,#d4af37,#caa32b);
+  text-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
 
-/* grid responsivo dos cards */
+/* grid de cards */
 #security .cards{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-  align-items: stretch;
+  gap: 20px;
 }
 
-/* card */
+/* cards */
 #security .card{
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.9);
+  border: 2px solid #c9b37a;        /* bege/dourado */
   border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
   padding: 24px 20px;
-  text-align: left;
-  box-shadow: 0 10px 26px rgba(0,0,0,.30);
-  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-  position: relative;
-  overflow: hidden;
-}
-#security .card::before{
-  /* brilho sutil no topo */
-  content:"";
-  position:absolute; inset:0 0 auto 0; height:40px;
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-  pointer-events:none;
+  transition: all .25s ease;
+  text-align: center;
 }
 #security .card:hover{
-  transform: translateY(-6px);
-  border-color: #d4af37;
-  box-shadow: 0 16px 36px rgba(0,0,0,.40);
+  transform: translateY(-4px);
+  border-color: #d4af37;            /* dourado mais vivo */
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
+}
+#security .card h3{ 
+  color:#183326; 
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+#security .card p{ 
+  color:#2d2a22; 
+  font-size:.95rem;
 }
 
-/* header do card com ícone redondo */
-.sec-head{
-  display:flex; align-items:center; gap:12px; margin-bottom:8px;
-}
-.sec-ico{
-  width:38px; height:38px; border-radius:999px;
-  display:grid; place-items:center;
-  background: radial-gradient(ellipse at 30% 30%, #f6d989 0%, #caa32b 65%, #8d6b17 100%);
-  box-shadow: 0 6px 14px rgba(0,0,0,.35), inset 0 1px 2px rgba(255,255,255,.45);
-}
-.sec-ico svg{ width:20px; height:20px; color:#1a1407; }
-
-/* textos */
-#security .card h3{ margin:0; color:#f6f3e2; font-size:1.05rem; }
-#security .card p{ color:#d9d6c8; margin:.45rem 0 0; }
-#security .card .hl{ color:#f6d989; font-weight:700; }
-
-/* botão dourado premium no security */
-#security .card .btn{
-  display:inline-flex; align-items:center; gap:.5rem;
-  margin-top:12px;
+/* botões */
+#security .btn{
   background: linear-gradient(180deg,#f6d989,#caa32b);
-  color: #1a1407;
-  border: none;
-  padding: .8rem 1.2rem;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.30);
+  color:#1a1407;
+  font-weight:700;
+  border:none;
+  padding:.8rem 1.2rem;
+  border-radius:8px;
+  margin-top:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
 }
-#security .card .btn:hover{
+#security .btn:hover{
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.40);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
 }
 
-/* linha separadora discreta entre security e roadmap */
-#security + #roadmap{
-  border-top: 1px solid rgba(255,255,255,.06);
-  margin-top: 10px;
-}
   </style>
 </head>
 <body>
