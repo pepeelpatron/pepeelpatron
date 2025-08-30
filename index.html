@@ -244,7 +244,52 @@
   margin-bottom: 18px;
   font-weight: 600;              /* dá mais corpo */
 }
+/* === Bordas coloridas por card (paleta do site) === */
 
+/* base: usa a cor da var --card-accent */
+#about .card,
+#how  .card{
+  border: 2px solid var(--card-accent, rgba(0,0,0,.15));
+  box-shadow: 0 6px 16px rgba(0,0,0,.22);
+}
+#about .card:hover,
+#how  .card:hover{
+  border-color: var(--card-accent, rgba(0,0,0,.25));
+  box-shadow: 0 10px 24px rgba(0,0,0,.30), 0 0 0 2px color-mix(in srgb, var(--card-accent) 45%, transparent);
+}
+
+/* paleta (pode ajustar os hex se quiser) */
+:root{
+  --accent-gold:   #d4af37; /* ouro da moeda */
+  --accent-amber:  #caa32b; /* dourado mais quente */
+  --accent-emerald:#2ea36a; /* verde Pepe “grana” */
+  --accent-moss:   #5a7d4b; /* verde musgo */
+  --accent-mint:   #9fd4b0; /* verdinho suave */
+  --accent-brown:  #5c3b14; /* marrom do charuto/sombra */
+}
+
+/* === Mapeamento automático por posição === */
+/* SOBRE (3 cards) */
+#about .cards .card:nth-child(1){ --card-accent: var(--accent-gold);   }
+#about .cards .card:nth-child(2){ --card-accent: var(--accent-emerald);}
+#about .cards .card:nth-child(3){ --card-accent: var(--accent-moss);   }
+
+/* COMO COMPRAR (6 cards): ciclo de 6 cores */
+#how .cards .card:nth-child(6n+1){ --card-accent: var(--accent-gold);   }
+#how .cards .card:nth-child(6n+2){ --card-accent: var(--accent-amber);  }
+#how .cards .card:nth-child(6n+3){ --card-accent: var(--accent-emerald);}
+#how .cards .card:nth-child(6n+4){ --card-accent: var(--accent-moss);   }
+#how .cards .card:nth-child(6n+5){ --card-accent: var(--accent-mint);   }
+#how .cards .card:nth-child(6n+6){ --card-accent: var(--accent-brown);  }
+
+/* fallback caso o browser não suporte color-mix */
+@supports not (color-mix(in srgb, red 50%, transparent)){
+  #about .card:hover,
+  #how  .card:hover{
+    /* mantém a sombra neutra, só reforça a borda colorida */
+    box-shadow: 0 10px 24px rgba(0,0,0,.30);
+  }
+}
   </style>
 </head>
 <body>
