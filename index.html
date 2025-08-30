@@ -134,19 +134,28 @@
   text-align: center; /* centraliza conteúdo como no exemplo */
 }
 
-/* efeito hover */
-.card:hover{
-  transform: translateY(-4px);
-  box-shadow: 6px 6px 0px #5c3b14;
-  background: #fef6e8; /* leve bege no hover */
+/* Mantém o modelo atual, só adiciona destaque */
+    
+#about .card,
+#how  .card{
+  background: rgba(255,255,255,.90);       /* mantém translucidez */
+  color:#132720;
+  border: 2px solid rgba(0,0,0,.12);       /* borda leve */
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);  /* sombra suave */
+  transition: all .25s ease-in-out;
+  padding: 18px;
 }
-    .card h3{font-family:"Signika",system-ui,sans-serif;font-weight:700;margin:10px 0 6px;color:#f2efe5}
-    .card:hover{
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 24px rgba(0,0,0,.18);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-    }
+
+/* Hover ainda com efeito */
+#about .card:hover,
+#how  .card:hover{
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,.96);
+  border-color: rgba(0,0,0,.18);           /* borda mais visível */
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);  /* sombra mais forte no hover */
+}
+
 
     /* Ícones inline */
     .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
