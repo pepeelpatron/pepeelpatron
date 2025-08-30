@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pepe El Patrón ($PATRON) – The Boss of Memes</title>
-  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré-venda, tokenomics, roadmap e comunidade." />
+  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré-venda, tokenomics, roadmap e comunidade.">
 
   <!-- OG / Twitter -->
   <meta property="og:title" content="Pepe El Patrón ($PATRON)" />
@@ -13,675 +13,189 @@
   <meta property="og:image" content="assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts (pôster) -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Signika:wght@600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* ===================== VARS ===================== */
     :root{
-      --bg:#0b1a15;          /* fundo principal (verde petróleo) */
-      --txt:#eae6d9;         /* texto claro */
-      --muted:#b9b39f;       /* texto secundário */
-      --gold:#d4af37;        /* destaque dourado */
+      --bg:#0b1a15;
+      --txt:#eae6d9;
+      --muted:#b9b39f;
+      --gold:#d4af37;
       --max:1100px;
-
-      /* papel de parede */
       --patron-wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5f15e61e-38c1-4d35-912a-d388fb8f9a38.png");
+
+      /* paleta tokenomics */
+      --accent-gold:#d4af37; --accent-amber:#caa32b; --accent-emerald:#2ea36a;
+      --accent-moss:#5a7d4b; --accent-mint:#9fd4b0; --accent-brown:#5c3b14;
     }
+
     *{box-sizing:border-box}
-    html,body{
-      margin:0;padding:0;background:var(--bg);color:var(--txt);
-      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+      font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
-    /* Botões */
-    .btn{
-      display:inline-flex;align-items:center;gap:.6rem;font-weight:700;
-      border:1px solid rgba(255,255,255,.14);
-      padding:.9rem 1.2rem;border-radius:12px;
-      background:linear-gradient(180deg,#20362e,#132720);
-      box-shadow:0 6px 20px rgba(0,0,0,.35);transition:.2s;
-      text-transform:uppercase;font-family:"Signika",system-ui,sans-serif;
-    }
+    /* ===================== BUTTONS / BADGE ===================== */
+    .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;
+      border:1px solid rgba(255,255,255,.14);padding:.9rem 1.2rem;border-radius:12px;
+      background:linear-gradient(180deg,#20362e,#132720);box-shadow:0 6px 20px rgba(0,0,0,.35);
+      transition:.2s;text-transform:uppercase;font-family:"Signika",system-ui,sans-serif}
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.45)}
     .btn.gold{background:linear-gradient(180deg,#f6d989,#caa32b);border-color:#caa32b;color:#1a1407}
     .btn.ghost{background:transparent;border-color:rgba(255,255,255,.2)}
+    .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);font-size:.85rem;color:var(--muted);font-family:"Signika",system-ui,sans-serif;font-weight:700}
 
-    .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);font-size:.85rem;color:var(--muted);font-family:"Signika",system-ui,sans-serif;font-weight:700}
-
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:saturate(120%) blur(8px);background:rgba(11,26,21,.6)
-    }
+    /* ===================== HEADER ===================== */
+    header{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:saturate(120%) blur(8px);background:rgba(11,26,21,.6)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     nav .brand{display:flex;align-items:center;gap:.6rem}
-    nav .brand span{
-      font-family:"Alfa Slab One",serif; text-transform:uppercase; letter-spacing:.5px;
-      color:#f5d07a; text-shadow:0 1px 0 rgba(0,0,0,.35);
-    }
+    nav .brand span{font-family:"Alfa Slab One",serif;text-transform:uppercase;letter-spacing:.5px;color:#f5d07a;
+      text-shadow:0 1px 0 rgba(0,0,0,.35)}
     nav .links{display:flex;gap:18px;align-items:center}
-    nav .links a{opacity:.9}
-    nav .links a:hover{opacity:1}
+    nav .links a{opacity:.9} nav .links a:hover{opacity:1}
 
-    /* HERO */
+    /* ===================== HERO ===================== */
     .hero{
-      position:relative; min-height:88vh; display:grid; align-items:center;
+      position:relative;min-height:88vh;display:grid;align-items:center;
       background:
         linear-gradient(180deg, rgba(11,26,21,.10), rgba(11,26,21,.35) 70%),
-        url('pepe.png?v=5');
-      background-repeat:no-repeat;
-      background-size:cover;
-      background-position:center 12%;
+        url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png') center 12%/cover no-repeat;
     }
     .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
-    .title{
-      font-family:"Alfa Slab One",serif;
-      font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px;
-      text-transform:uppercase;letter-spacing:.5px;
-      color:#f5d07a;text-shadow:0 2px 0 rgba(0,0,0,.35), 0 10px 24px rgba(0,0,0,.35);
-    }
-    .subtitle{font-family:"Signika",system-ui,sans-serif;font-weight:700;
-      font-size:clamp(16px,2.2vw,22px);color:#d9d6c8;margin:10px 0 22px}
+    .title{font-family:"Alfa Slab One",serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px;
+      text-transform:uppercase;letter-spacing:.5px;color:#f5d07a;text-shadow:0 2px 0 rgba(0,0,0,.35),0 10px 24px rgba(0,0,0,.35)}
+    .subtitle{font-family:"Signika",system-ui,sans-serif;font-weight:700;font-size:clamp(16px,2.2vw,22px);color:#d9d6c8;margin:10px 0 22px}
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
-    /* Presale card */
-    .presale{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;padding:18px;
-      backdrop-filter: blur(2px) saturate(110%);
-      color:#f2efe5;
-    }
+    /* ===================== PRESALE ===================== */
+    .presale{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px;
+      backdrop-filter:blur(2px) saturate(110%);color:#f2efe5}
     .progress{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
     .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b);transition:width .6s ease}
-    .kv{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}
-    .kv .item{min-width:110px}
-    .kv .num{font-size:26px;font-weight:800;color:var(--gold)}
+    .kv{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}.kv .item{min-width:110px}.kv .num{font-size:26px;font-weight:800;color:var(--gold)}
 
-    /* Sections */
+    /* ===================== SECTIONS / CARDS ===================== */
     section{padding:70px 0}
-    /* mantém a borda só nas que NÃO são about/how (o wallpaper fica contínuo) */
     section:not(#about):not(#how){border-top:1px solid rgba(255,255,255,.06)}
-
-    /* Títulos de seção */
-    h2{
-      font-family:"Alfa Slab One",serif;
-      text-transform:uppercase; letter-spacing:.4px;
-      margin:0 0 18px;font-size:clamp(24px,3.5vw,36px);
-      color:#f3e7c8;
-    }
-    /* Em fundo claro (about/how) */
-    #about h2, #how h2{ color:#183326; }
-
+    h2{font-family:"Alfa Slab One",serif;text-transform:uppercase;letter-spacing:.4px;margin:0 0 18px;font-size:clamp(24px,3.5vw,36px);color:#f3e7c8}
+    #about h2,#how h2{color:#183326}
     p.lead{color:#cbc6b2;max-width:740px}
-/* Grid padrão dos cards (desktop) */
-.cards{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 16px;
-  align-items: stretch;
-}
-
-/* Cards do SOBRE/COMO COMPRAR: borda + sombra */
-#about .card,
-#how  .card{
-  background: rgba(255,255,255,.92);
-  color: #132720;
-  border: 2px solid rgba(0,0,0,.15);
-  border-radius: 16px;
-  padding: 20px;
-
-  /* sombra visível */
-  box-shadow: 0 6px 16px rgba(0,0,0,.25);
-
-  transition: all .25s ease-in-out;
-}
-#about .card:hover,
-#how  .card:hover{
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(255,255,255,.98);
-  border-color: rgba(0,0,0,.25);
-  box-shadow: 0 10px 24px rgba(0,0,0,.35);
-}
-
-/* Hover com mais realce */
-#about .card:hover,
-#how  .card:hover {
-  transform: translateY(-6px) scale(1.02) !important;
-  background: rgba(255,255,255,.98) !important;
-  border-color: rgba(0,0,0,.25) !important;
-  box-shadow: 0 10px 24px rgba(0,0,0,.35) !important;
-}
-
-    /* Ícones inline */
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+    #about .card,#how .card{background:rgba(255,255,255,.92);color:#132720;border:2px solid rgba(0,0,0,.15);border-radius:16px;padding:20px;
+      box-shadow:0 6px 16px rgba(0,0,0,.25);transition:all .25s ease-in-out}
+    #about .card:hover,#how .card:hover{transform:translateY(-6px) scale(1.02);background:rgba(255,255,255,.98);border-color:rgba(0,0,0,.25);
+      box-shadow:0 10px 24px rgba(0,0,0,.35)}
     .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
     .flex{display:flex;align-items:center;gap:10px}
 
-    /* Tokenomics */
-    .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
-    table{width:100%;border-collapse:collapse;font-size:.95rem}
-    td,th{padding:10px;border-bottom:1px solid rgba(255,255,255,.08)}
-    th{text-align:left;color:#c9c4b0;font-weight:600}
+    /* ===================== WALLPAPER WRAPPER ===================== */
+    .wallpaper{position:relative;background:var(--patron-wallpaper) repeat;background-size:520px;background-position:center top;overflow:hidden}
+    .wallpaper::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.10);backdrop-filter:blur(.4px);pointer-events:none;z-index:0}
+    .wallpaper > *{position:relative;z-index:1}
+    #about,#how{background:transparent;border-top:none;margin:0;padding-top:70px;padding-bottom:70px;color:#122821}
+    #about h2{text-align:center;margin-bottom:24px}
+    #about .lead{display:block;max-width:800px;margin:0 auto 28px;text-align:center;background:rgba(255,255,255,.9);
+      border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:16px 20px;box-shadow:0 6px 18px rgba(0,0,0,.08);font-weight:600}
 
-    /* Roadmap */
+    /* cores de borda automáticas dos cards */
+    #about .cards .card:nth-child(1){--card-accent:var(--accent-gold)}
+    #about .cards .card:nth-child(2){--card-accent:var(--accent-emerald)}
+    #about .cards .card:nth-child(3){--card-accent:var(--accent-moss)}
+    #how .cards .card:nth-child(6n+1){--card-accent:var(--accent-gold)}
+    #how .cards .card:nth-child(6n+2){--card-accent:var(--accent-amber)}
+    #how .cards .card:nth-child(6n+3){--card-accent:var(--accent-emerald)}
+    #how .cards .card:nth-child(6n+4){--card-accent:var(--accent-moss)}
+    #how .cards .card:nth-child(6n+5){--card-accent:var(--accent-mint)}
+    #how .cards .card:nth-child(6n+6){--card-accent:var(--accent-brown)}
+    #about .card,#how .card{border:2px solid var(--card-accent,rgba(0,0,0,.15));box-shadow:0 6px 16px rgba(0,0,0,.22)}
+    #about .card:hover,#how .card:hover{border-color:var(--card-accent,rgba(0,0,0,.25));box-shadow:0 10px 24px rgba(0,0,0,.30)}
+
+    /* ===================== DIVIDER (única) ===================== */
+    .divider{height:6px;background:linear-gradient(90deg,rgba(212,175,55,0) 0%,rgba(212,175,55,.8) 50%,rgba(212,175,55,0) 100%);
+      border-radius:50px;margin:40px auto;max-width:90%}
+
+    /* ===================== GIVEAWAY ===================== */
+    #giveaway{position:relative;padding:clamp(48px,7.5vw,96px) 20px;text-align:center;color:#fff;
+      background:
+        linear-gradient(180deg, rgba(11,26,21,.60), rgba(11,26,21,.65)),
+        url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png') center 32%/cover no-repeat;
+      border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
+      box-shadow:inset 0 120px 160px rgba(0,0,0,.22), inset 0 -120px 160px rgba(0,0,0,.22)}
+    #giveaway .giveaway-inner{max-width:980px;margin:0 auto}
+    #giveaway .giveaway-title{font-family:"Alfa Slab One",serif;text-transform:uppercase;letter-spacing:.4px;color:#f6d989;
+      text-shadow:0 2px 0 rgba(0,0,0,.45),0 14px 30px rgba(0,0,0,.55);font-size:clamp(26px,4vw,46px);margin:0 0 10px}
+    #giveaway .giveaway-amount{font-family:"Alfa Slab One",serif;line-height:1;font-size:clamp(44px,8.8vw,108px);
+      color:#ffe28a;text-shadow:0 0 28px rgba(0,0,0,.8),0 10px 30px rgba(0,0,0,.8);
+      animation:pulseGlow 2.2s ease-in-out infinite;display:inline-block;padding:.15em .35em;border-radius:16px;
+      background:linear-gradient(180deg,rgba(255,209,102,.22),rgba(255,209,102,.06));box-shadow:inset 0 2px 10px rgba(0,0,0,.18)}
+    #giveaway .giveaway-prizes{font-family:"Signika",system-ui,sans-serif;font-weight:700;font-size:clamp(17px,2vw,22px);
+      margin:16px auto 14px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+    #giveaway .giveaway-rules{max-width:760px;margin:14px auto 20px;padding:16px 18px;border-radius:14px;background:rgba(0,0,0,.40);
+      box-shadow:0 10px 28px rgba(0,0,0,.35);font-size:clamp(14px,1.7vw,17px);line-height:1.6;color:#f1efe6}
+    #giveaway .giveaway-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+    @keyframes pulseGlow{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+
+    /* ===================== TOKENOMICS (UNIFICADO) ===================== */
+    #tokenomics{
+      position:relative;
+      padding:60px 0;
+      border-top:2px solid rgba(0,0,0,.06);
+      border-bottom:2px solid rgba(0,0,0,.06);
+      background:
+        url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png")
+        right center / 520px auto no-repeat,
+        #f3ead2;
+    }
+    #tokenomics::before{content:"";position:absolute;inset:0;background:rgba(248,241,223,.55);pointer-events:none;z-index:0}
+    #tokenomics .container{position:relative;z-index:1}
+
+    .tk-card{position:relative;overflow:visible;background:#f8efd9;border:2px solid #c9b37a;border-radius:20px;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);padding:28px 28px 36px}
+    .tk-title{position:relative;z-index:1}
+    .tk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start;position:relative;z-index:1}
+    .chart-card,.table-card{background:rgba(255,255,255,.90);border:1px solid rgba(0,0,0,.08);border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.12);padding:14px}
+    #tokenChart{display:block;width:100%;max-width:100%;min-height:260px;border-radius:12px;background:#fff}
+    #tokenomics th,#tokenomics td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.08);color:#173226}
+
+    /* Pepe “marca d'água” dentro do card */
+    #tokenomics .tk-pepe{position:absolute;right:-4%;bottom:-14px;width:min(46%,560px);opacity:.34;pointer-events:none;user-select:none;z-index:0;
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.18))}
+
+    /* ===================== OUTRAS SEÇÕES ===================== */
     .timeline{position:relative;padding-left:24px}
     .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.2)}
     .milestone{position:relative;margin:18px 0;padding-left:14px}
     .milestone::before{content:"";position:absolute;left:-17px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--gold)}
-
-    /* Meme gallery */
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
     .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
-
-    /* FAQ */
     details{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:14px}
-    details+details{margin-top:10px}
-    summary{cursor:pointer;font-weight:700}
-
+    details+details{margin-top:10px} summary{cursor:pointer;font-weight:700}
     footer{padding:40px 0;color:#c9c4b0}
 
-    /* === Fundo contínuo para About + How === */
-    .wallpaper{
-      position: relative;
-      background: var(--patron-wallpaper) repeat;
-      background-size: 520px;           /* ajuste se quiser menos/mais repetição */
-      background-position: center top;
-      overflow: hidden;
-    }
-    .wallpaper::before{
-      content:"";
-      position:absolute; inset:0;
-      background: rgba(255,255,255,.10); /* película fina */
-      backdrop-filter: blur(.4px);
-      pointer-events:none;
-      z-index:0;
-    }
-    .wallpaper > *{ position:relative; z-index:1; }
-
-    /* As seções dentro do wrapper não repetem fundo */
-    #about, #how{
-      background: transparent;
-      border-top: none;
-      margin: 0;
-      padding-top: 70px;
-      padding-bottom: 70px;
-      color:#122821;
-    }
- 
-    /* Responsive */
+    /* ===================== RESPONSIVO ===================== */
     @media (max-width:980px){
       .hero .wrap{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr 1fr}
-      .grid-2{grid-template-columns:1fr}
+      .tk-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:700px){
+      #tokenomics{background:#f3ead2}
     }
     @media (max-width:540px){
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
-      .wallpaper{ background-size:600px; } /* menos repetição no mobile */
+      .wallpaper{background-size:600px}
     }
-    
-    /* Parágrafo de abertura mais legível no #about */
-#about .lead{
-  color:#1e352c;                 /* texto escuro */
-  background: rgba(255,255,255,.88);
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 14px;
-  padding: 14px 16px;
-  display:inline-block;          /* para não ocupar a largura toda */
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
-  backdrop-filter: blur(1px);    /* leve difusão do papel atrás */
-  margin-bottom: 18px;
-  font-weight: 600;              /* dá mais corpo */
-}
-/* === Bordas coloridas por card (paleta do site) === */
-
-/* base: usa a cor da var --card-accent */
-#about .card,
-#how  .card{
-  border: 2px solid var(--card-accent, rgba(0,0,0,.15));
-  box-shadow: 0 6px 16px rgba(0,0,0,.22);
-}
-#about .card:hover,
-#how  .card:hover{
-  border-color: var(--card-accent, rgba(0,0,0,.25));
-  box-shadow: 0 10px 24px rgba(0,0,0,.30), 0 0 0 2px color-mix(in srgb, var(--card-accent) 45%, transparent);
-}
-
-/* paleta (pode ajustar os hex se quiser) */
-:root{
-  --accent-gold:   #d4af37; /* ouro da moeda */
-  --accent-amber:  #caa32b; /* dourado mais quente */
-  --accent-emerald:#2ea36a; /* verde Pepe “grana” */
-  --accent-moss:   #5a7d4b; /* verde musgo */
-  --accent-mint:   #9fd4b0; /* verdinho suave */
-  --accent-brown:  #5c3b14; /* marrom do charuto/sombra */
-}
-
-/* === Mapeamento automático por posição === */
-/* SOBRE (3 cards) */
-#about .cards .card:nth-child(1){ --card-accent: var(--accent-gold);   }
-#about .cards .card:nth-child(2){ --card-accent: var(--accent-emerald);}
-#about .cards .card:nth-child(3){ --card-accent: var(--accent-moss);   }
-
-/* COMO COMPRAR (6 cards): ciclo de 6 cores */
-#how .cards .card:nth-child(6n+1){ --card-accent: var(--accent-gold);   }
-#how .cards .card:nth-child(6n+2){ --card-accent: var(--accent-amber);  }
-#how .cards .card:nth-child(6n+3){ --card-accent: var(--accent-emerald);}
-#how .cards .card:nth-child(6n+4){ --card-accent: var(--accent-moss);   }
-#how .cards .card:nth-child(6n+5){ --card-accent: var(--accent-mint);   }
-#how .cards .card:nth-child(6n+6){ --card-accent: var(--accent-brown);  }
-
-/* fallback caso o browser não suporte color-mix */
-@supports not (color-mix(in srgb, red 50%, transparent)){
-  #about .card:hover,
-  #how  .card:hover{
-    /* mantém a sombra neutra, só reforça a borda colorida */
-    box-shadow: 0 10px 24px rgba(0,0,0,.30);
-  }
-}
-    /* Centralizar o título da seção */
-#about h2 {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-/* Centralizar o parágrafo inicial e ajustar largura */
-#about .lead {
-  display: block;                /* ocupa a largura disponível */
-  max-width: 800px;              /* controla o tamanho para não ficar gigante */
-  margin: 0 auto 28px auto;      /* centraliza com margin auto */
-  text-align: center;            /* texto centralizado */
-  background: rgba(255,255,255,.9);
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 14px;
-  padding: 16px 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,.08);
-  font-weight: 600;
-}
-    /* ===== Giveaway ===== */
-#giveaway{
-  position: relative;
-  padding: clamp(60px, 10vw, 120px) 20px;
-  text-align: center;
-  color: #fff;
-
-  /* fundo: sua arte */
-  background:
-    linear-gradient(180deg, rgba(11,26,21,.60), rgba(11,26,21,.65)), /* véu p/ legibilidade */
-    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png') center/cover no-repeat;
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-#giveaway .giveaway-inner{ max-width: 980px; margin: 0 auto; }
-
-#giveaway .giveaway-title{
-  font-family: "Alfa Slab One", serif;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  color: #f6d989;
-  text-shadow: 0 2px 0 rgba(0,0,0,.35), 0 14px 36px rgba(0,0,0,.65);
-  font-size: clamp(28px, 4.4vw, 52px);
-  margin: 0 0 18px;
-}
-
-/* número gigante com animação */
-#giveaway .giveaway-amount{
-  font-family: "Alfa Slab One", serif;
-  line-height: 1;
-  font-size: clamp(48px, 10vw, 140px);
-  color: #ffe28a;
-  text-shadow: 0 0 28px rgba(0,0,0,.8), 0 10px 30px rgba(0,0,0,.8);
-  animation: pulseGlow 2.2s ease-in-out infinite;
-  display: inline-block;
-  padding: .15em .35em;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(255,209,102,.22), rgba(255,209,102,.06));
-  box-shadow: inset 0 2px 10px rgba(0,0,0,.18);
-}
-
-/* linhas de prêmios */
-#giveaway .giveaway-prizes{
-  font-family: "Signika", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(18px, 2.2vw, 24px);
-  margin: 16px auto 14px;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,.55);
-}
-
-/* caixa das regras */
-#giveaway .giveaway-rules{
-  max-width: 760px;
-  margin: 14px auto 20px;
-  padding: 16px 18px;
-  border-radius: 14px;
-  background: rgba(0,0,0,.45);
-  box-shadow: 0 10px 28px rgba(0,0,0,.35);
-  font-size: clamp(15px, 1.8vw, 18px);
-  line-height: 1.6;
-  color: #f1efe6;
-}
-
-/* botões abaixo */
-#giveaway .giveaway-cta{
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-/* animação do valor */
-@keyframes pulseGlow{
-  0%   { transform: scale(1);     filter: drop-shadow(0 0 0 rgba(255,214,100,.0)); }
-  50%  { transform: scale(1.06);  filter: drop-shadow(0 0 16px rgba(255,214,100,.45)); }
-  100% { transform: scale(1);     filter: drop-shadow(0 0 0 rgba(255,214,100,.0)); }
-}
-    /* ——— Ajustes visuais do bloco de SORTEIO ——— */
-#giveaway{
-  /* deixa a arte mais bem enquadrada e visível */
-  background-position: center 32% !important; /* estava "center" */
-  padding: clamp(48px, 7.5vw, 96px) 20px !important; /* menos padding no topo */
-  /* leve vinheta nas bordas pra dar contraste ao texto */
-  box-shadow: inset 0 120px 160px rgba(0,0,0,.22),
-              inset 0 -120px 160px rgba(0,0,0,.22);
-}
-
-/* título: um pouco menor e com respiração */
-#giveaway .giveaway-title{
-  font-size: clamp(26px, 4vw, 46px) !important; /* estava maior */
-  margin: 0 0 10px !important;
-  letter-spacing: .4px;
-  /* contraste extra contra a arte */
-  text-shadow: 0 2px 0 rgba(0,0,0,.45), 0 14px 30px rgba(0,0,0,.55);
-}
-
-/* valor gigante: mantém destaque mas sem “estourar” */
-#giveaway .giveaway-amount{
-  font-size: clamp(44px, 8.8vw, 108px) !important; /* - ~20% */
-  margin-top: 6px;
-}
-
-/* prêmios e regras um tiquinho mais compactos */
-#giveaway .giveaway-prizes{
-  font-size: clamp(17px, 2vw, 22px) !important;
-}
-#giveaway .giveaway-rules{
-  background: rgba(0,0,0,.40) !important; /* um pouco menos escuro */
-  font-size: clamp(14px, 1.7vw, 17px) !important;
-}
-
-/* Em telas menores, recentra a arte e reduz o glow */
-@media (max-width: 980px){
-  #giveaway{ background-position: center 38% !important; }
-  #giveaway .giveaway-amount{ animation-duration: 1.8s; }
-}
-    .divider {
-  border-top: 2px solid rgba(212,175,55,0.6); /* linha dourada */
-  box-shadow: 0 -4px 10px rgba(212,175,55,0.15) inset; /* glow sutil */
-  margin: 40px 0; /* espaço para destacar */
-}
-    /* Divider dourada com gradiente */
-.divider {
-  height: 6px; /* espessura da linha */
-  background: linear-gradient(
-    90deg,
-    rgba(212, 175, 55, 0) 0%,      /* dourado transparente no início */
-    rgba(212, 175, 55, 0.8) 50%,   /* dourado forte no meio */
-    rgba(212, 175, 55, 0) 100%     /* dourado transparente no fim */
-  );
-  border-radius: 50px;
-  margin: 40px auto;
-  max-width: 90%; /* deixa mais elegante */
-}
-/* Fundo personalizado para TOKENOMICS (Pepe à direita, paleta bege) */
-#tokenomics{
-  position:relative;
-  background:
-    url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png")
-    no-repeat right center;
-  background-size: 520px auto;         /* tamanho do Pepe no desktop */
-  background-color:#f8f1df;            /* bege da paleta */
-  border-top:2px solid rgba(0,0,0,.06);
-  border-bottom:2px solid rgba(0,0,0,.06);
-  padding:80px 0;
-  z-index:0;
-}
-
-/* Película begezinha bem leve para dar legibilidade */
-#tokenomics::before{
-  content:"";
-  position:absolute; inset:0;
-  background:rgba(248,241,223,.55);
-  pointer-events:none;
-  z-index:0;
-}
-
-/* Conteúdo acima do fundo */
-#tokenomics .container{ position:relative; z-index:1; }
-
-/* Cartão do gráfico e da tabela */
-#tokenomics canvas,
-#tokenomics table{
-  background:rgba(255,255,255,.92);
-  border-radius:12px;
-  padding:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.14);
-  border:1px solid rgba(0,0,0,.10);
-}
-
-/* Ajuste de tipografia da tabela sobre o fundo claro */
-#tokenomics th, #tokenomics td{ color:#173226 }
-
-/* Responsivo: diminuir/ocultar o Pepe em telas menores */
-@media (max-width:1100px){
-  #tokenomics{ background-size: 420px auto; }
-}
-@media (max-width:900px){
-  #tokenomics{
-    background-position: right -60px center; /* empurra um pouco para fora */
-    background-size: 340px auto;
-  }
-}
-@media (max-width:700px){
-  #tokenomics{ background: #f8f1df; } /* some o Pepe para focar no conteúdo */
-}
-   /* ===== TOKENOMICS – Card integrado com Pepe no fundo ===== */
-#tokenomics{
-  background: #f3ead2;            /* bege da paleta */
-  padding: 60px 0;
-}
-
-.tk-card{
-  position: relative;
-  background: #f8efd9;
-  border: 2px solid #c9b37a;      /* borda bege/dourada */
-  border-radius: 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.12);
-  padding: 28px 28px 36px;
-  overflow: visible;              /* não corta o Pepe */
-}
-
-/* Pepe como marca d’água mais visível e sem “corte duro” nas bordas */
-.tk-pepe{
-  position: absolute;
-  right: -4%;
-  bottom: -10px;
-  width: min(46%, 560px);
-  opacity: .32;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
-  -webkit-mask-image: radial-gradient(85% 85% at 60% 55%, #000 68%, rgba(0,0,0,0) 100%);
-          mask-image: radial-gradient(85% 85% at 60% 55%, #000 68%, rgba(0,0,0,0) 100%);
-}
-
-/* grid do conteúdo do tokenomics */
-.tk-grid{
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 22px;
-  align-items: start;
-}
-
-/* cartões */
-.chart-card, .table-card{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-  padding:14px;
-}
-
-/* canvas ocupa toda a largura e fica com altura mínima */
-#tokenChart{
-  display:block;
-  width:100%;
-  max-width:100%;
-  min-height:260px;
-  border-radius:12px;
-  background:#fff;
-}
-
-/* tabela sobre o fundo claro */
-#tokenomics table{ width:100%; border-collapse:collapse; }
-#tokenomics th, #tokenomics td{
-  padding:10px 12px;
-  border-bottom:1px solid rgba(0,0,0,.08);
-  color:#173226;
-}
-
-/* responsivo */
-@media (max-width: 980px){
-  .tk-grid{ grid-template-columns: 1fr; }
-  .tk-pepe{ right:-10%; width:min(60%,560px); opacity:.28; }
-}
-@media (max-width: 640px){
-  .tk-pepe{ display:none; }
-}
-
-  /* card do gráfico */
-.chart-card{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  box-shadow:0 8px 22px rgba(0,0,0,.12);
-  padding:14px;
-}
-
-/* canvas ocupa toda a largura e fica com altura mínima */
-#tokenChart{
-  display:block;
-  width:100%;
-  max-width:100%;
-  min-height:260px; /* garante altura visível */
-  border-radius:12px;
-  background:#fff;
-}
-    /* === Ajuste fino do Pepe no card de Tokenomics === */
-:root{
-  /* troque os valores abaixo se quiser ajustar sem mexer no CSS: */
-  --pepeW: 42%;      /* largura relativa do Pepe dentro do card (ex.: 36–48%) */
-  --pepeRight: 10px; /* distância da borda direita do card (px ou %) */
-  --pepeBottom: -6px;/* “apoio” na base do card (negativo desce um pouco) */
-}
-
-/* o card não deixa a imagem vazar pelas bordas */
-#tokenomics .tk-card{
-  overflow: hidden;
-  position: relative;
-}
-
-/* posicionamento e escala do Pepe */
-#tokenomics .tk-pepe{
-  position: absolute;
-  right: var(--pepeRight);
-  bottom: var(--pepeBottom);
-  width: min(var(--pepeW), 560px);
-  opacity: .30;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0; /* fica atrás do conteúdo */
-
-  /* borda suave para não aparecer “corte” duro */
-  -webkit-mask-image: radial-gradient(90% 90% at 65% 60%, #000 72%, rgba(0,0,0,0) 100%);
-          mask-image: radial-gradient(90% 90% at 65% 60%, #000 72%, rgba(0,0,0,0) 100%);
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.14));
-}
-
-/* garante que gráfico e tabela fiquem acima da imagem */
-#tokenomics .chart-card,
-#tokenomics .table-card{ position: relative; z-index: 1; }
-
-/* responsivo: dá uma “puxadinha” para dentro em telas menores */
-@media (max-width: 1100px){
-  :root{ --pepeW: 46%; --pepeRight: -6px; --pepeBottom: -8px; }
-}
-@media (max-width: 900px){
-  :root{ --pepeW: 54%; --pepeRight: -16px; --pepeBottom: -10px; }
-}
-@media (max-width: 640px){
-  #tokenomics .tk-pepe{ display:none; } /* prioriza conteúdo no mobile */
-}
-/* === TOKENOMICS – Pepe dentro do card, visível e sem cortar === */
-
-/* o card não corta o Pepe e serve de "plano de fundo" */
-.tk-card{
-  position: relative;
-  overflow: visible;                 /* importante: não cortar a imagem */
-}
-
-/* Pepe atrás do conteúdo, mas visível */
-.tk-pepe{
-  position: absolute;
-  right: -4%;                        /* ajuste fino horizontal */
-  bottom: -14px;                     /* ajuste fino vertical */
-  width: min(46%, 560px);            /* tamanho no desktop */
-  opacity: .34;                      /* mais visível */
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;                        /* atrás do conteúdo do card */
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
-
-  /* retirei qualquer mask para não “sumir” */
-}
-
-/* todo o conteúdo do card fica acima do Pepe */
-.tk-title,
-.tk-grid,
-.chart-card,
-.table-card{
-  position: relative;
-  z-index: 1;
-}
-
-/* cartões com fundo levemente translúcido para o Pepe aparecer um pouco */
-.chart-card,
-.table-card{
-  background: rgba(255,255,255,.90);
-  box-shadow: 0 8px 22px rgba(0,0,0,.12);
-  border: 1px solid rgba(0,0,0,.08);
-  border-radius: 14px;
-}
-
-/* Responsivo: aumenta o Pepe e desloca mais para a direita em telas médias */
-@media (max-width: 1100px){
-  .tk-pepe{ right:-8%; width: min(54%, 560px); opacity:.32; }
-}
-@media (max-width: 820px){
-  .tk-pepe{ right:-12%; width: min(60%, 560px); opacity:.30; }
-}
-/* Em telas muito pequenas, esconda o Pepe para priorizar leitura */
-@media (max-width: 640px){
-  .tk-pepe{ display:none; }
-}
-
+    @media (max-width:1100px){#tokenomics .tk-pepe{right:-8%;width:min(54%,560px);opacity:.32}}
+    @media (max-width:820px){#tokenomics .tk-pepe{right:-12%;width:min(60%,560px);opacity:.30}}
+    @media (max-width:640px){#tokenomics .tk-pepe{display:none}}
   </style>
 </head>
 <body>
@@ -716,7 +230,7 @@
         <div class="cta-row">
           <a class="btn gold" href="#buy">Comprar $PATRON</a>
           <a class="btn ghost" href="#how">How to Buy</a>
-          <a class="btn ghost" href="#chart">Chart</a>
+          <a class="btn ghost" href="#tokenomics">Chart</a>
         </div>
         <div class="trust">
           <a class="badge" href="#contract">Contrato</a>
@@ -735,48 +249,37 @@
         </div>
         <div class="cta-row">
           <a class="btn gold" href="#buy">Buy</a>
-          <a class="btn" href="#chart">Chart</a>
+          <a class="btn" href="#tokenomics">Chart</a>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- 🔥 Linha separadora antes do sorteio -->
-<div class="divider"></div>
 
-  <!-- Giveaway / Sorteio -->
-<section id="giveaway">
-  <div class="giveaway-inner">
-    <h2 class="giveaway-title">🎉 SORTEIO DE LANÇAMENTO 🎉</h2>
+  <div class="divider"></div>
 
-    <div class="giveaway-amount" aria-label="Até cinquenta mil dólares em prêmios">
-      ATÉ&nbsp;$50,000
+  <!-- Giveaway -->
+  <section id="giveaway">
+    <div class="giveaway-inner">
+      <h2 class="giveaway-title">🎉 SORTEIO DE LANÇAMENTO 🎉</h2>
+      <div class="giveaway-amount">ATÉ&nbsp;$50,000</div>
+      <p class="giveaway-prizes">Serão <b>3 sorteios</b>: 🥇 $25,000 &nbsp; 🥈 $15,000 &nbsp; 🥉 $5,000</p>
+      <p class="giveaway-rules">
+        ✅ Quanto mais <b>$PATRON</b> você comprar, mais chances tem de ganhar.<br>
+        ✅ Cadastre o <b>hash</b> da sua compra.<br>
+        ✅ Sorteio <b>AO VIVO</b> no Telegram no dia do lançamento.<br>
+        🚀 Não perca a chance de levar essa bolada!
+      </p>
+      <div class="giveaway-cta">
+        <a class="btn gold" href="https://t.me/seutelegram" target="_blank" rel="noopener">Participar no Telegram</a>
+        <a class="btn ghost" href="#how">Como comprar</a>
+      </div>
     </div>
+  </section>
 
-    <p class="giveaway-prizes">
-      Serão <b>3 sorteios</b>: 🥇 $25,000 &nbsp; 🥈 $15,000 &nbsp; 🥉 $5,000
-    </p>
-
-    <p class="giveaway-rules">
-      ✅ Quanto mais <b>$PATRON</b> você comprar, mais chances tem de ganhar.<br>
-      ✅ Cadastre o <b>hash</b> da sua compra.<br>
-      ✅ Sorteio <b>AO VIVO</b> no Telegram no dia do lançamento.<br>
-      🚀 Não perca a chance de levar essa bolada!
-    </p>
-
-    <div class="giveaway-cta">
-      <a class="btn gold" href="https://t.me/seutelegram" target="_blank" rel="noopener">Participar no Telegram</a>
-      <a class="btn ghost" href="#how">Como comprar</a>
-    </div>
-  </div>
-</section>
-  
   <div class="divider"></div>
 
   <!-- Wrapper com fundo contínuo (Sobre + Como comprar) -->
   <div class="wallpaper">
-
-    <!-- About / Highlights -->
     <section id="about">
       <div class="container">
         <h2>Sobre o Projeto</h2>
@@ -808,7 +311,6 @@
       </div>
     </section>
 
-    <!-- How to Buy -->
     <section id="how">
       <div class="container">
         <h2>Como Comprar</h2>
@@ -822,40 +324,32 @@
         </div>
       </div>
     </section>
+  </div>
 
-  </div><!-- /wallpaper -->
+  <!-- TOKENOMICS -->
+  <section id="tokenomics">
+    <div class="container">
+      <div class="tk-card">
+        <h2 class="tk-title"><span id="chart"></span>TOKENOMICS</h2>
 
- <section id="tokenomics">
-  <div class="container">
-    <div class="tk-card">
-      <h2 class="tk-title">TOKENOMICS</h2>
+        <!-- Pepe marca d'água -->
+        <img class="tk-pepe" src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png" alt="Pepe El Patrón" loading="lazy"/>
 
-      <!-- Pepe (somente o personagem) como “marca d’água” dentro do card -->
-      <img class="tk-pepe" 
-           src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png" 
-           alt="Pepe El Patrón" loading="lazy"/>
-
-      <div class="tk-grid">
-        <div class="chart-card">
-          <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
-        </div>
-
-        <div class="table-card">
-          <table aria-label="Tabela de tokenomics">
-            <thead>
-              <tr><th>Alocação</th><th>%</th></tr>
-            </thead>
-            <tbody id="tkTable"></tbody>
-            <tfoot>
-              <tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr>
-            </tfoot>
-          </table>
+        <div class="tk-grid">
+          <div class="chart-card">
+            <canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas>
+          </div>
+          <div class="table-card">
+            <table aria-label="Tabela de tokenomics">
+              <thead><tr><th>Alocação</th><th>%</th></tr></thead>
+              <tbody id="tkTable"></tbody>
+              <tfoot><tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr></tfoot>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Security -->
   <section id="security">
@@ -921,116 +415,103 @@
   </footer>
 
   <!-- Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script>
-  /* ===== CONFIG ===== */
-  const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
-  const TARGET_USD = 1_000_000;
-  const RAISED_USD = 317_762.32;
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    /* ===== CONFIG ===== */
+    const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
+    const TARGET_USD = 1_000_000;
+    const RAISED_USD = 317_762.32;
 
-  const LINKS = { buy:'#', chart:'#', scan:'#', lock:'#', audit:'#' };
+    const LINKS = { buy:'#', chart:'#tokenomics', scan:'#', lock:'#', audit:'#' };
 
-  const TOKENOMICS = [
-    { label: 'Liquidity',          value: 30, color: '#f3d37a' },
-    { label: 'Marketing',          value: 20, color: '#e2b74a' },
-    { label: 'Community Rewards',  value: 16, color: '#caa32b' },
-    { label: 'Burn',               value: 34, color: '#a88214' }
-  ];
-  const TOTAL_SUPPLY = '1,000,000,000';
+    const TOKENOMICS = [
+      { label: 'Liquidity',          value: 30, color: '#f3d37a' },
+      { label: 'Marketing',          value: 20, color: '#e2b74a' },
+      { label: 'Community Rewards',  value: 16, color: '#caa32b' },
+      { label: 'Burn',               value: 34, color: '#a88214' }
+    ];
+    const TOTAL_SUPPLY = '1,000,000,000';
 
-  /* ===== PREENCHE TABELA TOKENOMICS ===== */
-  (function fillTable(){
-    const tbody = document.getElementById('tkTable');
-    if (!tbody) return;
-    tbody.innerHTML = '';
-    TOKENOMICS.forEach(t => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
-      tbody.appendChild(tr);
-    });
-    const supplyEl = document.getElementById('supply');
-    if (supplyEl) supplyEl.textContent = TOTAL_SUPPLY;
-  })();
+    /* ===== PREENCHE TABELA TOKENOMICS ===== */
+    (function fillTable(){
+      const tbody = document.getElementById('tkTable');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      TOKENOMICS.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
+        tbody.appendChild(tr);
+      });
+      const supplyEl = document.getElementById('supply');
+      if (supplyEl) supplyEl.textContent = TOTAL_SUPPLY;
+    })();
 
-  /* ===== GRÁFICO TOKENOMICS ===== */
-  window.addEventListener('DOMContentLoaded', () => {
-    const el = document.getElementById('tokenChart');
-    if (!el) return;
-
-    const ctx = el.getContext('2d');
-    if (el._chartInstance) el._chartInstance.destroy();
-
-    const chart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: TOKENOMICS.map(t => t.label),
-        datasets: [{
-          data: TOKENOMICS.map(t => t.value),
-          backgroundColor: TOKENOMICS.map(t => t.color),
-          borderColor: '#54421e',
-          borderWidth: 1.2
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              color: '#2b2b29',
-              font: { family: 'Signika', weight: 700 },
-              boxWidth: 16,
-              padding: 14
+    /* ===== GRÁFICO TOKENOMICS ===== */
+    window.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('tokenChart');
+      if (!el) return;
+      const ctx = el.getContext('2d');
+      if (el._chartInstance) el._chartInstance.destroy();
+      const chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: TOKENOMICS.map(t => t.label),
+          datasets: [{
+            data: TOKENOMICS.map(t => t.value),
+            backgroundColor: TOKENOMICS.map(t => t.color),
+            borderColor: '#54421e',
+            borderWidth: 1.2
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#2b2b29', font: { family: 'Signika', weight: 700 }, boxWidth: 16, padding: 14 }
+            },
+            tooltip: {
+              titleColor: '#2b2b29', bodyColor:  '#2b2b29',
+              backgroundColor: 'rgba(255,255,255,.95)', borderColor: 'rgba(0,0,0,.12)', borderWidth: 1
             }
           },
-          tooltip: {
-            titleColor: '#2b2b29',
-            bodyColor:  '#2b2b29',
-            backgroundColor: 'rgba(255,255,255,.95)',
-            borderColor: 'rgba(0,0,0,.12)',
-            borderWidth: 1
-          }
-        },
-        cutout: '62%',
-        animation: { duration: 600 },
-        maintainAspectRatio: false
-      }
+          cutout: '62%', animation: { duration: 600 }, maintainAspectRatio: false
+        }
+      });
+      el._chartInstance = chart;
     });
 
-    el._chartInstance = chart;
-  });
+    /* ===== PRÉ-VENDA / COUNTDOWN ===== */
+    const pb = document.getElementById('progressBar');
+    const raisedEl = document.getElementById('raised');
+    const targetEl = document.getElementById('target');
+    const cdEl     = document.getElementById('countdown');
 
-  /* ===== PRÉ-VENDA / COUNTDOWN ===== */
-  const pb = document.getElementById('progressBar');
-  const raisedEl = document.getElementById('raised');
-  const targetEl = document.getElementById('target');
-  const cdEl     = document.getElementById('countdown');
-
-  function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
-  function tick(){
-    const now = new Date();
-    const diff = Math.max(0, DEADLINE - now);
-    const d = Math.floor(diff / 864e5);
-    const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
-    if (cdEl) cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    if (pb){
-      const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
-      pb.style.width = pct + '%';
+    function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
+    function tick(){
+      const now = new Date();
+      const diff = Math.max(0, DEADLINE - now);
+      const d = Math.floor(diff / 864e5);
+      const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+      if (cdEl) cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if (pb){
+        const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
+        pb.style.width = pct + '%';
+      }
     }
-  }
-  if (raisedEl) raisedEl.textContent = `$${fmt(RAISED_USD)}`;
-  if (targetEl) targetEl.textContent = `$${fmt(TARGET_USD)}`;
-  setInterval(tick, 1000); tick();
+    if (raisedEl) raisedEl.textContent = `$${fmt(RAISED_USD)}`;
+    if (targetEl) targetEl.textContent = `$${fmt(TARGET_USD)}`;
+    setInterval(tick, 1000); tick();
 
-  /* ===== LINKS ÚTEIS ===== */
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
-  document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
-  const scanLink  = document.getElementById('scanLink');
-  const lockLink  = document.getElementById('lockLink');
-  const auditLink = document.getElementById('auditLink');
-  if (scanLink)  scanLink.href  = LINKS.scan;
-  if (lockLink)  lockLink.href  = LINKS.lock;
-  if (auditLink) auditLink.href = LINKS.audit;
-</script>
+    /* ===== LINKS ÚTEIS ===== */
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
+    document.querySelectorAll("a[href='#tokenomics']").forEach(a=>a.href = LINKS.chart);
+    const scanLink  = document.getElementById('scanLink');
+    const lockLink  = document.getElementById('lockLink');
+    const auditLink = document.getElementById('auditLink');
+    if (scanLink)  scanLink.href  = LINKS.scan;
+    if (lockLink)  lockLink.href  = LINKS.lock;
+    if (auditLink) auditLink.href = LINKS.audit;
+  </script>
 </body>
 </html>
