@@ -118,20 +118,28 @@
 
     p.lead{color:#cbc6b2;max-width:740px}
 
-    /* Cards base */
-  .card{
-  background: #fff; /* fundo sólido branco */
-  border: 2px solid #a9792d; /* borda estilo dourado/marrom */
-  border-radius: 16px;
-  padding: 20px;
-  color: #2a2a2a; /* texto escuro legível */
-  font-weight: 600;
+ /* Cards com borda + sombra */
+#about .card,
+#how  .card {
+  background: rgba(255,255,255,.92) !important; /* mantém translucidez */
+  color: #132720 !important;
+  border: 2px solid rgba(0,0,0,.15) !important; /* borda leve */
+  border-radius: 16px !important;
+  padding: 20px !important;
 
-  /* sombra deslocada estilo cartoon */
-  box-shadow: 4px 4px 0px #5c3b14;
+  /* sombra visível */
+  box-shadow: 0 6px 16px rgba(0,0,0,.25) !important;
 
   transition: all .25s ease-in-out;
-  text-align: left; /* centraliza conteúdo como no exemplo */
+}
+
+/* Hover com mais realce */
+#about .card:hover,
+#how  .card:hover {
+  transform: translateY(-6px) scale(1.02) !important;
+  background: rgba(255,255,255,.98) !important;
+  border-color: rgba(0,0,0,.25) !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35) !important;
 }
 
 /* Mantém o modelo atual, só adiciona destaque */
