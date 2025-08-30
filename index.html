@@ -147,12 +147,6 @@
   box-shadow: 0 10px 24px rgba(0,0,0,.35);
 }
 
-  /* sombra visível */
-  box-shadow: 0 6px 16px rgba(0,0,0,.25) !important;
-
-  transition: all .25s ease-in-out;
-}
-
 /* Hover com mais realce */
 #about .card:hover,
 #how  .card:hover {
@@ -498,7 +492,7 @@
 @media (max-width:700px){
   #tokenomics{ background: #f8f1df; } /* some o Pepe para focar no conteúdo */
 }
-    /* ===== TOKENOMICS – Card integrado com Pepe no fundo ===== */
+   /* ===== TOKENOMICS – Card integrado com Pepe no fundo ===== */
 #tokenomics{
   background: #f3ead2;            /* bege da paleta */
   padding: 60px 0;
@@ -511,15 +505,7 @@
   border-radius: 20px;
   box-shadow: 0 18px 40px rgba(0,0,0,.12);
   padding: 28px 28px 36px;
-  overflow: hidden;          /* deixa o card NÃO cortar o Pepe */
-.tk-card{
-  position: relative;
-  background: #f8efd9;
-  border: 2px solid #c9b37a;
-  border-radius: 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,.12);
-  padding: 28px 28px 36px;
-  overflow: visible;              /* <- antes era hidden */
+  overflow: visible;              /* não corta o Pepe */
 }
 
 /* Pepe como marca d’água mais visível e sem “corte duro” nas bordas */
@@ -527,27 +513,59 @@
   position: absolute;
   right: -4%;
   bottom: -10px;
-  width: min(46%, 560px);         /* maior um pouco */
-  opacity: .32;                   /* mais visível */
+  width: min(46%, 560px);
+  opacity: .32;
   pointer-events: none;
   user-select: none;
-
-  /* Sombra leve pra destacar em fundo claro */
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
-
-  /* Suaviza as bordas da imagem se ela tiver quadrado/fundo:
-     (com PNG recortado continua legal; com imagem “quadrada” evita corte feio) */
   -webkit-mask-image: radial-gradient(85% 85% at 60% 55%, #000 68%, rgba(0,0,0,0) 100%);
-  mask-image: radial-gradient(85% 85% at 60% 55%, #000 68%, rgba(0,0,0,0) 100%);
+          mask-image: radial-gradient(85% 85% at 60% 55%, #000 68%, rgba(0,0,0,0) 100%);
 }
 
-/* Em telas pequenas, prioriza conteúdo (pode esconder) */
+/* grid do conteúdo do tokenomics */
+.tk-grid{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 22px;
+  align-items: start;
+}
+
+/* cartões */
+.chart-card, .table-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  padding:14px;
+}
+
+/* canvas ocupa toda a largura e fica com altura mínima */
+#tokenChart{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-height:260px;
+  border-radius:12px;
+  background:#fff;
+}
+
+/* tabela sobre o fundo claro */
+#tokenomics table{ width:100%; border-collapse:collapse; }
+#tokenomics th, #tokenomics td{
+  padding:10px 12px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  color:#173226;
+}
+
+/* responsivo */
 @media (max-width: 980px){
-  .tk-pepe{ right:-10%; width: min(60%,560px); opacity:.28; }
+  .tk-grid{ grid-template-columns: 1fr; }
+  .tk-pepe{ right:-10%; width:min(60%,560px); opacity:.28; }
 }
 @media (max-width: 640px){
   .tk-pepe{ display:none; }
 }
+
   /* card do gráfico */
 .chart-card{
   background:#fff;
@@ -809,7 +827,13 @@
   <!-- Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-  // ====== CONFIGURÁVEIS ======
+  /* ===== CONFIG ===== */
+  const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
+  const TARGET_USD = 1_000_000;
+  const RAISED_USD = 317_762.32;
+
+  const LINKS = { buy:'#', chart:'#', scan:'#', lock:'#', audit:'#' };
+
   const TOKENOMICS = [
     { label: 'Liquidity',          value: 30, color: '#f3d37a' },
     { label: 'Marketing',          value: 20, color: '#e2b74a' },
@@ -818,9 +842,10 @@
   ];
   const TOTAL_SUPPLY = '1,000,000,000';
 
-  // Preenche a tabela (se você usa outra lógica, pode ignorar este trecho)
-  const tbody = document.getElementById('tkTable');
-  if (tbody) {
+  /* ===== PREENCHE TABELA TOKENOMICS ===== */
+  (function fillTable(){
+    const tbody = document.getElementById('tkTable');
+    if (!tbody) return;
     tbody.innerHTML = '';
     TOKENOMICS.forEach(t => {
       const tr = document.createElement('tr');
@@ -829,19 +854,15 @@
     });
     const supplyEl = document.getElementById('supply');
     if (supplyEl) supplyEl.textContent = TOTAL_SUPPLY;
-  }
+  })();
 
-  // Cria o gráfico — rode apenas UMA vez
+  /* ===== GRÁFICO TOKENOMICS ===== */
   window.addEventListener('DOMContentLoaded', () => {
     const el = document.getElementById('tokenChart');
-    if (!el) return; // canvas não existe
+    if (!el) return;
 
     const ctx = el.getContext('2d');
-
-    // Se já existir um chart nesse canvas (por reload hot etc.), destrói primeiro
-    if (el._chartInstance) {
-      el._chartInstance.destroy();
-    }
+    if (el._chartInstance) el._chartInstance.destroy();
 
     const chart = new Chart(ctx, {
       type: 'doughnut',
@@ -859,7 +880,7 @@
           legend: {
             position: 'bottom',
             labels: {
-              color: '#2b2b29', // texto escuro: visível no bege
+              color: '#2b2b29',
               font: { family: 'Signika', weight: 700 },
               boxWidth: 16,
               padding: 14
@@ -875,63 +896,45 @@
         },
         cutout: '62%',
         animation: { duration: 600 },
-        maintainAspectRatio: false // deixa a altura respeitar o min-height
+        maintainAspectRatio: false
       }
     });
 
-    // guarda a instância pra destruir em redenderizações futuras se precisar
     el._chartInstance = chart;
   });
 
-    // Presale progress + contagem regressiva
-    const pb = document.getElementById('progressBar');
-    const raisedEl = document.getElementById('raised');
-    const targetEl = document.getElementById('target');
-    const cdEl = document.getElementById('countdown');
+  /* ===== PRÉ-VENDA / COUNTDOWN ===== */
+  const pb = document.getElementById('progressBar');
+  const raisedEl = document.getElementById('raised');
+  const targetEl = document.getElementById('target');
+  const cdEl     = document.getElementById('countdown');
 
-    function fmt(n){ return n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); }
-    function tick(){
-      const now = new Date();
-      const diff = Math.max(0, DEADLINE - now);
-      const d = Math.floor(diff / 864e5);
-      const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
-      cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
+  function tick(){
+    const now = new Date();
+    const diff = Math.max(0, DEADLINE - now);
+    const d = Math.floor(diff / 864e5);
+    const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+    if (cdEl) cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if (pb){
       const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
       pb.style.width = pct + '%';
     }
-    raisedEl.textContent = `$${fmt(RAISED_USD)}`;
-    targetEl.textContent = `$${fmt(TARGET_USD)}`;
-    setInterval(tick, 1000); tick();
+  }
+  if (raisedEl) raisedEl.textContent = `$${fmt(RAISED_USD)}`;
+  if (targetEl) targetEl.textContent = `$${fmt(TARGET_USD)}`;
+  setInterval(tick, 1000); tick();
 
-    // Tokenomics table + chart
-    document.getElementById('supply').textContent = TOTAL_SUPPLY;
-    const tbody = document.getElementById('tkTable');
-    TOKENOMICS.forEach(t => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
-      tbody.appendChild(tr);
-    });
-
-    const ctx = document.getElementById('tokenChart');
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: TOKENOMICS.map(t => t.label),
-        datasets: [{ data: TOKENOMICS.map(t => t.value), backgroundColor: TOKENOMICS.map(t => t.color), borderColor: '#0b1a15', borderWidth: 2 }]
-      },
-      options: {
-        plugins: { legend: { position: 'bottom', labels: { color: '#eae6d9', font:{family:"Signika",weight:700} } } },
-        cutout: '60%'
-      }
-    });
-
-    // Links úteis
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
-    document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
-    document.getElementById('scanLink').href = LINKS.scan;
-    document.getElementById('lockLink').href = LINKS.lock;
-    document.getElementById('auditLink').href = LINKS.audit;
-  </script>
+  /* ===== LINKS ÚTEIS ===== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll("a[href='#buy']").forEach(a=>a.href = LINKS.buy);
+  document.querySelectorAll("a[href='#chart']").forEach(a=>a.href = LINKS.chart);
+  const scanLink  = document.getElementById('scanLink');
+  const lockLink  = document.getElementById('lockLink');
+  const auditLink = document.getElementById('auditLink');
+  if (scanLink)  scanLink.href  = LINKS.scan;
+  if (lockLink)  lockLink.href  = LINKS.lock;
+  if (auditLink) auditLink.href = LINKS.audit;
+</script>
 </body>
 </html>
