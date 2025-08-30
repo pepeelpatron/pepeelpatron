@@ -147,15 +147,6 @@
   box-shadow: 0 10px 24px rgba(0,0,0,.35);
 }
 
- /* Cards com borda + sombra */
-#about .card,
-#how  .card {
-  background: rgba(255,255,255,.92) !important; /* mantém translucidez */
-  color: #132720 !important;
-  border: 2px solid rgba(0,0,0,.15) !important; /* borda leve */
-  border-radius: 16px !important;
-  padding: 20px !important;
-
   /* sombra visível */
   box-shadow: 0 6px 16px rgba(0,0,0,.25) !important;
 
@@ -170,28 +161,6 @@
   border-color: rgba(0,0,0,.25) !important;
   box-shadow: 0 10px 24px rgba(0,0,0,.35) !important;
 }
-
-/* Mantém o modelo atual, só adiciona destaque */
-#about .card,
-#how  .card{
-  background: rgba(255,255,255,.90);       /* mantém translucidez */
-  color:#132720;
-  border: 2px solid rgba(0,0,0,.12);       /* borda leve */
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);  /* sombra suave */
-  transition: all .25s ease-in-out;
-  padding: 18px;
-}
-
-/* Hover ainda com efeito */
-#about .card:hover,
-#how  .card:hover{
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(255,255,255,.96);
-  border-color: rgba(0,0,0,.18);           /* borda mais visível */
-  box-shadow: 0 8px 18px rgba(0,0,0,.25);  /* sombra mais forte no hover */
-}
-
 
     /* Ícones inline */
     .ico{width:26px;height:26px;display:inline-block;vertical-align:-6px;color:var(--gold)}
@@ -247,20 +216,7 @@
       padding-bottom: 70px;
       color:#122821;
     }
-    /* Cards nessas seções ficam claros */
-    #about .card, #how .card{
-      background: rgba(255,255,255,.90);
-      color:#132720;
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow: 0 2px 8px rgba(0,0,0,.06);
-    }
-    #about .card h3, #how .card h3{ color:#132720 }
-    #about .card:hover, #how .card:hover{
-      background: rgba(255,255,255,.96);
-      border-color: rgba(0,0,0,.12);
-      box-shadow: 0 12px 24px rgba(0,0,0,.18);
-    }
-
+ 
     /* Responsive */
     @media (max-width:980px){
       .hero .wrap{grid-template-columns:1fr}
