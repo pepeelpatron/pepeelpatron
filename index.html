@@ -267,17 +267,37 @@
 #tokenomics .table-card{
   background: rgba(255,255,255,.88) !important;
   
-}/* ===== SECURITY – estilo Patrón (bege + dourado) ===== */
+/* Fundo bege limpo */
 #security{
   position: relative;
+  background: #f8f1df;
   padding: 80px 0;
-  background: 
-    linear-gradient(rgba(248,241,223,0.92), rgba(248,241,223,0.92)), /* véu bege */
-    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png') 
-    center/cover no-repeat;
+  overflow: hidden;
   border-top: 2px solid rgba(0,0,0,.06);
   border-bottom: 2px solid rgba(0,0,0,.06);
 }
+
+/* Pepe SEMPRE atrás + fade na borda esquerda */
+#security .bg-pepe{
+  position: absolute;
+  right: -8px;
+  bottom: -10px;
+  width: min(38vw, 520px);
+  opacity: .38;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  filter: contrast(1.05) brightness(0.98) saturate(1.06);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.6) 18%, #000 38%);
+          mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.6) 18%, #000 38%);
+}
+
+/* garante que tudo fique acima da imagem */
+#security .container{ position: relative; z-index: 2; }
+
+/* cards mais opacos para não “vazar” o fundo */
+#security .card{ background: rgba(255,255,255,.96); }
+
 
 /* título da seção */
 #security h2{
@@ -505,13 +525,35 @@
     </div>
   </section>
 
-<!-- Security -->
 <section id="security">
-  <img class="bg-pepe" src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png" alt="Pepe El Patrón Cofre">
+  
+  <!-- Pepe marca d'água lateral -->
+  <img class="bg-pepe" 
+       src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png" 
+       alt="Pepe El Patrón Cofre" loading="lazy">
+
   <div class="container">
-    <h2>SEGURANÇA & TRANSPARÊNCIA</h2>
+    <h2>Segurança & Transparência</h2>
     <div class="cards">
-      
+      <div class="card">
+        <h3>Contrato</h3>
+        <p>Endereço: <span id="contract">0xYourContractHere</span></p>
+        <a class="btn" id="scanLink" href="#">Ver no Scan</a>
+      </div>
+      <div class="card">
+        <h3>Liquidity Lock</h3>
+        <p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p>
+        <a class="btn" id="lockLink" href="#">Comprovante</a>
+      </div>
+      <div class="card">
+        <h3>Audit/KYC</h3>
+        <p>Relatórios de auditoria e verificação de equipe.</p>
+        <a class="btn" id="auditLink" href="#">Ver Relatório</a>
+      </div>
+    </div>
+  </div>
+</section>
+
       <!-- Contrato -->
       <div class="card">
         <div class="sec-head">
