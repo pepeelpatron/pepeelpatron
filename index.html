@@ -490,6 +490,33 @@
 #tokenomics td {
   color: #132720; /* texto escuro, legível */
 }
+    /* Fundo personalizado só para a seção Tokenomics */
+#tokenomics {
+  position: relative;
+  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/60b9660c-01bb-42e0-931a-05dd88a49c3b.png") 
+              no-repeat center right;
+  background-size: 480px auto;   /* controla o tamanho do Pepe */
+  background-attachment: fixed; /* fixa a imagem para não rolar junto */
+  background-color: #f8f1df;     /* bege da paleta */
+  border-top: 2px solid rgba(0,0,0,.08); /* acabamento entre seções */
+  border-bottom: 2px solid rgba(0,0,0,.08);
+  z-index: 0;
+}
+
+/* Conteúdo fica acima do fundo */
+#tokenomics .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Caixa do gráfico/table ganha um leve destaque */
+#tokenomics canvas,
+#tokenomics table {
+  background: rgba(255,255,255,.88);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
 
   </style>
 </head>
