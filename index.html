@@ -217,7 +217,34 @@
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
       #about p.lead, #how p.lead{ padding: 0 8px; }
-    }
+    }/* Fundo contínuo para About + How */
+.wallpaper{
+  position: relative;
+  background: var(--patron-wallpaper) repeat;
+  background-size: 520px;
+  background-position: center top;
+  overflow: hidden;
+}
+.wallpaper::before{
+  content:"";
+  position:absolute; inset:0;
+  background: rgba(255,255,255,.10); /* película leve */
+  backdrop-filter: blur(.4px);
+  pointer-events:none;
+  z-index:0;
+}
+.wallpaper > *{ position:relative; z-index:1; }
+
+/* seções dentro do wrapper não repetem fundo */
+#about, #how{
+  background: transparent;
+  border-top: none;
+  margin: 0;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  color:#122821;
+}
+   
   </style>
 </head>
 <body>
