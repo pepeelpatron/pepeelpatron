@@ -389,6 +389,45 @@
   50%  { transform: scale(1.06);  filter: drop-shadow(0 0 16px rgba(255,214,100,.45)); }
   100% { transform: scale(1);     filter: drop-shadow(0 0 0 rgba(255,214,100,.0)); }
 }
+    /* ——— Ajustes visuais do bloco de SORTEIO ——— */
+#giveaway{
+  /* deixa a arte mais bem enquadrada e visível */
+  background-position: center 32% !important; /* estava "center" */
+  padding: clamp(48px, 7.5vw, 96px) 20px !important; /* menos padding no topo */
+  /* leve vinheta nas bordas pra dar contraste ao texto */
+  box-shadow: inset 0 120px 160px rgba(0,0,0,.22),
+              inset 0 -120px 160px rgba(0,0,0,.22);
+}
+
+/* título: um pouco menor e com respiração */
+#giveaway .giveaway-title{
+  font-size: clamp(26px, 4vw, 46px) !important; /* estava maior */
+  margin: 0 0 10px !important;
+  letter-spacing: .4px;
+  /* contraste extra contra a arte */
+  text-shadow: 0 2px 0 rgba(0,0,0,.45), 0 14px 30px rgba(0,0,0,.55);
+}
+
+/* valor gigante: mantém destaque mas sem “estourar” */
+#giveaway .giveaway-amount{
+  font-size: clamp(44px, 8.8vw, 108px) !important; /* - ~20% */
+  margin-top: 6px;
+}
+
+/* prêmios e regras um tiquinho mais compactos */
+#giveaway .giveaway-prizes{
+  font-size: clamp(17px, 2vw, 22px) !important;
+}
+#giveaway .giveaway-rules{
+  background: rgba(0,0,0,.40) !important; /* um pouco menos escuro */
+  font-size: clamp(14px, 1.7vw, 17px) !important;
+}
+
+/* Em telas menores, recentra a arte e reduz o glow */
+@media (max-width: 980px){
+  #giveaway{ background-position: center 38% !important; }
+  #giveaway .giveaway-amount{ animation-duration: 1.8s; }
+}
   </style>
 </head>
 <body>
