@@ -205,13 +205,12 @@
 }
 
 #security .sec-card{
-  /* variáveis para ajuste fino da marca-d’água */
   --sec-img-url: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
-  --sec-img-size: 560px;   /* tamanho da arte */
-  --sec-img-x:  12px;      /* deslocamento a partir da direita (positivo entra) */
-  --sec-img-y: -72px;      /* deslocamento a partir do bottom (negativo desce) */
-  --sec-img-op: .36;       /* opacidade */
-  --sec-img-br: 1.18;      /* brilho (clareia) */
+  --sec-img-size: 560px;
+  --sec-img-x:  12px;
+  --sec-img-y: -72px;   /* mais negativo = desce mais */
+  --sec-img-op: .36;
+  --sec-img-br: 1.18;
 
   position: relative;
   background:#f8efd9;
@@ -220,7 +219,19 @@
   box-shadow:0 18px 40px rgba(0,0,0,.12);
   padding:28px 28px 36px;
   overflow:hidden;
-  min-height:420px;        /* altura p/ a cabeça do Pepe aparecer */
+  min-height:420px;
+}
+
+#security .sec-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image: var(--sec-img-url);
+  background-repeat: no-repeat;
+  background-size: var(--sec-img-size) auto;
+  background-position: right var(--sec-img-x) bottom var(--sec-img-y);
+  opacity: var(--sec-img-op);
+  filter: brightness(var(--sec-img-br)) drop-shadow(0 10px 18px rgba(0,0,0,.18));
+  pointer-events:none; z-index:0;
 }
 
 /* marca-d’água */
@@ -353,7 +364,7 @@ html,body{ overflow-x:hidden; }
   letter-spacing: .8px;
   margin: 0 0 18px;
 }
-   /* Marca-d’água cobrindo 100% do card */
+  /* Marca-d’água cobrindo 100% do card */
 #security .sec-card{
   position: relative;
   overflow: hidden;
@@ -365,16 +376,14 @@ html,body{ overflow-x:hidden; }
   inset: 0;
   background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
   background-repeat: no-repeat;
-  background-position: right -24px bottom -60px;  /* <<< move a imagem pra baixo */
+  background-position: right -24px bottom -60px;
   background-size: min(520px, 48%);
-  opacity: .36;  /* <<< mais visível */
-  filter: brightness(1.15) drop-shadow(0 10px 18px rgba(0,0,0,.18)); /* <<< clareia */
+  opacity: .36;
+  filter: brightness(1.15) drop-shadow(0 10px 18px rgba(0,0,0,.18));
   pointer-events: none;
   z-index: 0;
 }
-
 #security .sec-card > *{ position: relative; z-index: 1; }
-
 @media (max-width:640px){
   #security .sec-card::after{ display:none; }
 }
