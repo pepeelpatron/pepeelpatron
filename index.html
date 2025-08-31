@@ -230,6 +230,22 @@
 .meme-theme, .meme-theme *{ opacity: initial; }
 
 /**** FIM — WALLPAPER & CLARITY FIX ****/
+    /* Remove a película escura do bloco SORTEIO (#giveaway) */
+#giveaway{
+  /* deixa só a imagem de fundo (sem gradiente escuro) */
+  background:
+    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png')
+    center 32% / cover no-repeat !important;
+
+  /* remove o véu escuro das bordas */
+  box-shadow: none !important;
+}
+
+/* Caso exista pseudo-elemento adicionando véu */
+#giveaway::before,
+#giveaway::after{
+  content: none !important;
+}
 
   </style>
 </head>
