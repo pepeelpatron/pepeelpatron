@@ -364,30 +364,6 @@ html,body{ overflow-x:hidden; }
   letter-spacing: .8px;
   margin: 0 0 18px;
 }
-  /* Marca-d’água cobrindo 100% do card */
-#security .sec-card{
-  position: relative;
-  overflow: hidden;
-  min-height: 360px;
-}
-#security .sec-card::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
-  background-repeat: no-repeat;
-  background-position: right -24px bottom -60px;
-  background-size: min(520px, 48%);
-  opacity: .36;
-  filter: brightness(1.15) drop-shadow(0 10px 18px rgba(0,0,0,.18));
-  pointer-events: none;
-  z-index: 0;
-}
-#security .sec-card > *{ position: relative; z-index: 1; }
-@media (max-width:640px){
-  #security .sec-card::after{ display:none; }
-}
-
   </style>
 </head>
 <body>
