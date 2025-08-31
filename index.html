@@ -196,51 +196,39 @@
     @media (max-width:640px){#tokenomics .tk-pepe{display:none}}
     
    /* ===== SECURITY (layout + marca-d’água) ===== */
-#security{
-  background:#f8f1df;
-  padding:60px 0;
-  border-top:2px solid rgba(0,0,0,.06);
-  border-bottom:2px solid rgba(0,0,0,.06);
-  position:relative;
+
+  #security .sec-card{
+  position: relative;
+  background:#f8efd9;
+  border:2px solid #c9b37a;
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+  padding:28px 28px 36px;
+  overflow:hidden;
+  min-height:420px;
 }
 
+/* FUNDO cobrindo todo o card */
 #security .sec-card::after{
   content:"";
   position:absolute;
   inset:0;
   background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
   background-repeat: no-repeat;
-  background-position: center;   /* centraliza */
-  background-size: cover;        /* cobre todo o card */
-  opacity: .30;                  /* ajusta transparência */
-  filter: brightness(1.15);      /* clareia */
+  background-position: center;  /* centralizado */
+  background-size: cover;       /* cobre 100% do card */
+  opacity: .30;                 /* ajuste a gosto: .25–.45 */
+  filter: brightness(1.15);     /* deixa mais claro */
   pointer-events:none;
   z-index:0;
 }
 
-#security .sec-card::after{
-  content:"";
-  position:absolute; inset:0;
-  background-image: var(--sec-img-url);
-  background-repeat: no-repeat;
-  background-size: var(--sec-img-size) auto;
-  background-position: right var(--sec-img-x) bottom var(--sec-img-y);
-  opacity: var(--sec-img-op);
-  filter: brightness(var(--sec-img-br)) drop-shadow(0 10px 18px rgba(0,0,0,.18));
-  pointer-events:none; z-index:0;
-}
+/* conteúdo por cima */
+#security .sec-card > *{ position:relative; z-index:1; }
 
-/* marca-d’água */
-#security .sec-card::after{
-  content:"";
-  position:absolute; inset:0;
-  background-image: var(--sec-img-url);
-  background-repeat: no-repeat;
-  background-size: var(--sec-img-size) auto;
-  background-position: right var(--sec-img-x) bottom var(--sec-img-y);
-  opacity: var(--sec-img-op);
-  filter: brightness(var(--sec-img-br)) drop-shadow(0 10px 18px rgba(0,0,0,.18));
-  pointer-events:none; z-index:0;
+/* opcional: em telas pequenas, retirar o fundo para legibilidade */
+@media (max-width:640px){
+  #security .sec-card::after{ display:none; }
 }
 
 /* conteúdo por cima da arte */
