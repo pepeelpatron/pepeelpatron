@@ -167,6 +167,69 @@
 #security, #tokenomics, #roadmap, #community, #faq{
   background: transparent;
 }
+    /**** WALLPAPER & CLARITY FIX — cole a partir daqui ****/
+
+/* 0) Desativa qualquer pseudo-elemento antigo do papel (que ficava por cima) */
+.meme-theme::before{ content:none !important; display:none !important; }
+
+/* 1) Papel de parede aplicado como BACKGROUND normal do wrapper
+      (do Security pra baixo), sem opacidade global */
+.meme-theme{
+  --wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/84e489f8-593b-43a0-8e99-9a66e8ebee55.png");
+  background-image: var(--wallpaper);
+  background-size: 560px auto;       /* tamanho do padrão (ajuste se quiser) */
+  background-repeat: repeat;
+  background-position: center top;
+  background-attachment: fixed;      /* efeito sutil ao rolar */
+  position: relative;
+  z-index: 0;
+  opacity: 1 !important;             /* garante que nada ficou “lavado” */
+  background-color: transparent;     /* não cubra o papel */
+}
+
+/* 2) Todas as seções dentro do wrapper ficam transparentes
+      (pra enxergar o papel) e por cima da camada de fundo */
+.meme-theme > section,
+.meme-theme > *{
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* 3) Seções principais que costumam ter fundo sólido — deixa transparentes */
+#security, #tokenomics, #roadmap, #community, #faq{
+  background: transparent !important;
+}
+
+/* 4) Legibilidade: os CARDS ficam claros por cima do papel */
+#security .card,
+#tokenomics .tk-card,
+#roadmap .card,
+#community .card{
+  background: rgba(255,255,255,.92);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 10px 24px rgba(0,0,0,.16);
+  backdrop-filter: saturate(120%) blur(2px);
+}
+
+/* (Tokenomics já tem cards internos; reforço pra manter leitura) */
+#tokenomics .chart-card{ background: rgba(255,255,255,.92) !important; }
+#tokenomics .table-card{ background: rgba(255,255,255,.86) !important; }
+#tokenomics .tk-card{ overflow: hidden; position: relative; }
+
+/* 5) Responsivo: reduz o tamanho do padrão em telas menores (fica mais sutil) */
+@media (max-width: 980px){
+  .meme-theme{ background-size: 480px auto; }
+}
+@media (max-width: 640px){
+  .meme-theme{ background-size: 360px auto; }
+}
+
+/* 6) Garantias extras: nenhum container cobre tudo com opacidade acidental */
+.meme-theme, .meme-theme *{ opacity: initial; }
+
+/**** FIM — WALLPAPER & CLARITY FIX ****/
 
   </style>
 </head>
