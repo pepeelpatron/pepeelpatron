@@ -204,22 +204,18 @@
   position:relative;
 }
 
-#security .sec-card{
-  --sec-img-url: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
-  --sec-img-size: 560px;
-  --sec-img-x:  12px;
-  --sec-img-y: -72px;   /* mais negativo = desce mais */
-  --sec-img-op: .36;
-  --sec-img-br: 1.18;
-
-  position: relative;
-  background:#f8efd9;
-  border:2px solid #c9b37a;
-  border-radius:20px;
-  box-shadow:0 18px 40px rgba(0,0,0,.12);
-  padding:28px 28px 36px;
-  overflow:hidden;
-  min-height:420px;
+#security .sec-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
+  background-repeat: no-repeat;
+  background-position: center;   /* centraliza */
+  background-size: cover;        /* cobre todo o card */
+  opacity: .30;                  /* ajusta transparência */
+  filter: brightness(1.15);      /* clareia */
+  pointer-events:none;
+  z-index:0;
 }
 
 #security .sec-card::after{
