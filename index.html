@@ -324,6 +324,26 @@ html,body{ overflow-x:hidden; }
 /* (Opcional) Deixa o véu da seção mais leve,
    já que aumentamos a opacidade do Pepe */
 #tokenomics::before{ background:rgba(248,241,223,.30); }
+   
+#tokenomics .tk-pepe{
+  opacity: .48;
+  mix-blend-mode: multiply;
+  filter: contrast(1.06) saturate(1.06) drop-shadow(0 8px 18px rgba(0,0,0,.18));
+}
+#tokenomics::before{ background: rgba(248,241,223,.30); } /* véu mais leve */
+
+    /* TOKENOMICS — título central e marrom com sombra */
+#tokenomics .tk-card .tk-title{
+  text-align: center;
+  color: #6b4226 !important;              /* marrom */
+  text-shadow: 0 3px 0 #e7d5b5,           /* sombra bege clara */
+               0 12px 24px rgba(0,0,0,.16);
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: .8px;
+  margin: 0 0 18px;
+}
+
 
 
   </style>
