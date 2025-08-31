@@ -34,6 +34,7 @@
       font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    html,body{ overflow-x:hidden; }
 
     /* ===================== BUTTONS / BADGE ===================== */
     .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;
@@ -70,12 +71,26 @@
     .cta-row{display:flex;gap:12px;flex-wrap:wrap}
     .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 
-    /* ===================== PRESALE ===================== */
     .presale{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px;
       backdrop-filter:blur(2px) saturate(110%);color:#f2efe5}
     .progress{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
     .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b);transition:width .6s ease}
     .kv{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}.kv .item{min-width:110px}.kv .num{font-size:26px;font-weight:800;color:var(--gold)}
+
+    /* ===== Badge dinâmica da fase ===== */
+    .phase-badge{
+      margin-top:10px;
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.45rem .75rem; border-radius:999px;
+      font-family:"Signika",system-ui,sans-serif; font-weight:800; letter-spacing:.2px;
+      border:1px solid rgba(0,0,0,.12);
+      box-shadow:0 6px 16px rgba(0,0,0,.18);
+    }
+    .phase-badge.info{  color:#0f2f24; background:linear-gradient(180deg,#a9e6c6,#76c9a1); border-color:#75c6a0; }
+    .phase-badge.warn{  color:#4a350e; background:linear-gradient(180deg,#ffe7a8,#f2c763); border-color:#e7be5a; }
+    .phase-badge.danger{color:#4a1a1a; background:linear-gradient(180deg,#ffd0c8,#ff9e90); border-color:#f28b7c; }
+    .phase-badge.success{color:#153e1f;background:linear-gradient(180deg,#b5f1c8,#78d69d); border-color:#74d095; }
+    .phase-badge b{ font-weight:900 }
 
     /* ===================== SECTIONS / CARDS ===================== */
     section{padding:70px 0}
@@ -138,31 +153,96 @@
     #giveaway .giveaway-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:6px}
     @keyframes pulseGlow{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
 
-    /* ===================== TOKENOMICS (UNIFICADO) ===================== */
+    /* ===================== TOKENOMICS ===================== */
     #tokenomics{
       position:relative;
       padding:60px 0;
       border-top:2px solid rgba(0,0,0,.06);
       border-bottom:2px solid rgba(0,0,0,.06);
-      background:
-        url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png")
-        right center / 520px auto no-repeat,
-        #f3ead2;
+      background:#f3ead2 !important;
     }
-    #tokenomics::before{content:"";position:absolute;inset:0;background:rgba(248,241,223,.55);pointer-events:none;z-index:0}
+    #tokenomics::before{content:"";position:absolute;inset:0;background:rgba(248,241,223,.30);pointer-events:none;z-index:0}
     #tokenomics .container{position:relative;z-index:1}
 
-    .tk-card{position:relative;overflow:visible;background:#f8efd9;border:2px solid #c9b37a;border-radius:20px;
+    .tk-card{position:relative;overflow:hidden;background:#f8efd9;border:2px solid #c9b37a;border-radius:20px;
       box-shadow:0 18px 40px rgba(0,0,0,.12);padding:28px 28px 36px}
-    .tk-title{position:relative;z-index:1}
+    .tk-title{position:relative;z-index:1;text-align:center;color:#6b4226 !important;text-shadow:0 3px 0 #e7d5b5,0 12px 24px rgba(0,0,0,.16);
+      font-family:"Alfa Slab One",serif;font-size:clamp(28px, 4vw, 46px);letter-spacing:.8px;margin:0 0 18px}
     .tk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start;position:relative;z-index:1}
     .chart-card,.table-card{background:rgba(255,255,255,.90);border:1px solid rgba(0,0,0,.08);border-radius:14px;box-shadow:0 8px 22px rgba(0,0,0,.12);padding:14px}
     #tokenChart{display:block;width:100%;max-width:100%;min-height:260px;border-radius:12px;background:#fff}
     #tokenomics th,#tokenomics td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.08);color:#173226}
 
     /* Pepe “marca d'água” dentro do card */
-    #tokenomics .tk-pepe{position:absolute;right:-4%;bottom:-14px;width:min(46%,560px);opacity:.34;pointer-events:none;user-select:none;z-index:0;
-      filter:drop-shadow(0 10px 18px rgba(0,0,0,.18))}
+    #tokenomics .tk-pepe{position:absolute;right:8px;bottom:-6px;width:min(44%,560px);opacity:.48;mix-blend-mode:multiply;
+      filter:contrast(1.06) saturate(1.06) drop-shadow(0 8px 18px rgba(0,0,0,.18));pointer-events:none;user-select:none;z-index:0}
+
+    /* ===================== SECURITY (layout + fundo cover) ===================== */
+    #security{
+      background:#f8f1df;
+      padding:60px 0;
+      border-top:2px solid rgba(0,0,0,.06);
+      border-bottom:2px solid rgba(0,0,0,.06);
+      position:relative;
+    }
+    #security .sec-card{
+      position: relative;
+      background:#f8efd9;
+      border:2px solid #c9b37a;
+      border-radius:20px;
+      box-shadow:0 18px 40px rgba(0,0,0,.12);
+      padding:28px 28px 36px;
+      overflow:hidden;
+      min-height:420px;
+    }
+    /* Fundo cobrindo todo o card (uma única regra) */
+    #security .sec-card::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      opacity:.30;
+      filter: brightness(1.15);
+      pointer-events:none; z-index:0;
+    }
+    #security .sec-card > *{ position:relative; z-index:1; }
+
+    #security .sec-title{
+      text-align:center;
+      font-family:"Alfa Slab One",serif;
+      text-transform:uppercase;
+      font-size:clamp(28px,4vw,46px);
+      letter-spacing:.6px;
+      margin:0 0 18px;
+      color:#6b4226;
+      text-shadow:0 3px 0 #e7d5b5,0 14px 26px rgba(0,0,0,.18);
+    }
+    #security .cards{
+      display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:20px;
+    }
+    #security .card{
+      background:#fff;border:2px solid #6f4f26;border-radius:16px;
+      box-shadow:0 10px 24px rgba(111,79,38,.18),0 18px 42px rgba(0,0,0,.08);
+      padding:22px;text-align:center;
+    }
+    #security .card h3{ color:#183326; margin:4px 0 8px; font-size:1.2rem; }
+    #security .card p { color:#2d2a22; font-size:.96rem; }
+    #security .btn.gold{
+      background:linear-gradient(180deg,#f6d989,#caa32b);
+      color:#1a1407; border:none; border-radius:10px;
+      padding:.8rem 1.2rem;
+      box-shadow:0 6px 18px rgba(0,0,0,.30);
+    }
+    #security .btn.gold:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.40); }
+    @media (max-width:980px){
+      #security .cards{ grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:640px){
+      #security .cards{ grid-template-columns:1fr; }
+      #security .sec-card::after{ display:none; }
+    }
 
     /* ===================== OUTRAS SEÇÕES ===================== */
     .timeline{position:relative;padding-left:24px}
@@ -175,6 +255,32 @@
     details+details{margin-top:10px} summary{cursor:pointer;font-weight:700}
     footer{padding:40px 0;color:#c9c4b0}
 
+    /* ===================== ROADMAP (tema Patrón) ===================== */
+    .rm{
+      background:#0e1a16; color:#f3ead2; padding:70px 0;
+      border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .rm-title{
+      font-family:"Alfa Slab One",serif; text-transform:uppercase; letter-spacing:.5px;
+      color:#f6e3b0; text-shadow:0 2px 0 rgba(0,0,0,.45); margin:0 0 14px;
+      font-size:clamp(28px,4vw,46px);
+    }
+    .rm-steps{ position:relative; list-style:none; margin:26px 0 0; padding:0; max-width:900px; }
+    .rm-steps::before{ content:""; position:absolute; left:18px; top:0; bottom:0; width:2px;
+      background:linear-gradient(180deg,#caa32b,#6b4226); opacity:.6; }
+    .rm-step{ display:flex; gap:16px; position:relative; padding:18px 0 4px; }
+    .rm-step+.rm-step{ margin-top:8px; }
+    .rm-icon{
+      width:36px; height:36px; flex:0 0 36px; display:grid; place-items:center;
+      background:linear-gradient(180deg,#f6d989,#caa32b); color:#1a1407; border-radius:999px;
+      box-shadow:0 8px 18px rgba(0,0,0,.35); font-size:18px; font-weight:700; border:1px solid #caa32b;
+      position:relative; left:0; top:2px;
+    }
+    .rm-body h3{ margin:0 0 8px; color:#ffe9b3; font-weight:800; font-family:"Signika",system-ui; }
+    .rm-body ul{ margin:0; padding-left:18px; color:#e9e3d0; }
+    .rm-body li{ margin:6px 0; }
+    @media (max-width:820px){ .rm-steps::before{ left:16px; } }
+
     /* ===================== RESPONSIVO ===================== */
     @media (max-width:980px){
       .hero .wrap{grid-template-columns:1fr}
@@ -182,172 +288,13 @@
       .tk-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr 1fr}
     }
-    @media (max-width:700px){
-      #tokenomics{background:#f3ead2}
-    }
+    @media (max-width:700px){ #tokenomics{background:#f3ead2} }
     @media (max-width:540px){
       .cards{grid-template-columns:1fr}
       .gallery{grid-template-columns:1fr}
       .kv .item{min-width:90px}
       .wallpaper{background-size:600px}
     }
-    @media (max-width:1100px){#tokenomics .tk-pepe{right:-8%;width:min(54%,560px);opacity:.32}}
-    @media (max-width:820px){#tokenomics .tk-pepe{right:-12%;width:min(60%,560px);opacity:.30}}
-    @media (max-width:640px){#tokenomics .tk-pepe{display:none}}
-    
-   /* ===== SECURITY (layout + marca-d’água) ===== */
-
-  #security .sec-card{
-  position: relative;
-  background:#f8efd9;
-  border:2px solid #c9b37a;
-  border-radius:20px;
-  box-shadow:0 18px 40px rgba(0,0,0,.12);
-  padding:28px 28px 36px;
-  overflow:hidden;
-  min-height:420px;
-}
-
-/* FUNDO cobrindo todo o card */
-#security .sec-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png");
-  background-repeat: no-repeat;
-  background-position: center;  /* centralizado */
-  background-size: cover;       /* cobre 100% do card */
-  opacity: .30;                 /* ajuste a gosto: .25–.45 */
-  filter: brightness(1.15);     /* deixa mais claro */
-  pointer-events:none;
-  z-index:0;
-}
-
-/* conteúdo por cima */
-#security .sec-card > *{ position:relative; z-index:1; }
-
-/* opcional: em telas pequenas, retirar o fundo para legibilidade */
-@media (max-width:640px){
-  #security .sec-card::after{ display:none; }
-}
-
-/* conteúdo por cima da arte */
-#security .sec-card > *{ position:relative; z-index:1; }
-
-/* título */
-#security .sec-title{
-  text-align:center;
-  font-family:"Alfa Slab One",serif;
-  text-transform:uppercase;
-  font-size:clamp(28px,4vw,46px);
-  letter-spacing:.6px;
-  margin:0 0 18px;
-  color:#6b4226;
-  text-shadow:0 3px 0 #e7d5b5, 0 14px 26px rgba(0,0,0,.18);
-}
-
-/* grid de cards */
-#security .cards{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:20px;
-}
-
-#security .card{
-  background:#fff;
-  border:2px solid #6f4f26;
-  border-radius:16px;
-  box-shadow:0 10px 24px rgba(111,79,38,.18), 0 18px 42px rgba(0,0,0,.08);
-  padding:22px;
-  text-align:center;
-}
-#security .card h3{ color:#183326; margin:4px 0 8px; font-size:1.2rem; }
-#security .card p { color:#2d2a22; font-size:.96rem; }
-
-/* botões */
-#security .btn.gold{
-  background:linear-gradient(180deg,#f6d989,#caa32b);
-  color:#1a1407; border:none; border-radius:10px;
-  padding:.8rem 1.2rem;
-  box-shadow:0 6px 18px rgba(0,0,0,.30);
-}
-#security .btn.gold:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.40); }
-
-/* responsivo */
-@media (max-width:980px){
-  #security .cards{ grid-template-columns:1fr 1fr; }
-  #security .sec-card{
-    --sec-img-size: 480px;
-    --sec-img-y: -60px;
-    --sec-img-op: .30;
-  }
-}
-@media (max-width:640px){
-  #security .cards{ grid-template-columns:1fr; }
-  #security .sec-card::after{ display:none; } /* prioriza leitura no mobile */
-}
-
-/* garante que não restou a <img class="sec-pepe"> */
-#security .sec-pepe{ display:none !important; }
-
-/* FIX: duplicação e vazamento no TOKENOMICS */
-#tokenomics{
-  background:#f3ead2 !important;   /* sem imagem de fundo na seção */
-}
-#tokenomics::before{ background:none !important; }
-#tokenomics .tk-card{ overflow:hidden !important; }
-#tokenomics .tk-pepe{
-  right:8px;
-  bottom:-6px;
-  width:min(46%,560px);            /* mesma proporção do Security */
-  opacity:.32;
-  z-index:0;
-}
-
-/* evita barra horizontal */
-html,body{ overflow-x:hidden; }
-
-/* garante que qualquer BG antigo do Security não apareça */
-#security .bg-pepe{ display:none !important; }
-    /* Garante que o Pepe fique contido e atrás do conteúdo */
-#tokenomics .tk-card{ position:relative; overflow:hidden; }
-#tokenomics .tk-title, #tokenomics .tk-grid{ position:relative; z-index:1; }
-
-#tokenomics .tk-pepe{
-  position:absolute;                 /* <— importante */
-  right:8px; bottom:-6px; width:min(44%,560px);
-  opacity:.48;                       /* mais visível */
-  mix-blend-mode:multiply;
-  filter:contrast(1.08) saturate(1.06) drop-shadow(0 8px 18px rgba(0,0,0,.18));
-  pointer-events:none; user-select:none; z-index:0;
-}
-
-/* Cartões mais claros por cima do Pepe */
-#tokenomics .chart-card{ background:rgba(255,255,255,.92); }
-#tokenomics .table-card{ background:rgba(255,255,255,.86); }
-
-/* (Opcional) Deixa o véu da seção mais leve,
-   já que aumentamos a opacidade do Pepe */
-#tokenomics::before{ background:rgba(248,241,223,.30); }
-   
-#tokenomics .tk-pepe{
-  opacity: .48;
-  mix-blend-mode: multiply;
-  filter: contrast(1.06) saturate(1.06) drop-shadow(0 8px 18px rgba(0,0,0,.18));
-}
-#tokenomics::before{ background: rgba(248,241,223,.30); } /* véu mais leve */
-
-    /* TOKENOMICS — título central e marrom com sombra */
-#tokenomics .tk-card .tk-title{
-  text-align: center;
-  color: #6b4226 !important;              /* marrom */
-  text-shadow: 0 3px 0 #e7d5b5,           /* sombra bege clara */
-               0 12px 24px rgba(0,0,0,.16);
-  font-family: "Alfa Slab One", serif;
-  font-size: clamp(28px, 4vw, 46px);
-  letter-spacing: .8px;
-  margin: 0 0 18px;
-}
   </style>
 </head>
 <body>
@@ -394,6 +341,10 @@ html,body{ overflow-x:hidden; }
       <div class="presale">
         <h3 style="margin:0 0 6px">Pré-venda</h3>
         <div class="progress" aria-label="progresso da pré-venda"><i id="progressBar"></i></div>
+
+        <!-- Badge dinâmica da fase -->
+        <div id="phaseBadge" class="phase-badge" aria-live="polite"></div>
+
         <div class="kv">
           <div class="item"><div class="label">Arrecadado</div><div class="num" id="raised">$0</div></div>
           <div class="item"><div class="label">Meta</div><div class="num" id="target">$1,000,000</div></div>
@@ -498,54 +449,119 @@ html,body{ overflow-x:hidden; }
               <tfoot><tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr></tfoot>
             </table>
           </div>
+
+          <!-- PRÉ-VENDA ESCALONADA (largura total) -->
+          <div class="table-card" style="grid-column: 1 / -1;">
+            <h3 style="margin:0 0 10px;font-family:'Signika',system-ui;font-weight:800;color:#173226">
+              Pré-venda Escalonada
+            </h3>
+            <table aria-label="Tabela de pré-venda">
+              <thead>
+                <tr>
+                  <th>Fase</th>
+                  <th>Tokens</th>
+                  <th>Preço</th>
+                  <th>Captação</th>
+                </tr>
+              </thead>
+              <tbody id="presaleTable"></tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="3">Meta Final</th>
+                  <th id="presaleTotalCap">US$ 1,000,000</th>
+                </tr>
+              </tfoot>
+            </table>
+            <p class="note" style="margin:.6rem 0 0;color:#26503d">
+              Lançamento oficial somente após atingir <b>US$ 1,000,000</b> na pré-venda.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-<!-- SECURITY (padrão tokenomics, 3 cards) -->
-<section id="security">
-  <div class="container">
-    <div class="sec-card">
-      <h2 class="sec-title">Segurança & Transparência</h2>
+  <!-- SECURITY -->
+  <section id="security">
+    <div class="container">
+      <div class="sec-card">
+        <h2 class="sec-title">Segurança & Transparência</h2>
 
-      <div class="cards">
-        <!-- Card 1 -->
-        <div class="card">
-          <h3>Contrato</h3>
-          <p>Endereço: <span id="contract">0xYourContractHere</span></p>
-          <a class="btn gold" id="scanLink" href="#" target="_blank" rel="noopener">Ver no Scan</a>
-        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Contrato</h3>
+            <p>Endereço: <span id="contract">0xYourContractHere</span></p>
+            <a class="btn gold" id="scanLink" href="#" target="_blank" rel="noopener">Ver no Scan</a>
+          </div>
 
-        <!-- Card 2 -->
-        <div class="card">
-          <h3>Liquidity Lock</h3>
-          <p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p>
-          <a class="btn gold" id="lockLink" href="#" target="_blank" rel="noopener">Comprovante</a>
-        </div>
+          <div class="card">
+            <h3>Liquidity Lock</h3>
+            <p>LP bloqueada por <strong>12 meses</strong>. Prova pública.</p>
+            <a class="btn gold" id="lockLink" href="#" target="_blank" rel="noopener">Comprovante</a>
+          </div>
 
-        <!-- Card 3 -->
-        <div class="card">
-          <h3>Audit/KYC</h3>
-          <p>Relatórios de auditoria e verificação de equipe.</p>
-          <a class="btn gold" id="auditLink" href="#" target="_blank" rel="noopener">Ver Relatório</a>
+          <div class="card">
+            <h3>Audit/KYC</h3>
+            <p>Relatórios de auditoria e verificação de equipe.</p>
+            <a class="btn gold" id="auditLink" href="#" target="_blank" rel="noopener">Ver Relatório</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Roadmap -->
-  <section id="roadmap">
+  <!-- ROADMAP temático -->
+  <section id="roadmap" class="rm">
     <div class="container">
-      <h2>Roadmap</h2>
-      <div class="timeline">
-        <div class="milestone"><h3>Fase 1 – Lançamento</h3><p>Site, branding, pré-venda, comunidade, parcerias iniciais.</p></div>
-        <div class="milestone"><h3>Fase 2 – Tração</h3><p>Listagem DEX, campanhas de memes, 5k holders, marketing contínuo.</p></div>
-        <div class="milestone"><h3>Fase 3 – Expansão</h3><p>Parcerias estratégicas, listagens CEX intermediárias, 20k holders.</p></div>
-        <div class="milestone"><h3>Fase 4 – Ecossistema</h3><p>Mini-game/NFTs, merch, eventos e iniciativas da comunidade global.</p></div>
-      </div>
+      <h2 class="rm-title">Roadmap</h2>
+
+      <ol class="rm-steps">
+        <li class="rm-step">
+          <div class="rm-icon">💼</div>
+          <div class="rm-body">
+            <h3>Fase 1 — Pré-Venda Inicial</h3>
+            <ul>
+              <li>Abertura oficial e comunicação de meta única.</li>
+              <li>Oferta total: 1.000.000.000 $PATRON; foco na transparência.</li>
+              <li><b>Objetivo:</b> arrecadar <b>US$ 1,000,000</b>.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rm-step">
+          <div class="rm-icon">🚀</div>
+          <div class="rm-body">
+            <h3>Fase 2 — Crescimento de Valor</h3>
+            <ul>
+              <li>Preço escalonado por fases (early buyers pagam menos).</li>
+              <li>Marketing/KOLs, comunidade e raids de memes.</li>
+              <li>Progresso público até a meta de US$ 1M.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rm-step">
+          <div class="rm-icon">🔥</div>
+          <div class="rm-body">
+            <h3>Fase 3 — Escassez de Tokens</h3>
+            <ul>
+              <li>Última fase com oferta reduzida ➝ FOMO.</li>
+              <li>Contagem regressiva para fechar a pré-venda.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="rm-step">
+          <div class="rm-icon">👑</div>
+          <div class="rm-body">
+            <h3>Fase 4 — Lançamento Oficial</h3>
+            <ul>
+              <li>Assim que atingir <b>US$ 1M</b> ➝ listagem em DEX.</li>
+              <li>LP travada 12 meses; início de parcerias e utilidades.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -593,23 +609,35 @@ html,body{ overflow-x:hidden; }
     /* ===== CONFIG ===== */
     const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
     const TARGET_USD = 1_000_000;
-    const RAISED_USD = 317_762.32;
+
+    // ajuste aqui o valor arrecadado atual
+    const RAISED_USD = 317_762;
 
     const LINKS = { buy:'#', chart:'#tokenomics', scan:'#', lock:'#', audit:'#' };
 
-    const TOTAL_SUPPLY = '1,000,000,000';
-    
+    /* ===== TOKENOMICS ===== */
     const css = getComputedStyle(document.documentElement);
-const C   = n => css.getPropertyValue(n).trim();
+    const C   = n => css.getPropertyValue(n).trim();
 
-const TOKENOMICS = [
-  { label:'Liquidity',          value:30, color: C('--accent-emerald') }, // verde
-  { label:'Marketing',          value:20, color: C('--accent-amber')   }, // âmbar
-  { label:'Community Rewards',  value:16, color: C('--accent-mint')    }, // menta
-  { label:'Burn',               value:34, color: C('--accent-gold')    }  // dourado
-];
-// Se quiser mais contraste no Burn, troque a última cor por: '#d65d5d'
+    const TOKENOMICS = [
+      { label:'Pré-venda',               value:30, color: C('--accent-amber')   }, // 300M
+      { label:'Liquidity (LP)',          value:25, color: C('--accent-emerald') }, // 250M
+      { label:'Marketing',               value:15, color: C('--accent-brown')   }, // 150M
+      { label:'Recompensas / Community', value:20, color: C('--accent-mint')    }, // 200M
+      { label:'Burn Reserve',            value:10, color: C('--accent-gold')    }  // 100M
+    ];
 
+    const TOTAL_SUPPLY = '1,000,000,000';
+
+    // Fases da pré-venda (3 fases somando US$ 1M)
+    const PRESALE_PHASES = [
+      { phase:'Fase 1 — Early Boss',  tokens:100_000_000, price:0.002, cap:200_000 },
+      { phase:'Fase 2 — Middle Boss', tokens:100_000_000, price:0.003, cap:300_000 },
+      { phase:'Fase 3 — Final Boss',  tokens:100_000_000, price:0.005, cap:500_000 }
+    ];
+
+    function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
+    function fmtUSD(n){ return 'US$ ' + n.toLocaleString('en-US', { maximumFractionDigits: 0 }); }
 
     /* ===== PREENCHE TABELA TOKENOMICS ===== */
     (function fillTable(){
@@ -659,13 +687,36 @@ const TOKENOMICS = [
       el._chartInstance = chart;
     });
 
+    /* ===== TABELA PRÉ-VENDA ===== */
+    (function fillPresale(){
+      const el = document.getElementById('presaleTable');
+      if (!el) return;
+      const fmtInt = n => n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      const fmtUsd = n => 'US$ ' + n.toLocaleString('en-US', { minimumFractionDigits: 0 });
+
+      el.innerHTML = '';
+      let totalCap = 0;
+      PRESALE_PHASES.forEach(p => {
+        totalCap += p.cap;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${p.phase}</td>
+          <td>${fmtInt(p.tokens)}</td>
+          <td>US$ ${p.price.toFixed(3)}</td>
+          <td>${fmtUsd(p.cap)}</td>
+        `;
+        el.appendChild(tr);
+      });
+      const totalEl = document.getElementById('presaleTotalCap');
+      if (totalEl) totalEl.textContent = fmtUsd(totalCap);
+    })();
+
     /* ===== PRÉ-VENDA / COUNTDOWN ===== */
     const pb = document.getElementById('progressBar');
     const raisedEl = document.getElementById('raised');
     const targetEl = document.getElementById('target');
     const cdEl     = document.getElementById('countdown');
 
-    function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
     function tick(){
       const now = new Date();
       const diff = Math.max(0, DEADLINE - now);
@@ -677,9 +728,26 @@ const TOKENOMICS = [
         pb.style.width = pct + '%';
       }
     }
+
     if (raisedEl) raisedEl.textContent = `$${fmt(RAISED_USD)}`;
     if (targetEl) targetEl.textContent = `$${fmt(TARGET_USD)}`;
     setInterval(tick, 1000); tick();
+
+    /* ===== Badge dinâmica da fase ===== */
+    function currentPhaseLabel(raised){
+      if (raised >= TARGET_USD)         return { text: 'Meta atingida — Lançamento', cls: 'success' };
+      if (raised >= 800_000)            return { text: 'Última Fase: Escassez',     cls: 'danger'  };
+      if (raised >= 500_000)            return { text: 'Fase 2 — Middle Boss',      cls: 'warn'    };
+                                        return { text: 'Fase 1 — Early Boss',       cls: 'info'    };
+    }
+    function updatePhaseBadge(){
+      const el = document.getElementById('phaseBadge');
+      if (!el) return;
+      const { text, cls } = currentPhaseLabel(RAISED_USD);
+      el.className = 'phase-badge ' + cls;
+      el.innerHTML = `<span>${text}</span> <b>${fmtUSD(RAISED_USD)} / ${fmtUSD(TARGET_USD)}</b>`;
+    }
+    updatePhaseBadge();
 
     /* ===== LINKS ÚTEIS ===== */
     document.getElementById('year').textContent = new Date().getFullYear();
