@@ -1,104 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pepe El Patrón ($PATRON) – The Boss of Memes</title>
-  <meta name="description" content="Pepe El Patrón ($PATRON) — Pré-venda, tokenomics, roadmap e comunidade." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pepe El Patrón ($PATRON)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#15B66E; --blue:#1E40AF; --yellow:#F5C84B; --beige:#F6E9D5;
+    --bg:#0B0F14; --text:#E7EDF5; --muted:#9FB0C3; --line:rgba(255,255,255,.08);
+    --grad-cta: linear-gradient(135deg, var(--yellow), var(--beige));
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
 
-  <style>
-    :root{
-      --green:#15B66E;
-      --blue:#1E40AF;
-      --yellow:#F5C84B;
-      --beige:#F6E9D5;
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(11,15,20,.9),rgba(11,15,20,.6));border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(6px)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+  nav a{color:var(--text);text-decoration:none;font-weight:600;opacity:.92}
+  .btn{display:inline-flex;align-items:center;padding:10px 16px;border-radius:12px;background:var(--grad-cta);color:#0d0f12;font-weight:800}
 
-      --bg:#0B0F14;
-      --panel:#121824;
-      --text:#E7EDF5;
-      --muted:#9FB0C3;
-      --line:rgba(255,255,255,.08);
+  /* HERO */
+  .hero{position:relative;min-height:78vh;display:grid;place-items:center;border-bottom:1px solid var(--line);overflow:hidden}
+  /* 🔥 Removido o gradiente “pálido”. Agora só a imagem. */
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background-image:url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/eac50e02-fefc-464f-a8a8-68fcb07995af.png");
+    background-size:cover;background-position:center 45%;
+  }
+  .hero-inner{
+    width:min(1200px,100% - 40px);margin:auto;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;
+    padding:56px 0;
+  }
+  .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(246,233,213,.25);color:var(--beige);font-weight:700}
+  h1{font-size:clamp(34px,5vw,56px);line-height:1.06;margin:10px 0 8px;text-shadow:0 3px 14px rgba(0,0,0,.35)}
+  .lead{color:var(--beige);opacity:.95;margin:0 0 20px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
 
-      --grad-brand: linear-gradient(135deg, var(--green), var(--blue));
-      --grad-cta: linear-gradient(135deg, var(--yellow), var(--beige));
+  .hero-art{display:flex;justify-content:center;align-items:center}
+  /* Tentativa de “camuflar” o quadrado da arte atual */
+  .hero-art .pepe{
+    width:min(90%,560px);
+    filter:drop-shadow(0 20px 38px rgba(0,0,0,.32));
+    mix-blend-mode:multiply;          /* mistura com o fundo para suavizar as bordas */
+    opacity:.98;                       /* um tiquinho abaixo de 1 deixa mais orgânico */
+    border-radius:14px;                /* arredonda o retângulo da própria imagem */
+  }
+  /* Só um respiro abaixo do hero */
+  .hero-spacer{height:10px}
 
-      --hero-overlay: 0;  /* sem véu escuro */
-      --hero-blur: 0px;
-    }
+  /* TOKENOMICS (só o decorativo por enquanto) */
+  #tokenomics{position:relative;padding:64px 0;border-bottom:1px solid var(--line)}
+  #tokenomics .pepe-floating{
+    position:absolute;right:-6%;bottom:-12px;width:min(44%,560px);
+    opacity:.28;pointer-events:none;filter:drop-shadow(0 12px 24px rgba(0,0,0,.24))
+  }
 
-    *{ box-sizing:border-box }
-    body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter,sans-serif }
-
-    /* header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(6px);
-      background:linear-gradient(180deg, rgba(11,15,20,.85), rgba(11,15,20,.55));
-      border-bottom:1px solid var(--line);
-    }
-    .wrap{ max-width:1200px; margin:0 auto; padding:0 20px }
-    .nav{ display:flex; justify-content:space-between; align-items:center; height:64px }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800 }
-    .brand .logo{ width:36px; height:36px; border-radius:10px; background:var(--grad-brand) }
-    nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0 }
-    nav a{ color:var(--text); text-decoration:none; font-weight:600; opacity:.92 }
-    nav a:hover{ opacity:1 }
-    .btn{ padding:10px 16px; border-radius:12px; font-weight:700; text-decoration:none; background:var(--grad-cta); color:#0d0f12 }
-
-    /* hero */
-    .hero{
-      position:relative; min-height:72vh; display:grid; place-items:center;
-      border-bottom:1px solid var(--line); overflow:hidden; isolation:isolate;
-    }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background-image:
-        linear-gradient(to bottom, rgba(11,15,20,.00), rgba(11,15,20,.12) 60%, rgba(11,15,20,.25)),
-        url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/eac50e02-fefc-464f-a8a8-68fcb07995af.png");
-      background-size:cover;
-      background-position:center 45%;
-      filter: blur(var(--hero-blur));
-      opacity:1; z-index:-2;
-    }
-    .hero::after{
-      content:""; position:absolute; inset:0;
-      background: rgba(0,0,0,var(--hero-overlay)); z-index:-1;
-    }
-    .hero-inner{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center; width:min(1200px,100% - 40px); margin:auto; padding:48px 0 }
-    .hero h1{ font-size:clamp(32px,5vw,52px); line-height:1.08; margin:0 0 12px }
-    .hero p{ margin:0 0 22px; color:var(--beige) }
-    .hero .cta{ display:flex; gap:12px; flex-wrap:wrap }
-    .hero .badge{ display:inline-flex; padding:8px 12px; border-radius:999px; background:rgba(246,233,213,.22); color:var(--beige) }
-
-    .hero-art{ display:flex; justify-content:center }
-    .hero-art .pepe{ width:min(96%,560px); filter: drop-shadow(0 22px 40px rgba(0,0,0,.32)) }
-    .floaty{ animation: float 6s ease-in-out infinite }
-    @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-8px) scale(1.01)} 100%{transform:translateY(0)} }
-
-    /* tokenomics */
-    .tk{ position:relative; padding:68px 0; border-bottom:1px solid var(--line) }
-    .tk .pepe-floating{
-      position:absolute; right:-6%; bottom:-12px; width:min(44%,560px);
-      opacity:.28; pointer-events:none;
-    }
-  </style>
+  /* Responsivo */
+  @media (max-width:1024px){
+    .hero-inner{grid-template-columns:1fr;gap:28px}
+    .hero-art{order:-1}
+  }
+  @media (max-width:640px){
+    nav ul{display:none}
+  }
+</style>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <div class="brand"><div class="logo"></div><span>Pepe El Patrón</span></div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#tokenomics">Tokenomics</a></li>
-        <li><a href="#roadmap">Roadmap</a></li>
-        <li><a href="#comunidade">Comunidade</a></li>
-      </ul>
-    </nav>
+    <div style="display:flex;align-items:center;gap:10px;font-weight:800"><div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#15B66E,#1E40AF)"></div>Pepe El Patrón</div>
+    <nav><ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#tokenomics">Tokenomics</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#comunidade">Comunidade</a></li>
+    </ul></nav>
     <a class="btn" href="#comprar">💱 Comprar</a>
   </div>
 </header>
@@ -108,27 +91,31 @@
     <div>
       <span class="badge">💼 The Boss of Memes</span>
       <h1>Pepe El Patrón ($PATRON)</h1>
-      <p>O sapo mais “patrón” da internet. Entre na pré-venda e faça parte da família!</p>
+      <p class="lead">O sapo mais “patrón” da internet. Entre na pré-venda e faça parte da família!</p>
       <div class="cta">
         <a class="btn" href="#comprar">Participar da Pré-venda</a>
       </div>
     </div>
+
     <div class="hero-art">
-      <img class="pepe floaty"
+      <!-- ⚠️ Esta arte tem fundo próprio (retângulo). O ideal é trocar por PNG recortado. -->
+      <img class="pepe"
            src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png"
            alt="Pepe El Patrón">
     </div>
   </div>
 </section>
+<div class="hero-spacer"></div>
 
-<section id="tokenomics" class="tk">
+<section id="tokenomics">
   <div class="wrap">
-    <h2>Tokenomics</h2>
-    <p>Distribuição justa e transparente inspirada na família $PATRON.</p>
+    <h2 style="margin:0 0 12px">Tokenomics</h2>
+    <p style="color:var(--muted);margin:0 0 22px">Distribuição justa e transparente inspirada na família $PATRON.</p>
+
     <!-- Pepe decorativo -->
     <img class="pepe-floating"
          src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png"
-         alt="Pepe decorativo">
+         alt="">
   </div>
 </section>
 
