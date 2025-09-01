@@ -29,12 +29,13 @@ img{max-width:100%;height:auto;display:block}
 /* Header */
 .header{
   position:sticky;top:0;z-index:60;
-  background: radial-gradient(1000px 200px at 70% -40%, rgba(21,182,110,.18), transparent 60%) ,
-              radial-gradient(800px 160px at 20% -30%, rgba(30,64,175,.22), transparent 60%) ,
-              rgba(11,15,20,.55);   /* antes .85 → agora .55 */
+  background:
+    radial-gradient(1000px 200px at 70% -40%, rgba(21,182,110,.18), transparent 60%),
+    radial-gradient(800px 160px at 20% -30%, rgba(30,64,175,.22), transparent 60%);
   backdrop-filter:saturate(180%) blur(8px);
   border-bottom:1px solid var(--line);
 }
+
 
 .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
