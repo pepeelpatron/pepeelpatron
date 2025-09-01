@@ -196,6 +196,33 @@ img{max-width:100%;height:auto;display:block}
               0 0 28px rgba(30,64,175,.3),
               0 6px 18px rgba(0,0,0,.5);
 }
+  /* Só o painel do Tokenomics */
+#tokenomics .panel {
+  position: relative;
+  overflow: hidden;
+
+  /* imagem do papel de parede */
+  background-image: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/eac50e02-fefc-464f-a8a8-68fcb07995af.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* overlay pra não atrapalhar a leitura */
+#tokenomics .panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45); /* escurece um pouco */
+  z-index: 0;
+}
+
+/* garante que o conteúdo fique acima */
+#tokenomics .panel > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 </style>
 </head>
