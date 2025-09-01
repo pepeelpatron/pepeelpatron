@@ -167,6 +167,18 @@ img{max-width:100%;height:auto;display:block}
   .hero-card{border-radius:18px;padding:18px}
   .hero h1{font-size:clamp(28px,8vw,42px)}
 }
+  /* Altura do header (usada no empurrão do hero) */
+:root { --header-h: 72px; }
+
+/* Garante a mesma altura do nav */
+.nav { height: var(--header-h); }
+
+/* Puxa o hero para trás do header e compensa o conteúdo */
+.header + .hero{
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+}
+
 </style>
 </head>
 <body>
