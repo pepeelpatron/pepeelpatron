@@ -60,32 +60,58 @@ img{max-width:100%;height:auto;display:block}
 }
 
 /* HERO */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  min-height:72vh;          /* 👈 garante o banner alto */
+  isolation:isolate;        /* z-index seguro das camadas */
+}
 .hero::before{
-  content:"";position:absolute;inset:0;z-index:-2;
+  content:"";
+  position:absolute; inset:0; z-index:-2;
   background-image:url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/5068c759-cafc-4a7b-9cef-f716efc15d3c.png");
   background-size:cover;
   background-position:center 46%;
 }
 
-.hero-inner{width:min(1200px,100% - 40px);margin:auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px;padding:64px 0 76px}
+/* 1 coluna (apenas o card) */
+.hero-inner{
+  width:min(1200px,100% - 40px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr;
+  align-items:center;
+  gap:24px;
+  padding:64px 0 76px;
+}
+
+/* Card do hero */
 .hero-card{
   background:rgba(16,20,27,.68);
   border:1px solid rgba(255,255,255,.08);
-  box-shadow:var(--neon); border-radius:22px;
-  padding:22px 22px 24px; max-width:620px;
+  box-shadow:var(--neon);
+  border-radius:22px;
+  padding:22px 22px 24px;
+  max-width:620px;
 }
+
 .hero h1{font-size:clamp(36px,5.6vw,62px);line-height:1.06;margin:6px 0 8px}
 .hero p{margin:0 0 18px;color:var(--beige);opacity:.95}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(246,233,213,.26);color:var(--beige);font-weight:800;border:1px solid rgba(246,233,213,.5)}
-.hero-art{display:flex;justify-content:center;align-items:center}
-.hero-art .pepe{
-  width:min(94%,560px);
-  filter: drop-shadow(0 26px 48px rgba(0,0,0,.35));
-  mix-blend-mode:multiply;  /* camufla o retângulo da imagem atual */
-  border-radius:16px;
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:999px;
+  background:rgba(246,233,213,.26);
+  color:var(--beige);font-weight:800;
+  border:1px solid rgba(246,233,213,.5)
 }
+
+/* (removido) .hero-art e .hero-art .pepe */
+
+
+/* ⬇️ REMOVIDO: .hero-art e .hero-art .pepe (não usamos mais imagem lateral) */
+
 
 /* Countdown pill */
 .countdown{
@@ -149,11 +175,6 @@ img{max-width:100%;height:auto;display:block}
 .copy{font-size:14px;opacity:.86}
 
 /* Responsivo */
-@media (max-width:1024px){
-  .hero-inner{grid-template-columns:1fr;gap:18px}
-  .hero-art{order:-1}
-  .nft-grid{grid-template-columns:repeat(2,1fr)}
-}
 @media (max-width:640px){
   .menu{display:none}
   .nft-grid{grid-template-columns:1fr}
@@ -203,13 +224,6 @@ img{max-width:100%;height:auto;display:block}
         <div class="kpi"><span id="cd-m">--</span><small>Min</small></div>
       </div>
     </div>
-
-    <div class="hero-art">
-      <img class="pepe"
-           src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png"
-           alt="Pepe El Patrón">
-    </div>
-  </div>
 </section>
 
 <!-- SOBRE -->
