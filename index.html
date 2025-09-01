@@ -11,7 +11,6 @@
 
   <style>
     :root{
-      /* ======= PALETA $PATRON ======= */
       --green:#15B66E;
       --blue:#1E40AF;
       --yellow:#F5C84B;
@@ -23,20 +22,17 @@
       --muted:#9FB0C3;
       --line:rgba(255,255,255,.08);
 
-      /* Gradientes principais */
       --grad-brand: linear-gradient(135deg, var(--green), var(--blue));
       --grad-cta: linear-gradient(135deg, var(--yellow), var(--beige));
 
-      /* Controle de overlay do herói (0 = sem película) */
-      --hero-overlay: 0;        /* mude para .2 ou .3 se quiser leve véu */
-      --hero-blur: 0px;         /* 0px = sem blur */
+      --hero-overlay: 0;  /* sem véu escuro */
+      --hero-blur: 0px;
     }
 
     *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
-    img{ max-width:100%; height:auto; display:block }
+    body{ margin:0; background:var(--bg); color:var(--text); font-family:Inter,sans-serif }
 
-    /* ======= HEADER ======= */
+    /* header */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(180%) blur(6px);
@@ -44,309 +40,97 @@
       border-bottom:1px solid var(--line);
     }
     .wrap{ max-width:1200px; margin:0 auto; padding:0 20px }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      height:64px;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px }
-    .brand .logo{
-      width:36px; height:36px; border-radius:10px; background:var(--grad-brand);
-      box-shadow:0 6px 18px rgba(21,182,110,.25), inset 0 0 0 1px rgba(255,255,255,.08);
-    }
+    .nav{ display:flex; justify-content:space-between; align-items:center; height:64px }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800 }
+    .brand .logo{ width:36px; height:36px; border-radius:10px; background:var(--grad-brand) }
     nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0 }
     nav a{ color:var(--text); text-decoration:none; font-weight:600; opacity:.92 }
     nav a:hover{ opacity:1 }
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 16px; border-radius:12px; font-weight:700; text-decoration:none;
-      background:var(--grad-cta); color:#0d0f12;
-      box-shadow:0 8px 24px rgba(245,200,75,.22);
-      border:1px solid rgba(13,15,18,.12);
-    }
+    .btn{ padding:10px 16px; border-radius:12px; font-weight:700; text-decoration:none; background:var(--grad-cta); color:#0d0f12 }
 
-    /* ======= HERO ======= */
+    /* hero */
     .hero{
-      position:relative;
-      min-height:72vh;
-      display:grid; place-items:center;
-      isolation:isolate; /* garante z-index correto */
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
+      position:relative; min-height:72vh; display:grid; place-items:center;
+      border-bottom:1px solid var(--line); overflow:hidden; isolation:isolate;
     }
-    /* Fundo com imagem sem película escura */
     .hero::before{
-      content:"";
-      position:absolute; inset:0;
+      content:""; position:absolute; inset:0;
       background-image:
         linear-gradient(to bottom, rgba(11,15,20,.00), rgba(11,15,20,.12) 60%, rgba(11,15,20,.25)),
-        url("assets/pepe-hero.jpg"); /* TROCAR pela sua imagem */
+        url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/eac50e02-fefc-464f-a8a8-68fcb07995af.png");
       background-size:cover;
-      background-position:center 40%;
+      background-position:center 45%;
       filter: blur(var(--hero-blur));
-      opacity: 1; /* fundo sempre visível */
-      z-index:-2;
+      opacity:1; z-index:-2;
     }
-    /* Camada opcional de overlay (controlável por --hero-overlay) */
     .hero::after{
       content:""; position:absolute; inset:0;
-      background: rgba(0,0,0, var(--hero-overlay));
-      z-index:-1;
+      background: rgba(0,0,0,var(--hero-overlay)); z-index:-1;
     }
-    .hero-inner{
-      display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center;
-      width:min(1200px, 100% - 40px); margin-inline:auto; padding:48px 0;
-    }
-    .hero h1{
-      font-size:clamp(32px, 5vw, 52px); line-height:1.08; margin:0 0 12px;
-      text-shadow:0 3px 16px rgba(0,0,0,.35);
-    }
-    .hero p{ margin:0 0 22px; color:var(--beige); font-size:clamp(16px,2.2vw,18px) }
+    .hero-inner{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center; width:min(1200px,100% - 40px); margin:auto; padding:48px 0 }
+    .hero h1{ font-size:clamp(32px,5vw,52px); line-height:1.08; margin:0 0 12px }
+    .hero p{ margin:0 0 22px; color:var(--beige) }
     .hero .cta{ display:flex; gap:12px; flex-wrap:wrap }
-    .hero .badge{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      background:rgba(246,233,213,.22); color:var(--beige); border:1px solid rgba(246,233,213,.35);
-      font-weight:700; font-size:13px; letter-spacing:.2px
-    }
-    /* Pepe decorativo no lado direito */
-    .hero-art{
-      position:relative; display:flex; align-items:center; justify-content:center;
-    }
-    .hero-art .pepe{
-      width:min(96%, 560px); opacity:.92;
-      filter: drop-shadow(0 22px 40px rgba(0,0,0,.32));
-      z-index:0;
-    }
-    /* Garantir que cards fiquem acima do Pepe quando necessário */
-    .on-top{ position:relative; z-index:5 }
+    .hero .badge{ display:inline-flex; padding:8px 12px; border-radius:999px; background:rgba(246,233,213,.22); color:var(--beige) }
 
-    /* ======= SECTION UTIL ======= */
-    section{ padding:68px 0; border-bottom:1px solid var(--line) }
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:24px }
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line); border-radius:16px; padding:20px;
-      box-shadow:0 8px 26px rgba(0,0,0,.22);
-    }
-    .card h3{ margin:0 0 10px }
-    .muted{ color:var(--muted) }
+    .hero-art{ display:flex; justify-content:center }
+    .hero-art .pepe{ width:min(96%,560px); filter: drop-shadow(0 22px 40px rgba(0,0,0,.32)) }
+    .floaty{ animation: float 6s ease-in-out infinite }
+    @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-8px) scale(1.01)} 100%{transform:translateY(0)} }
 
-    /* ======= TOKENOMICS ======= */
-    .tk{
-      position:relative;
-      background:
-        radial-gradient(1200px 500px at 20% -10%, rgba(21,182,110,.12), transparent 60%),
-        radial-gradient(1000px 360px at 80% 0%, rgba(30,64,175,.12), transparent 60%);
-    }
-    .tk .chart-card{ background:rgba(255,255,255,.08) }
-    .tk .table-card{ background:rgba(255,255,255,.06) }
+    /* tokenomics */
+    .tk{ position:relative; padding:68px 0; border-bottom:1px solid var(--line) }
     .tk .pepe-floating{
-      position:absolute; right:-6%; bottom:-12px; width:min(44%, 560px);
+      position:absolute; right:-6%; bottom:-12px; width:min(44%,560px);
       opacity:.28; pointer-events:none;
-      filter:contrast(1.02) saturate(1.02) drop-shadow(0 12px 26px rgba(0,0,0,.22));
-    }
-
-    table{ width:100%; border-collapse:collapse; font-size:15px }
-    th,td{ padding:10px 12px; border-bottom:1px dashed var(--line); text-align:left }
-    th{ color:var(--beige) }
-
-    /* ======= ROADMAP ======= */
-    .rm .step{
-      border-left:3px solid var(--green); padding-left:14px; margin:0 0 14px;
-    }
-    .rm .step b{ color:var(--yellow) }
-
-    /* ======= FOOTER ======= */
-    footer{ padding:28px 0 44px; color:var(--muted) }
-    .socials{ display:flex; gap:12px; flex-wrap:wrap }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px;
-      background:rgba(255,255,255,.06); border:1px solid var(--line); text-decoration:none; color:var(--text)
-    }
-    .copy{ margin-top:18px; font-size:14px; opacity:.8 }
-
-    /* ======= RESPONSIVO ======= */
-    @media (max-width: 1024px){
-      .hero-inner{ grid-template-columns:1fr; gap:20px }
-      .hero-art{ order:-1 } /* imagem acima no mobile */
-      .tk .pepe-floating{ right:-10%; width:min(56%, 560px); opacity:.24 }
-    }
-    @media (max-width: 640px){
-      nav ul{ display:none }
-      .tk .pepe-floating{ display:none }
     }
   </style>
 </head>
 <body>
 
-  <!-- ======= HEADER ======= -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo"></div>
-        <span>Pepe El Patrón</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#tokenomics">Tokenomics</a></li>
-          <li><a href="#roadmap">Roadmap</a></li>
-          <li><a href="#comunidade">Comunidade</a></li>
-        </ul>
-      </nav>
-      <a class="btn" href="#comprar">💱 Comprar</a>
-    </div>
-  </header>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><div class="logo"></div><span>Pepe El Patrón</span></div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tokenomics">Tokenomics</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#comunidade">Comunidade</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#comprar">💱 Comprar</a>
+  </div>
+</header>
 
-  <!-- ======= HERO ======= -->
-  <section id="home" class="hero">
-    <div class="hero-inner">
-      <div class="on-top">
-        <span class="badge">💼 The Boss of Memes</span>
-        <h1>Pepe El Patrón ($PATRON)</h1>
-        <p>O sapo mais “patrón” da internet. Entre na pré-venda e faça parte da família — verde, azul, amarelo e bege na veia. 💸</p>
-        <div class="cta">
-          <a class="btn" href="#comprar">Participar da Pré-venda</a>
-          <a class="pill" href="#whitepaper">📄 Whitepaper</a>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <!-- TROCAR a imagem do Pepe principal -->
-        <img class="pepe" src="assets/pepe-el-patron.png" alt="Pepe El Patrón dirigindo com sacos de dinheiro">
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="badge">💼 The Boss of Memes</span>
+      <h1>Pepe El Patrón ($PATRON)</h1>
+      <p>O sapo mais “patrón” da internet. Entre na pré-venda e faça parte da família!</p>
+      <div class="cta">
+        <a class="btn" href="#comprar">Participar da Pré-venda</a>
       </div>
     </div>
-  </section>
-
-  <!-- ======= TOKENOMICS ======= -->
-  <section id="tokenomics" class="tk">
-    <div class="wrap">
-      <h2 style="margin:0 0 12px">Tokenomics</h2>
-      <p class="muted" style="margin:0 0 22px">Distribuição justa e transparente inspirada na família $PATRON.</p>
-
-      <div class="grid-2">
-        <div class="card chart-card">
-          <h3>Distribuição</h3>
-          <canvas id="pie"></canvas>
-        </div>
-
-        <div class="card table-card">
-          <h3>Tabela</h3>
-          <table>
-            <thead><tr><th>Alocação</th><th>%</th></tr></thead>
-            <tbody>
-              <tr><td>Pré-venda</td><td>40%</td></tr>
-              <tr><td>Liquidez</td><td>35%</td></tr>
-              <tr><td>Marketing</td><td>15%</td></tr>
-              <tr><td>Recompensas/Parcerias</td><td>10%</td></tr>
-            </tbody>
-          </table>
-          <p class="muted" style="margin-top:10px">Sem “película” atrapalhando a leitura — cards sempre acima do fundo.</p>
-        </div>
-      </div>
-
-      <!-- Pepe decorativo de fundo nesta seção -->
-      <img class="pepe-floating" src="assets/pepe-money.png" alt="">
+    <div class="hero-art">
+      <img class="pepe floaty"
+           src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png"
+           alt="Pepe El Patrón">
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ======= ROADMAP ======= -->
-  <section id="roadmap" class="rm">
-    <div class="wrap">
-      <h2 style="margin:0 0 12px">Roadmap</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>Fase 1</h3>
-          <div class="step"><b>Site + Marca</b> — versão inicial no ar, identidade nas 4 cores.</div>
-          <div class="step"><b>Pré-venda</b> — meta de holders iniciais.</div>
-          <div class="step"><b>Comunidade</b> — Telegram & X (Twitter) aquecidos.</div>
-        </div>
-        <div class="card">
-          <h3>Fase 2</h3>
-          <div class="step"><b>Listagem DEX</b> — liquidez bloqueada.</div>
-          <div class="step"><b>Campanhas</b> — memes + influenciadores.</div>
-          <div class="step"><b>NFTs</b> — coleção temática “El Patrón”.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="tokenomics" class="tk">
+  <div class="wrap">
+    <h2>Tokenomics</h2>
+    <p>Distribuição justa e transparente inspirada na família $PATRON.</p>
+    <!-- Pepe decorativo -->
+    <img class="pepe-floating"
+         src="https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png"
+         alt="Pepe decorativo">
+  </div>
+</section>
 
-  <!-- ======= COMUNIDADE / COMPRAR ======= -->
-  <section id="comunidade">
-    <div class="wrap">
-      <div class="grid-2">
-        <div class="card">
-          <h3>Comunidade</h3>
-          <p class="muted">Entre nos canais oficiais e faça parte da tropa do $PATRON.</p>
-          <div class="socials">
-            <a class="pill" href="https://t.me/SEU_TELEGRAM" target="_blank">Telegram</a>
-            <a class="pill" href="https://x.com/SEU_USUARIO" target="_blank">Twitter / X</a>
-            <a class="pill" href="#" target="_blank">TikTok</a>
-          </div>
-        </div>
-        <div id="comprar" class="card on-top">
-          <h3>Pré-venda</h3>
-          <p class="muted">Prazo: <b id="deadline">--</b></p>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <input id="amount" type="number" placeholder="Quantidade (USD)" style="flex:1; min-width:180px; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:#0f141b; color:var(--text)">
-            <button class="btn" id="buy">Comprar $PATRON</button>
-          </div>
-          <p id="status" class="muted" style="margin-top:10px">Conecte sua carteira para prosseguir.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======= FOOTER ======= -->
-  <footer>
-    <div class="wrap">
-      <div class="line" style="height:1px; background:var(--line); margin-bottom:14px"></div>
-      <div class="copy">© 2025 Pepe El Patrón. Todos os direitos reservados. • Smart contract: <span id="sc">0x...</span></div>
-    </div>
-  </footer>
-
-  <!-- ChartJS para o gráfico de pizza -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script>
-    /* ======== Contagem regressiva básica (14 dias a partir do carregamento) ======== */
-    const DEADLINE = new Date(Date.now() + 1000*60*60*24*14);
-    const elDeadline = document.getElementById('deadline');
-    const fmt = n => n.toString().padStart(2,'0');
-    const tick = () => {
-      const diff = Math.max(0, DEADLINE - Date.now());
-      const d = Math.floor(diff/86400000);
-      const h = Math.floor(diff%86400000/3600000);
-      const m = Math.floor(diff%3600000/60000);
-      elDeadline.textContent = `${fmt(d)}d ${fmt(h)}h ${fmt(m)}m`;
-    };
-    tick(); setInterval(tick, 60000);
-
-    /* ======== Chart Tokenomics ======== */
-    const pie = new Chart(document.getElementById('pie'),{
-      type:'pie',
-      data:{
-        labels:['Pré-venda','Liquidez','Marketing','Recompensas/Parcerias'],
-        datasets:[{
-          data:[40,35,15,10],
-          /* sem cores fixas — usa padrão do Chart.js;
-             se quiser cores do tema, descomente abaixo:
-          backgroundColor:['#15B66E','#1E40AF','#F5C84B','#F6E9D5'],
-          borderColor:'#0B0F14',
-          borderWidth:1
-          */
-        }]
-      },
-      options:{
-        plugins:{ legend:{ position:'bottom', labels:{ color:'#E7EDF5' } } }
-      }
-    });
-
-    /* ======== Botão comprar (mock) ======== */
-    document.getElementById('buy').addEventListener('click', ()=>{
-      const amt = Number(document.getElementById('amount').value||0);
-      const st = document.getElementById('status');
-      if(!amt || amt <= 0) { st.textContent = 'Informe um valor válido em USD.'; return; }
-      st.textContent = `Você solicitou comprar $PATRON no valor de $${amt.toFixed(2)}. (Integre sua lógica Web3 aqui.)`;
-    });
-  </script>
 </body>
 </html>
