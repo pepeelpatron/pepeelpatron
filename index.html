@@ -178,6 +178,24 @@ img{max-width:100%;height:auto;display:block}
   margin-top: calc(-1 * var(--header-h));
   padding-top: var(--header-h);
 }
+  
+  /* Animação suave em todos os cards */
+.panel, .stat, .card, .item {
+  transition: transform .25s ease, box-shadow .25s ease, border .25s ease;
+}
+
+/* Destaque neon no hover */
+.panel:hover, .stat:hover, .card:hover, .item:hover {
+  transform: translateY(-6px); /* levanta */
+  border: 1px solid transparent;
+  background-image: linear-gradient(var(--panel), var(--panel)), 
+                    linear-gradient(135deg, var(--green), var(--blue));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 0 18px rgba(21,182,110,.4), 
+              0 0 28px rgba(30,64,175,.3),
+              0 6px 18px rgba(0,0,0,.5);
+}
 
 </style>
 </head>
