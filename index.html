@@ -16,29 +16,31 @@
       line-height: 1.6;
     }
 
- header {
-  background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png') no-repeat center/cover;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    header {
+      background: url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png') no-repeat center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
     header h1 {
       font-size: 3em;
-      color: #ffffff; /* branco sobre fundo escuro */
+      color: #ffffff;
       text-shadow: 2px 2px 8px #000;
     }
+
     header p {
       font-size: 1.4em;
       margin-top: 0.5em;
       color: #eaeaea;
       text-shadow: 1px 1px 6px #000;
     }
+
     .btn {
-      background: #ffcc00; /* botão amarelo vibrante */
+      background: #ffcc00;
       color: #000;
       border: none;
       padding: 0.8em 2em;
@@ -48,43 +50,47 @@
       cursor: pointer;
       transition: 0.3s;
     }
+
     .btn:hover {
       background: #e6b800;
     }
+
     section {
       padding: 4em 1.5em;
       max-width: 960px;
       margin: auto;
-   .features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2em;
-  margin-top: 2em;
-}
+    }
 
-.feature-box {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1.8em;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
 
-.feature-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-}
+    .feature-box {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 1.8em;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
 
-.feature-box h3 {
-  font-size: 1.4em;
-  margin-bottom: 0.5em;
-}
+    .feature-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
 
-.feature-box p {
-  font-size: 1em;
-  line-height: 1.6;
-}
+    .feature-box h3 {
+      font-size: 1.4em;
+      margin-bottom: 0.5em;
+    }
+
+    .feature-box p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
 
     .footer {
       background: #2b1e12;
@@ -92,59 +98,93 @@
       text-align: center;
       padding: 2em;
     }
+
     .tokenomics {
       text-align: center;
     }
+
     .tokenomics img {
       max-width: 100%;
       border-radius: 12px;
     }
+
     #about {
-  background: rgba(255, 255, 255, 0.92);
-  padding: 3em 2em;
-  border-radius: 20px;
-  max-width: 800px;
-  margin: 4em auto;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+      background: rgba(255, 255, 255, 0.92);
+      padding: 3em 2em;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-#about:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
-}
+    #about:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25);
+    }
 
-#about h2 {
-  font-size: 2em;
-  margin-bottom: 0.5em;
-  font-weight: bold;
-  color: #111;
-}
+    #about h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+      color: #111;
+    }
 
-#about p {
-  font-size: 1.1em;
-  line-height: 1.8;
-  color: #222;
-}
+    #about p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #222;
+    }
+
+    .how-to {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .how-box {
+      background: rgba(255,255,255,0.95);
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 1 1 260px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .gallery img {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    }
 
   </style>
 </head>
 <body>
+
   <header>
     <h1>PEPE EL PATRÓN</h1>
     <p>The Boss of Memes</p>
     <button class="btn">Buy Now</button>
   </header>
-<section id="about">
-  <h2>Quem é Pepe El Patrón?</h2>
-  <p>
-    Pepe El Patrón não é apenas um sapo... ele é o chefe supremo da era dos memes!  
-    Luxo, charuto, mansões e respeito.  
-    $PATRON é uma meme coin com comunidade forte, liquidez travada, queima contínua e um toque de ousadia latina.
-  </p>
-</section>
+
+  <section id="about">
+    <h2>Quem é Pepe El Patrón?</h2>
+    <p>
+      Pepe El Patrón não é apenas um sapo... ele é o chefe supremo da era dos memes!  
+      Luxo, charuto, mansões e respeito.  
+      $PATRON é uma meme coin com comunidade forte, liquidez travada, queima contínua e um toque de ousadia latina.
+    </p>
+  </section>
 
   <section>
     <h2>Why Pepe El Patrón?</h2>
@@ -198,8 +238,9 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="footer">
     <p>Pepe El Patrón &copy; 2025. All Memes Reserved. | Telegram: @pepeelpatron</p>
   </footer>
+
 </body>
 </html>
