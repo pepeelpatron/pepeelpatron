@@ -1,555 +1,145 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pepe El Patrón ($PATRON) – The Boss of Memes</title>
-  <meta name="description" content="Pepe El Patrón ($PATRON) – The Boss of Memes. Pré-venda, tokenomics, roadmap e comunidade.">
-
-  <!-- OG / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Fonts (antigas do seu herói) -->
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Signika:wght@600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <!-- Fonts cartoon para a nova skin -->
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pepe El Patrón - The Boss of Memes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    /* ========= BASE DO SEU SITE (mantida para header/hero/sorteio) ========= */
-    :root{
-      --bg:#0b1a15;
-      --txt:#eae6d9;
-      --muted:#b9b39f;
-      --gold:#d4af37;
-      --max:1100px;
-      /* paleta tokenomics */
-      --accent-gold:#d4af37; --accent-amber:#caa32b; --accent-emerald:#2ea36a;
-      --accent-moss:#5a7d4b; --accent-mint:#9fd4b0; --accent-brown:#5c3b14;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background-color: #f4f7fb; /* fundo claro neutro */
+      color: #2b1e12; /* marrom escuro original */
+      line-height: 1.6;
     }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
-      font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:saturate(120%) blur(8px);background:rgba(11,26,21,.6)}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    nav .brand{display:flex;align-items:center;gap:.6rem}
-    nav .brand span{font-family:"Alfa Slab One",serif;text-transform:uppercase;letter-spacing:.5px;color:#f5d07a;
-      text-shadow:0 1px 0 rgba(0,0,0,.35)}
-    nav .links{display:flex;gap:18px;align-items:center}
-    nav .links a{opacity:.9} nav .links a:hover{opacity:1}
-
-    /* ====== HERO (MANTER COMO DESTAQUE) ====== */
-    .hero{
-      position:relative;min-height:88vh;display:grid;align-items:center;
-      background:
-        linear-gradient(180deg, rgba(11,26,21,.10), rgba(11,26,21,.35) 70%),
-        url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/1d0c75a7-ef45-4c80-a61d-afbb1c46b585.png')
-        center 12%/cover no-repeat;
+    header {
+      background: url('1000136672.png') no-repeat center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
-    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
-    .title{font-family:"Alfa Slab One",serif;font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 10px;
-      text-transform:uppercase;letter-spacing:.5px;color:#f5d07a;text-shadow:0 2px 0 rgba(0,0,0,.35),0 10px 24px rgba(0,0,0,.35)}
-    .subtitle{font-family:"Signika",system-ui,sans-serif;font-weight:700;font-size:clamp(16px,2.2vw,22px);color:#d9d6c8;margin:10px 0 22px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;
-      border:1px solid rgba(255,255,255,.14);padding:.9rem 1.2rem;border-radius:12px;
-      background:linear-gradient(180deg,#20362e,#132720);box-shadow:0 6px 20px rgba(0,0,0,.35);
-      transition:.2s;text-transform:uppercase;font-family:"Signika",system-ui,sans-serif}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(0,0,0,.45)}
-    .btn.gold{background:linear-gradient(180deg,#f6d989,#caa32b);border-color:#caa32b;color:#1a1407}
-    .btn.ghost{background:transparent;border-color:rgba(255,255,255,.2)}
-    .badge{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);font-size:.85rem;color:var(--muted);font-family:"Signika";font-weight:700}
-    .presale{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px;
-      backdrop-filter:blur(2px) saturate(110%);color:#f2efe5}
-    .progress{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
-    .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f3d37a,#caa32b);transition:width .6s}
-
-    /* Giveaway (mantido) */
-    .divider{height:6px;background:linear-gradient(90deg,rgba(212,175,55,0) 0%,rgba(212,175,55,.8) 50%,rgba(212,175,55,0) 100%);border-radius:50px;margin:40px auto;max-width:90%}
-    #giveaway{position:relative;padding:clamp(48px,7.5vw,96px) 20px;text-align:center;color:#fff;
-      background:linear-gradient(180deg, rgba(11,26,21,.60), rgba(11,26,21,.65)),
-        url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png') center 32%/cover no-repeat;
-      border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
-      box-shadow:inset 0 120px 160px rgba(0,0,0,.22), inset 0 -120px 160px rgba(0,0,0,.22)}
-    #giveaway .giveaway-title{font-family:"Alfa Slab One",serif;text-transform:uppercase;letter-spacing:.4px;color:#f6d989;
-      text-shadow:0 2px 0 rgba(0,0,0,.45),0 14px 30px rgba(0,0,0,.55);font-size:clamp(26px,4vw,46px);margin:0 0 10px}
-    #giveaway .giveaway-amount{font-family:"Alfa Slab One",serif;line-height:1;font-size:clamp(44px,8.8vw,108px);
-      color:#ffe28a;text-shadow:0 0 28px rgba(0,0,0,.8),0 10px 30px rgba(0,0,0,.8);
-      animation:pulseGlow 2.2s ease-in-out infinite;display:inline-block;padding:.15em .35em;border-radius:16px;
-      background:linear-gradient(180deg,rgba(255,209,102,.22),rgba(255,209,102,.06));box-shadow:inset 0 2px 10px rgba(0,0,0,.18)}
-    @keyframes pulseGlow{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
-
-    /* ========= NOVA SKIN (aplica do giveaway pra baixo) ========= */
-    .meme-theme{
-      --bg2:#f6edd7;
-      --ink:#1d2d25;
-      --gold2:#d4af37;
-      /* SEU papel de parede sutil */
-      --wallpaper:url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/0f15945a-ef35-4308-b165-50e87a76fdb5.png");
-      background:var(--bg2); position:relative;
+    header h1 {
+      font-size: 3em;
+      color: #ffffff; /* branco sobre fundo escuro */
+      text-shadow: 2px 2px 8px #000;
     }
-    .meme-theme::before{
-      content:""; position:fixed; inset:0; z-index:-2;
-      background: var(--wallpaper) center top/560px auto repeat;
-      opacity:.55; pointer-events:none;
+    header p {
+      font-size: 1.4em;
+      margin-top: 0.5em;
+      color: #eaeaea;
+      text-shadow: 1px 1px 6px #000;
     }
-    /* títulos cartoon */
-    .meme-theme h2,.cartoon-title{
-      font-family:"Luckiest Guy", system-ui;
-      letter-spacing:.5px; color:#6b4226;
-      text-shadow:0 3px 0 #efdcb2, 0 14px 26px rgba(0,0,0,.18);
-      font-size:clamp(28px,4vw,48px); margin:0 0 18px;
+    .btn {
+      background: #ffcc00; /* botão amarelo vibrante */
+      color: #000;
+      border: none;
+      padding: 0.8em 2em;
+      margin-top: 1em;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    .meme-theme p,.meme-theme li,.meme-theme td,.meme-theme th{
-      font-family:"Rubik",system-ui,sans-serif; color:var(--ink);
+    .btn:hover {
+      background: #e6b800;
     }
-    /* cartão/botão */
-    .meme-card{
-      background:#fff; border:2px solid #6f4f26; border-radius:16px;
-      box-shadow:0 10px 24px rgba(111,79,38,.18),0 18px 42px rgba(0,0,0,.08); padding:22px;
+    section {
+      padding: 4em 1.5em;
+      max-width: 960px;
+      margin: auto;
     }
-    .btn-cartoon{
-      display:inline-flex; align-items:center; gap:.6rem;
-      padding:.9rem 1.2rem; border-radius:12px; font-weight:800;
-      font-family:"Rubik",system-ui;
-      background:linear-gradient(180deg,#f6d989,#caa32b);
-      color:#1a1407; border:none; box-shadow:0 6px 18px rgba(0,0,0,.30);
+    .features, .how-to, .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
     }
-    .btn-cartoon:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.40) }
-    /* decor pepe por seção */
-    .decor{ position:relative; isolation:isolate; }
-    .decor::after{
-      content:""; position:absolute; inset:0; z-index:0;
-      background-image: var(--decor-img);
-      background-repeat:no-repeat;
-      background-size: var(--decor-size, 560px auto);
-      background-position: var(--decor-pos, right 2% bottom -8%);
-      opacity: var(--decor-op, .26);
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.18));
-      pointer-events:none;
+    .feature-box, .how-box, .gallery img {
+      background: #ffffff;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-    .decor > *{ position:relative; z-index:1; }
-    .meme-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
-    @media (max-width:980px){ .hero .wrap{grid-template-columns:1fr} .meme-grid{grid-template-columns:1fr 1fr} }
-    @media (max-width:640px){ .meme-grid{grid-template-columns:1fr} .decor::after{display:none} }
-    /* Papel de parede global das seções */
-.meme-theme{
-  --wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/0f15945a-ef35-4308-b165-50e87a76fdb5.png");
-  position: relative;
-  z-index: 0;
-  background: transparent;
-}
-.meme-theme::before{
-  content:"";
-  position: fixed;      /* cobre a viewport toda */
-  inset: 0;
-  background: var(--wallpaper) center top/560px auto repeat;
-  opacity: .55;
-  pointer-events: none;
-  z-index: 0;
-}
-.meme-theme > section,
-.meme-theme > *{
-  position: relative;
-  z-index: 1;
-  background: transparent; /* deixa ver o papel */
-}
-
-/* Seções que tinham fundo sólido */
-#security, #tokenomics, #roadmap, #community, #faq{
-  background: transparent;
-}
-    /**** WALLPAPER & CLARITY FIX — cole a partir daqui ****/
-
-/* 0) Desativa qualquer pseudo-elemento antigo do papel (que ficava por cima) */
-.meme-theme::before{ content:none !important; display:none !important; }
-
-/* 1) Papel de parede aplicado como BACKGROUND normal do wrapper
-      (do Security pra baixo), sem opacidade global */
-.meme-theme{
-  --wallpaper: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/0f15945a-ef35-4308-b165-50e87a76fdb5.png");
-  background-image: var(--wallpaper);
-  background-size: 560px auto;       /* tamanho do padrão (ajuste se quiser) */
-  background-repeat: repeat;
-  background-position: center top;
-  background-attachment: fixed;      /* efeito sutil ao rolar */
-  position: relative;
-  z-index: 0;
-  opacity: 1 !important;             /* garante que nada ficou “lavado” */
-  background-color: transparent;     /* não cubra o papel */
-}
-
-/* 2) Todas as seções dentro do wrapper ficam transparentes
-      (pra enxergar o papel) e por cima da camada de fundo */
-.meme-theme > section,
-.meme-theme > *{
-  position: relative;
-  z-index: 1;
-  background: transparent !important;
-}
-
-/* 3) Seções principais que costumam ter fundo sólido — deixa transparentes */
-#security, #tokenomics, #roadmap, #community, #faq{
-  background: transparent !important;
-}
-
-/* 4) Legibilidade: os CARDS ficam claros por cima do papel */
-#security .card,
-#tokenomics .tk-card,
-#roadmap .card,
-#community .card{
-  background: rgba(255,255,255,.92);
-  border-radius: 16px;
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 10px 24px rgba(0,0,0,.16);
-  backdrop-filter: saturate(120%) blur(2px);
-}
-
-/* (Tokenomics já tem cards internos; reforço pra manter leitura) */
-#tokenomics .chart-card{ background: rgba(255,255,255,.92) !important; }
-#tokenomics .table-card{ background: rgba(255,255,255,.86) !important; }
-#tokenomics .tk-card{ overflow: hidden; position: relative; }
-
-/* 5) Responsivo: reduz o tamanho do padrão em telas menores (fica mais sutil) */
-@media (max-width: 980px){
-  .meme-theme{ background-size: 480px auto; }
-}
-@media (max-width: 640px){
-  .meme-theme{ background-size: 360px auto; }
-}
-
-/* 6) Garantias extras: nenhum container cobre tudo com opacidade acidental */
-.meme-theme, .meme-theme *{ opacity: initial; }
-
-/**** FIM — WALLPAPER & CLARITY FIX ****/
-    /* Remove a película escura do bloco SORTEIO (#giveaway) */
-#giveaway{
-  /* deixa só a imagem de fundo (sem gradiente escuro) */
-  background:
-    url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/e18c8fb3-ff0b-4065-8b5e-a643d842b7f5.png')
-    center 32% / cover no-repeat !important;
-
-  /* remove o véu escuro das bordas */
-  box-shadow: none !important;
-}
-
-/* Caso exista pseudo-elemento adicionando véu */
-#giveaway::before,
-#giveaway::after{
-  content: none !important;
-}
-
+    footer {
+      background: #2b1e12;
+      color: #fff;
+      text-align: center;
+      padding: 2em;
+    }
+    .tokenomics {
+      text-align: center;
+    }
+    .tokenomics img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <div class="container">
-      <nav>
-        <a href="#top" class="brand" aria-label="home">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="ico" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 14c2 2 6 2 8-2" stroke="currentColor" stroke-width="2"/></svg>
-          <span>PEPE EL PATRÓN</span>
-        </a>
-        <div class="links">
-          <a href="#security">Segurança</a>
-          <a href="#tokenomics">Tokenomics</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="#community">Comunidade</a>
-          <a class="btn gold" href="#buy">BUY</a>
-        </div>
-      </nav>
-    </div>
+    <h1>PEPE EL PATRÓN</h1>
+    <p>The Boss of Memes</p>
+    <button class="btn">Buy Now</button>
   </header>
 
-  <!-- HERO (mantido) -->
-  <section class="hero" id="top">
-    <div class="container wrap">
-      <div>
-        <div class="badge">$PATRON • The Boss of Memes</div>
-        <h1 class="title">Pepe El Patrón</h1>
-        <p class="subtitle">Luxo, humor e comunidade. Um memecoin com estética de chefia e entrega de verdade: liquidez travada, transparência e um plano claro para escalar.</p>
-        <div class="cta-row">
-          <a class="btn gold" href="#buy">Comprar $PATRON</a>
-          <a class="btn ghost" href="#how">How to Buy</a>
-          <a class="btn ghost" href="#tokenomics">Chart</a>
-        </div>
-        <div class="trust" style="margin-top:18px">
-          <a class="badge" href="#security">Contrato</a>
-          <a class="badge" href="#security">Liquidity Lock</a>
-          <a class="badge" href="#security">Audit/KYC</a>
-        </div>
+  <section>
+    <h2>Why Pepe El Patrón?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>💰 Liquidity Locked</h3>
+        <p>Segurança total para a comunidade. Sem rug pull.</p>
       </div>
-
-      <!-- Caixa de pré-venda (mantida) -->
-      <div class="presale">
-        <h3 style="margin:0 0 6px">Pré-venda</h3>
-        <div class="progress" aria-label="progresso da pré-venda"><i id="progressBar"></i></div>
-        <div class="kv" style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">
-          <div class="item"><div class="label">Arrecadado</div><div class="num" id="raised">$0</div></div>
-          <div class="item"><div class="label">Meta</div><div class="num" id="target">$1,000,000</div></div>
-          <div class="item"><div class="label">Termina em</div><div class="num" id="countdown">--:--:--</div></div>
-        </div>
-        <div class="cta-row">
-          <a class="btn gold" href="#buy">Buy</a>
-          <a class="btn" href="#tokenomics">Chart</a>
-        </div>
+      <div class="feature-box">
+        <h3>🔥 Massive Burns</h3>
+        <p>Tokens sendo queimados constantemente para valorizar sua moeda.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🤝 Community Power</h3>
+        <p>A comunidade manda! Votações, memes e muito mais.</p>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- Giveaway (mantido) -->
-  <section id="giveaway">
-    <div class="container">
-      <h2 class="giveaway-title">🎉 SORTEIO DE LANÇAMENTO 🎉</h2>
-      <div class="giveaway-amount">ATÉ $50,000</div>
-      <p class="giveaway-prizes" style="font-family:'Signika';font-weight:700">Serão <b>3 sorteios</b>: 🥇 $25,000 &nbsp; 🥈 $15,000 &nbsp; 🥉 $5,000</p>
-      <div class="meme-card" style="background:rgba(0,0,0,.55);border-color:transparent;color:#fff;max-width:840px;margin:14px auto">
-        <ul style="margin:0;line-height:1.8">
-          <li>Quanto mais <b>$PATRON</b> você comprar, mais chances tem de ganhar.</li>
-          <li>Cadastre o <b>hash</b> da sua compra.</li>
-          <li>Sorteio <b>AO VIVO</b> no Telegram no dia do lançamento.</li>
+  <section>
+    <h2>How to Buy</h2>
+    <div class="how-to">
+      <div class="how-box">
+        <h4>Supply Total</h4>
+        <p>500,000,000 tokens</p>
+      </div>
+      <div class="how-box">
+        <h4>Distribuição</h4>
+        <ul>
+          <li>20% Presale</li>
+          <li>20% Liquidez</li>
+          <li>20% Marketing</li>
+          <li>20% Equipe</li>
+          <li>20% Comunidade</li>
         </ul>
       </div>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn gold" href="https://t.me/" target="_blank">Participar no Telegram</a>
-        <a class="btn ghost" href="#how">Como comprar</a>
-      </div>
     </div>
   </section>
 
-  <!-- ======== NOVA SKIN A PARTIR DAQUI ======== -->
-  <div class="meme-theme">
+  <section class="tokenomics">
+    <h2>Tokenomics</h2>
+    <img src="1000136950.png" alt="Tokenomics Pepe El Patrón">
+  </section>
 
-    <!-- Segurança (com Pepe cofre) -->
-    <section id="security" class="decor" style="
-      --decor-img:url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png');
-      --decor-pos:right 1% bottom -6%; --decor-size:600px auto; --decor-op:.28;
-      padding:60px 0; border-top:2px solid rgba(0,0,0,.06); border-bottom:2px solid rgba(0,0,0,.06);
-    ">
-      <div class="container">
-        <h2 class="cartoon-title">Segurança & Transparência</h2>
-        <div class="meme-grid">
-          <div class="meme-card">
-            <h3>Contrato</h3>
-            <p>Endereço: <span id="contract">0xYourContractHere</span></p>
-            <a class="btn-cartoon" id="scanLink" href="#" target="_blank" rel="noopener">VER NO SCAN</a>
-          </div>
-          <div class="meme-card">
-            <h3>Liquidity Lock</h3>
-            <p>LP bloqueada por <b>12 meses</b>. Prova pública.</p>
-            <a class="btn-cartoon" id="lockLink" href="#" target="_blank" rel="noopener">COMPROVANTE</a>
-          </div>
-          <div class="meme-card">
-            <h3>Audit/KYC</h3>
-            <p>Relatórios de auditoria e verificação de equipe.</p>
-            <a class="btn-cartoon" id="auditLink" href="#" target="_blank" rel="noopener">VER RELATÓRIO</a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section>
+    <h2>Meme Gallery</h2>
+    <div class="gallery">
+      <img src="https://i.imgur.com/fake1.jpg" alt="Meme 1">
+      <img src="https://i.imgur.com/fake2.jpg" alt="Meme 2">
+      <img src="https://i.imgur.com/fake3.jpg" alt="Meme 3">
+    </div>
+  </section>
 
-    <!-- Tokenomics (com Pepe contador) -->
-    <section id="tokenomics" class="decor" style="
-      --decor-img:url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/f787d137-3e16-42fe-8ddc-8447427e0bcf.png');
-      --decor-pos:right 0 bottom -12%; --decor-size:560px auto; --decor-op:.26;
-      padding:60px 0; border-top:2px solid rgba(0,0,0,.06); border-bottom:2px solid rgba(0,0,0,.06);
-    ">
-      <div class="container">
-        <h2 class="cartoon-title">Tokenomics</h2>
-        <div class="meme-grid" style="grid-template-columns:1.1fr .9fr">
-          <div class="meme-card"><canvas id="tokenChart" height="220" aria-label="Gráfico de distribuição"></canvas></div>
-          <div class="meme-card">
-            <table style="width:100%">
-              <thead><tr><th>Alocação</th><th>%</th></tr></thead>
-              <tbody id="tkTable"></tbody>
-              <tfoot><tr><th>Total Supply</th><th id="supply">1,000,000,000</th></tr></tfoot>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Roadmap (com Pepe faraó/chefão) -->
-    <section id="roadmap" class="decor" style="
-      --decor-img:url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/03a7d2f0-8b1f-471e-9beb-8f3319f9d324.png');
-      --decor-pos:right 2% bottom -4%; --decor-size:540px auto; --decor-op:.24;
-      padding:60px 0;
-    ">
-      <div class="container">
-        <h2 class="cartoon-title">Roadmap</h2>
-        <div class="meme-grid">
-          <div class="meme-card">
-            <h3>Fase 1 — Early Boss</h3>
-            <ul>
-              <li>Pré-venda rumo a <b>US$1,000,000</b> (gatilho de lançamento).</li>
-              <li>Contrato verificado e preparar LP lock.</li>
-              <li>Campanhas de memes e comunidade.</li>
-            </ul>
-          </div>
-          <div class="meme-card">
-            <h3>Fase 2 — Launch & Tração</h3>
-            <ul>
-              <li>DEX listing + marketing contínuo.</li>
-              <li>Parcerias e KOLs iniciais.</li>
-              <li>Arte oficial e memes semanais.</li>
-            </ul>
-          </div>
-          <div class="meme-card">
-            <h3>Fase 3 — Escalada</h3>
-            <ul>
-              <li>Parcerias estratégicas, CEX mid-tier.</li>
-              <li>Recompensas de comunidade.</li>
-              <li>Utilidades leves (mini-game/memes tools).</li>
-            </ul>
-          </div>
-          <div class="meme-card" style="grid-column:1/-1">
-            <h3>Fase 4 — Escassez</h3>
-            <ul>
-              <li>Queimas programáticas e incentivos de retenção.</li>
-              <li>Narrativa de escassez — reforço de valor.</li>
-              <li><b>Lançamento</b> assim que a pré-venda atingir <b>US$1M</b>.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Comunidade (galeria simples) -->
-    <section id="community" class="decor" style="
-      --decor-img:url('https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/4b33e255-eaa5-4fe9-92a2-3b2e7d2e4c67.png');
-      --decor-pos:right -2% bottom -10%; --decor-size:520px auto; --decor-op:.18;
-      padding:60px 0; border-top:2px solid rgba(0,0,0,.06);
-    ">
-      <div class="container">
-        <h2 class="cartoon-title">Meme Gallery</h2>
-        <p>Seleção de artes e memes da comunidade. Envie o seu no Telegram e marque @PepeElPatron.</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-          <img src="assets/memes/m1.jpg" alt="Meme 1" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(0,0,0,.08)">
-          <img src="assets/memes/m2.jpg" alt="Meme 2" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(0,0,0,.08)">
-          <img src="assets/memes/m3.jpg" alt="Meme 3" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(0,0,0,.08)">
-          <img src="assets/memes/m4.jpg" alt="Meme 4" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(0,0,0,.08)">
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ + Footer simples -->
-    <section id="faq" style="padding:60px 0">
-      <div class="container">
-        <h2 class="cartoon-title">FAQ</h2>
-        <details class="meme-card"><summary>Qual a rede e o contrato oficial?</summary><p>Defina a chain (BSC/ETH/etc.) e coloque o endereço oficial com link para o explorer.</p></details>
-        <details class="meme-card" style="margin-top:10px"><summary>Haverá taxas?</summary><p>Edite com as taxas de compra/venda (ex.: 0/0 ou 1/1%).</p></details>
-        <details class="meme-card" style="margin-top:10px"><summary>Quando será a listagem?</summary><p>Após o fim da pré-venda e travamento de liquidez, informe a data e os pares.</p></details>
-      </div>
-    </section>
-
-    <footer style="padding:40px 0;color:#2b2b29">
-      <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <div>© <span id="year"></span> Pepe El Patrón • Todos os direitos reservados.</div>
-        <div style="display:flex;gap:10px">
-          <a class="btn-cartoon" href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn-cartoon" href="https://x.com/" target="_blank" rel="noopener">X/Twitter</a>
-        </div>
-      </div>
-    </footer>
-
-  </div><!-- /meme-theme -->
-
-  <!-- ChartJS -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script>
-    /* ======== Lógica básica pré-venda (mantida) ======== */
-    const DEADLINE   = new Date(Date.now() + 1000*60*60*24*14); // +14 dias
-    const TARGET_USD = 1_000_000;
-    const RAISED_USD = 317_762.32;
-
-    const pb = document.getElementById('progressBar');
-    const raisedEl = document.getElementById('raised');
-    const targetEl = document.getElementById('target');
-    const cdEl     = document.getElementById('countdown');
-
-    function fmt(n){ return n.toLocaleString('en-US',{maximumFractionDigits:0}); }
-    function tick(){
-      const now = new Date();
-      const diff = Math.max(0, DEADLINE - now);
-      const d = Math.floor(diff / 864e5);
-      const h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
-      if (cdEl) cdEl.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-      if (pb){
-        const pct = Math.min(100, RAISED_USD/TARGET_USD*100);
-        pb.style.width = pct + '%';
-      }
-    }
-    if (raisedEl) raisedEl.textContent = `$${fmt(RAISED_USD)}`;
-    if (targetEl) targetEl.textContent = `$${fmt(TARGET_USD)}`;
-    setInterval(tick, 1000); tick();
-
-    /* ======== Tokenomics (tabela + gráfico) ======== */
-    const css = getComputedStyle(document.documentElement);
-    const C   = n => css.getPropertyValue(n).trim();
-    const TOKENOMICS = [
-      { label:'Liquidity',          value:30, color: C('--accent-emerald') },
-      { label:'Marketing',          value:20, color: C('--accent-amber')   },
-      { label:'Community Rewards',  value:16, color: C('--accent-mint')    },
-      { label:'Burn',               value:34, color: C('--accent-gold')    }
-    ];
-    (function fillTable(){
-      const tbody = document.getElementById('tkTable');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-      TOKENOMICS.forEach(t => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${t.label}</td><td>${t.value}%</td>`;
-        tbody.appendChild(tr);
-      });
-      const supplyEl = document.getElementById('supply');
-      if (supplyEl) supplyEl.textContent = '1,000,000,000';
-    })();
-    window.addEventListener('DOMContentLoaded', () => {
-      const el = document.getElementById('tokenChart');
-      if (!el) return;
-      const ctx = el.getContext('2d');
-      if (el._chartInstance) el._chartInstance.destroy();
-      const chart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: TOKENOMICS.map(t => t.label),
-          datasets: [{
-            data: TOKENOMICS.map(t => t.value),
-            backgroundColor: TOKENOMICS.map(t => t.color),
-            borderColor: '#54421e',
-            borderWidth: 1.2
-          }]
-        },
-        options: {
-          plugins: {
-            legend: {
-              position: 'bottom',
-              labels: { color: '#2b2b29', font: { family: 'Rubik', weight: 700 }, boxWidth: 16, padding: 14 }
-            },
-            tooltip: {
-              titleColor: '#2b2b29', bodyColor:  '#2b2b29',
-              backgroundColor: 'rgba(255,255,255,.95)', borderColor: 'rgba(0,0,0,.12)', borderWidth: 1
-            }
-          },
-          cutout: '62%', animation: { duration: 600 }, maintainAspectRatio: false
-        }
-      });
-      el._chartInstance = chart;
-    });
-
-    /* Úteis */
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <p>Pepe El Patrón &copy; 2025. All Memes Reserved. | Telegram: @pepeelpatron</p>
+  </footer>
 </body>
 </html>
