@@ -222,17 +222,32 @@ img{max-width:100%;height:auto;display:block}
   position: relative;
   z-index: 1;
 }
-  /* Sorteio em destaque pulsando */
+/* Painel do sorteio com papel de parede */
 .sorteio-panel {
-  border: 2px solid var(--yellow);
-  box-shadow: 0 0 20px rgba(245,200,75,.6);
-  animation: pulseGlow 2s infinite;
+  background: url("https://raw.githubusercontent.com/pepeelpatron/pepeelpatron/refs/heads/main/bff97c43-0f71-41ca-b28d-ccf2832a8954.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 22px;
+  border: 2px solid var(--line);
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,.6);
+  animation: pulseGlow 2s infinite; /* efeito pulsando */
 }
 
+/* reforço para não perder legibilidade */
+.sorteio-panel h2,
+.sorteio-panel p,
+.sorteio-panel ul {
+  background: rgba(0,0,0,.45);   /* leve sombra atrás do texto */
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+/* Efeito pulsando */
 @keyframes pulseGlow {
-  0%   { box-shadow: 0 0 10px rgba(245,200,75,.4); }
-  50%  { box-shadow: 0 0 30px rgba(245,200,75,.9); }
-  100% { box-shadow: 0 0 10px rgba(245,200,75,.4); }
+  0%   { box-shadow: 0 0 0px rgba(245,200,75,.4); }
+  50%  { box-shadow: 0 0 24px rgba(245,200,75,.8); }
+  100% { box-shadow: 0 0 0px rgba(245,200,75,.4); }
 }
 
 </style>
@@ -308,6 +323,7 @@ img{max-width:100%;height:auto;display:block}
     </div>
   </div>
 </section>
+
 
 <!-- TOKENOMICS -->
 <section id="tokenomics" class="section tk">
