@@ -222,7 +222,18 @@ img{max-width:100%;height:auto;display:block}
   position: relative;
   z-index: 1;
 }
+  /* Sorteio em destaque pulsando */
+.sorteio-panel {
+  border: 2px solid var(--yellow);
+  box-shadow: 0 0 20px rgba(245,200,75,.6);
+  animation: pulseGlow 2s infinite;
+}
 
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 0 10px rgba(245,200,75,.4); }
+  50%  { box-shadow: 0 0 30px rgba(245,200,75,.9); }
+  100% { box-shadow: 0 0 10px rgba(245,200,75,.4); }
+}
 
 </style>
 </head>
@@ -271,12 +282,29 @@ img{max-width:100%;height:auto;display:block}
   </div>
 </section>
 
-<!-- SOBRE -->
+<!-- SORTEIO -->
 <section class="section">
   <div class="wrap">
-    <div class="panel">
-      <h2>Sobre o $PATRON</h2>
-      <p class="sub">Unidade, força e elegância: a memecoin com estilo “El Patrón”. Liquidez bloqueada, transparência e uma comunidade que cresce todo dia.</p>
+    <div class="panel sorteio-panel">
+      <h2>🎁 Sorteio no Lançamento</h2>
+      <p class="sub">
+        No lançamento oficial do $PATRON, iremos sortear um prêmio total de <b>$50.000</b>, dividido entre <b>3 vencedores</b>!
+      </p>
+
+      <p><b>📅 Data:</b> No dia do lançamento oficial<br>
+         <b>📍 Local:</b> Transmissão ao vivo no <a href="#" class="pill" target="_blank">Telegram</a>
+      </p>
+
+      <details class="item" style="margin-top:16px">
+        <summary>👉 Clique para mais informações</summary>
+        <div class="body">
+          <ul>
+            <li>É necessário estar cadastrado com o <b>hash da compra</b> no sistema.</li>
+            <li>Quanto mais $PATRON você comprar, <b>mais chances terá de ganhar</b>.</li>
+            <li>O sorteio será <b>ao vivo no Telegram</b>, garantindo total transparência.</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </div>
 </section>
